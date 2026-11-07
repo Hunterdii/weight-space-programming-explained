@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weight-Space Programming - An Independent Field Guide (print edition)</title>
+<meta name="author" content="Het Patel (Hunterdii)">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --blue: #2F6FD0; --green: #0E8A5F; --amber: #B57A00; --red: #C03A2F;
+    --ink: #1A1D26; --muted: #5D6372; --border: #DED9CC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #FAFAF7; color: var(--ink);
+    font-family: Charter, Georgia, 'Times New Roman', serif; line-height: 1.6; }
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+  h1 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 2.1rem; line-height: 1.15; margin: 0 0 .4rem; }
+  h2 { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.15rem; margin: 2.4rem 0 .6rem; border-bottom: 1px solid var(--border); padding-bottom: .25rem; }
+  .sub { color: var(--muted); font-size: 1.02rem; }
+  .credits { font-size: .85rem; color: var(--muted); border: 1px solid var(--border); border-radius: 8px; padding: .8rem 1rem; background: #fff; margin: 1.6rem 0; }
+  .badge { font-family: Arial, sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .05em; padding: .1rem .45rem; border-radius: 4px; white-space: nowrap; }
+  .bP { color: var(--blue); border: 1.4px solid var(--blue); }
+  .bR { color: var(--green); border: 3px double var(--green); }
+  .bS { color: var(--amber); border: 1.4px dashed var(--amber); }
+  .bX { color: var(--red); border: 1.4px dotted var(--red); }
+  table { border-collapse: collapse; width: 100%; font-size: .85rem; font-family: Arial, sans-serif; margin: .8rem 0 1.4rem; }
+  caption { caption-side: top; text-align: left; font-size: .78rem; color: var(--muted); padding-bottom: .35rem; font-weight: 700; }
+  th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); border-bottom: 1.6px solid var(--border); padding: .4rem .5rem; }
+  td { border-bottom: 1px solid #EEE9DC; padding: .42rem .5rem; vertical-align: top; }
+  td.n { font-variant-numeric: tabular-nums; text-align: right; }
+  .box { border: 1.4px solid #6D55C8; border-radius: 10px; padding: 1rem 1.2rem; background: #fff; margin: 1.4rem 0; }
+  .box .t { font-family: Arial, sans-serif; font-weight: 800; color: #6D55C8; font-size: .8rem; letter-spacing: .08em; display: block; margin-bottom: .5rem; }
+  code, .mono { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: .8em; background: #F1EFE8; padding: .06em .3em; border-radius: 4px; }
+  ol.refs { font-size: .82rem; padding-left: 1.4rem; }
+  ol.refs li { margin-bottom: .45rem; }
+  .foot { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: .8rem; color: var(--muted); }
+  @media print {
+    html, body { background: #fff; }
+    .wrap { max-width: none; padding: 0; }
+    h2 { break-after: avoid; }
+    table, .box { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+    .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Weight-Space Programming<br>An Independent Field Guide</h1>
+  <p class="sub">Can a general-purpose LLM read, repair, and even write a neural network's weights - by reasoning alone? Eight experiments, two mechanisms, and one honest scoreboard.</p>
+  <p><strong>Read · Fix · Write</strong> - the three claims of the source post (2 Nov 2026), re-examined.</p>
+  <div class="credits">
+    <strong>Independent educational explainer by Het Patel (Hunterdii)</strong>, MSc Data Science student.
+    Based on the blog post <em>"Sparks of Weight-Space Programming: LLMs can natively read &amp; write neural network weights"</em>
+    by Rikiya Takehi, Jayden Teoh, Alex Zhang and Omar Khattab (MIT CSAIL), 2 Nov 2026. All original research credit belongs to them.
+    This project is <strong>not affiliated with, endorsed by, or written by</strong> MIT CSAIL, OpenAI, or the original authors.
+    Licence: code MIT, text &amp; figures CC BY 4.0. Fact-check date: 5 Nov 2026.<br><br>
+    Evidence badges used throughout: <span class="badge bP">■ PAPER-REPORTED</span>
+    <span class="badge bR">■ INDEPENDENT REVIEW</span>
+    <span class="badge bS">■ TEACHING SCHEMATIC</span>
+    <span class="badge bX">■ SPECULATION</span>
+  </div>
+
+  <div class="box">
+    <span class="t">IF YOU READ ONE PAGE</span>
+    <strong>The finding.</strong> A general-purpose LLM read small networks' weights and named their behaviour, fixed a defect with one reasoned edit, and wrote working networks from scratch - without gradient descent.
+    <strong>The headline number.</strong> Editing <strong>0.016%</strong> of one model's weights raised MATH-500 from 7.9% to 48.1% and cut runaway "thinking" from 93% to 33% of answers - and a <strong>negative control</strong> on a different model moved nothing.
+    <strong>The honest caveats.</strong> Single runs throughout; baselines missing; tasks author-designed. "Sparks" is exactly the right word.
+  </div>
+
+  <h2>The experiments at a glance</h2>
+  <table>
+    <caption><span class="badge bP">■ PAPER-REPORTED</span> All values from the source post.</caption>
+    <tr><th>#</th><th>Verb</th><th>Weights</th><th>Reported result</th></tr>
+    <tr><td>1</td><td>Read</td><td class="n">17,253</td><td>Named all 4 games from 10×10 weight grids; Breakout at 99% confidence</td></tr>
+    <tr><td>2</td><td>Read</td><td class="n">23,824</td><td>All 3 diffusion shapes identified - described outlines where models draw filled shapes</td></tr>
+    <tr><td>3</td><td>Read</td><td class="n">7.16M</td><td>Language 6/6 (conf. 0.48–0.62); copying heads exactly match ground truth (Python 2.1/3.1/3.5, romaji 3.3, English 3.1)</td></tr>
+    <tr><td>4</td><td>Fix</td><td class="n">171,664</td><td>One-shot edit of 3.5% of weights: ramp success 0/256 → 1,024/1,024</td></tr>
+    <tr><td>5</td><td>Write</td><td class="n">≈20k/net*</td><td>MinAtar policies from zero: Breakout 517.4 vs PPO-500M's 25.3 (1,000-episode averages)</td></tr>
+    <tr><td>6</td><td>Write</td><td class="n">1,480,274</td><td>9×9 Go from zero: 54–55% at 0 passes vs small PPO; 70–79% at 50 passes vs an equal-size PPO trained on 20M games</td></tr>
+    <tr><td>7</td><td>Read</td><td class="n">~270M×2</td><td>Which Gemma flatters? Weights alone 0/4; with attention patterns 3/3 (head 10.2: 94.3% vs 85.7%)</td></tr>
+    <tr><td>8</td><td>Fix</td><td class="n">131,072</td><td>Direction from MLPs of layers 15 &amp; 19 subtracted from 64 columns each = 0.016%: MATH-500 7.9→48.1%; token-limit hits 93→33.1%; Gemma control flat</td></tr>
+  </table>
+  <p><sub>* Computed from the stated architecture, not reported by the authors.</sub></p>
+
+  <h2>The flagship budget table <span class="badge bP">■ PAPER-REPORTED</span></h2>
+  <table>
+    <caption>Qwen3.5-0.8B, thinking mode on, up to 32,768 tokens.</caption>
+    <tr><th>Variant</th><th>MATH-500 %</th><th>GSM8K %</th><th>IFEval %</th><th>Token limit %</th></tr>
+    <tr><td>Base</td><td class="n">7.9</td><td class="n">13.8</td><td class="n">21.0</td><td class="n">93.0</td></tr>
+    <tr><td>Edited · 10 passes</td><td class="n">12.3</td><td class="n">25.7</td><td class="n">49.0</td><td class="n">87.2</td></tr>
+    <tr><td>Edited · 25 passes</td><td class="n">14.1</td><td class="n">25.1</td><td class="n">39.9</td><td class="n">86.4</td></tr>
+    <tr><td>Edited · 50 passes</td><td class="n"><strong>48.1</strong></td><td class="n"><strong>67.1</strong></td><td class="n"><strong>62.3</strong></td><td class="n"><strong>33.1</strong></td></tr>
+  </table>
+  <p>Reported points only - one run per point, never interpolated. The negative control (Gemma 3 270M: 6.8% base, 7.0% at 50 passes, only 8.5% of answers ever hitting the token limit) shows the edit <em>removed an obstacle that hid an ability; it did not add one</em>.</p>
+
+  <h2>The evidence scoreboard <span class="badge bR">■ INDEPENDENT REVIEW</span></h2>
+  <table>
+    <caption>Sorted per the 5 Nov 2026 review of the released logs.</caption>
+    <tr><th>Strength</th><th>What</th></tr>
+    <tr><td>Strong</td><td>Exp 8 (3 benchmarks, mechanism check, negative control) · Exp 4 (large measured effect)</td></tr>
+    <tr><td>Strong (n=1)</td><td>Exps 5–6 (working policies from designed programs, single runs)</td></tr>
+    <tr><td>Weaker</td><td>Exps 1–2 (tiny trials, readable layouts) · Exp 3 language ID (~0.5 confidence) · Exp 7 (1-in-8 by chance, task relaxed)</td></tr>
+    <tr><td>Missing</td><td>Baselines, seeds, other LLMs, author-blind tasks, cheap alternatives</td></tr>
+  </table>
+
+  <h2>WSP-Bench-Lite <span class="badge bX">■ SPECULATION (proposal)</span></h2>
+  <p>Community benchmark proposal (clearly Het's, not the authors'): three tracks <strong>Read / Fix / Write</strong>; tasks authored by non-competing teams; ≥5 seeds; mandatory baselines (decoding tweaks, standard direction ablation, human interpreter, same heuristic as code); metrics: success, edit sparsity <code>s = ‖Δ‖₀/P</code>, functional drift <code>D = E KL(p_θ‖p_θ')</code>, budget-curve fidelity, cost; pre-registered prompts; public logs. Traces are logged but never counted as evidence.</p>
+
+  <h2>References (selected)</h2>
+  <ol class="refs">
+    <li>Takehi, Teoh, Zhang, Khattab. <em>Sparks of Weight-Space Programming: LLMs can natively read &amp; write neural network weights.</em> Blog post, MIT CSAIL, 2026.</li>
+    <li>Maier, A. <em>Weight-Space Programming: what is measured and what is anecdote?</em> 2026.</li>
+    <li>Goedecke, S. <em>LLMs are not superhuman at reading and writing neural network weights.</em> 2026.</li>
+    <li>Willison, S. <em>Qwen can interpret model weights.</em> 2026.</li>
+    <li>Elhage, N. et al. <em>A Mathematical Framework for Transformer Circuits.</em> 2021.</li>
+    <li>Arditi, A. et al. <em>Refusal in LLMs is mediated by a single direction.</em> NeurIPS 2024.</li>
+    <li>Meng, K. et al. <em>Locating and Editing Factual Associations in GPT (ROME).</em> NeurIPS 2022.</li>
+    <li>Hu, E. et al. <em>LoRA.</em> ICLR 2022. · Ilharco, R. et al. <em>Task Arithmetic.</em> ICLR 2023.</li>
+    <li>Lindell, M. et al. <em>Tracr.</em> NeurIPS 2023. · Schlag, I. et al. <em>Fast Weight Programmers.</em> ICML 2021.</li>
+    <li>…full 44-entry bibliography in the PDF edition.</li>
+  </ol>
+
+  <div class="foot">
+    This is the print fallback edition of the whitepaper. The complete 24-page PDF (all figures, equations with
+    worked numbers, appendices A–E, and the full bibliography) ships alongside this file as
+    <code>weight-space-programming.pdf</code>. The interactive edition lives in <code>../site/</code>.
+  </div>
+</div>
+</body>
+</html>

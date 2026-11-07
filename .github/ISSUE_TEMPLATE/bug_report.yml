@@ -1,0 +1,40 @@
+name: 🐛 Bug Report
+description: Report an issue or execution failure in the Python labs or benchmark scripts
+title: "[BUG]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an issue! Please ensure you are running on Python 3.8+ with standard NumPy.
+  - type: input
+    id: environment
+    attributes:
+      label: Operating System & Python Version
+      description: What OS and Python version are you using?
+      placeholder: "e.g., Windows 11 / Ubuntu 24.04, Python 3.11.8, NumPy 1.26.4"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed reproduction steps including exact terminal commands.
+      placeholder: |
+        1. Run `python lab/02_direction_surgery.py`
+        2. Encounter error...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What output or behavior did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Terminal Traceback / Logs
+      description: Paste any error messages or tracebacks here.
+      render: shell

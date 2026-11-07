@@ -1,0 +1,51 @@
+name: 🎯 Factual Correction
+description: Submit a factual correction, source update, or epistemic badge change
+title: "[CORRECTION]: "
+labels: ["correction", "epistemic-integrity"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We take scientific accuracy seriously. Thank you for holding us to the highest evidentiary standard.
+  - type: input
+    id: location
+    attributes:
+      label: Affected File & Line Number
+      description: Where is the inaccurate or outdated claim located?
+      placeholder: "e.g., README.md line 125, docs/fact-sheet.md Exp 4"
+    validations:
+      required: true
+  - type: textarea
+    id: current_claim
+    attributes:
+      label: Current Statement
+      description: Quote the exact statement currently in the repository.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_correction
+    attributes:
+      label: Proposed Correction
+      description: Provide the revised, accurate text or numbers.
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Primary Source URL (Mandatory)
+      description: Link to the peer-reviewed paper, arXiv preprint, or primary author announcement.
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: dropdown
+    id: badge
+    attributes:
+      label: Epistemic Badge Classification
+      description: Under which Truth Contract badge does this corrected finding fall?
+      options:
+        - "🟦 PAPER-REPORTED (Takehi et al., MIT CSAIL)"
+        - "🟩 INDEPENDENT REVIEW (Prof. Andreas Maier / peer replication)"
+        - "🟨 TEACHING SCHEMATIC (pedagogical toy model)"
+        - "🟥 SPECULATION (conjecture / extrapolation)"
+    validations:
+      required: true

@@ -1,0 +1,1362 @@
+{
+  "$schema_note": "Weight-Space Programming field guide - structured fact sheet. Every chart on the site binds to this file.",
+  "credits": {
+    "explainer": "Het Patel (Hunterdii) - independent educational explainer",
+    "source_post": {
+      "title": "Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights",
+      "authors": "Rikiya Takehi, Jayden Teoh, Alex Zhang and Omar Khattab",
+      "lab": "MIT CSAIL",
+      "date": "2 Nov 2026",
+      "url": "https://rikiyat.github.io/blog/weight-space-programming/",
+      "affiliation_note": "Not affiliated with MIT CSAIL, OpenAI, or the original authors."
+    },
+    "licence": {
+      "code": "MIT",
+      "text_and_figures": "CC BY 4.0"
+    },
+    "fact_check_date": "5 Nov 2026"
+  },
+  "truth_contract": {
+    "🟦 paper-reported": "A number or claim stated in the original post",
+    "🟩 independent review": "From a third-party analysis (e.g. Maier, 5 Nov 2026)",
+    "🟨 teaching schematic": "Invented toy data - ILLUSTRATIVE, NOT REAL DATA",
+    "🟥 speculation": "Predictions about the future, untested, including the authors'"
+  },
+  "experiments": [
+    {
+      "n": 1,
+      "verb": "Read",
+      "task": "Which game is this network playing?",
+      "setup": "MLP 500→32→32→5 (tanh), 17,253 weights. Four PPO-trained policies (Breakout, Pong, Pac-Man, Freeway) shown as a 10×10 weight grid. No tools.",
+      "params": "17,253",
+      "headline": "Named all 4 games correctly; Breakout at 99% confidence.",
+      "details": [
+        "Given only a 10×10 grid of first-layer weights, no forward passes allowed.",
+        "Four policies were correctly matched to their games.",
+        "Breakout was identified at 99% stated confidence."
+      ],
+      "evidence": "weak",
+      "evidenceNote": "🟩 Four correct picks is impressive but small; readable 10×10 layouts make pattern-matching plausible. No baselines (human or automated) reported."
+    },
+    {
+      "n": 2,
+      "verb": "Read",
+      "task": "What shape does this diffusion model draw?",
+      "setup": "DDPM on 12×12 images. MLP 160→64→64→144 (ReLU), 23,824 weights. Circle / triangle / square. No forward pass.",
+      "params": "23,824",
+      "headline": "Correct for all 3 - but described outlines, while the models draw filled shapes.",
+      "details": [
+        "Read the noise-prediction network of three tiny diffusion models.",
+        "All three shapes identified correctly without running the models.",
+        "The descriptions said outlines; the generated images are filled - a readable but imperfect mental model."
+      ],
+      "evidence": "weak",
+      "evidenceNote": "🟩 Three correct answers on a toy model with an interpretable layout. The outline-vs-filled slip shows the reading is lossy."
+    },
+    {
+      "n": 3,
+      "verb": "Read",
+      "task": "Which language - and which heads copy?",
+      "setup": "Three char-level transformers, 4 layers × 6 heads, width 384, 7.16M weights. Only middle blocks given; running the model banned.",
+      "params": "7.16M",
+      "headline": "Right language 6/6 (confidence 0.48–0.62); copying heads exactly matched ground truth.",
+      "details": [
+        "Language ID: Python 2.1, 3.1, 3.5 · romaji 3.3 · English 3.1 - induction-head match with measured ground truth.",
+        "Language confidence sat between 0.48 and 0.62 among three options.",
+        "The copying-head identification is the solid part; the technique mirrors Elhage et al.’s human method."
+      ],
+      "evidence": "moderate",
+      "evidenceNote": "🟩 Language ID at ~0.5 confidence over 3 options is weak. The induction/copying-head match is the strong evidence: known human technique, exact agreement with ground truth."
+    },
+    {
+      "n": 4,
+      "verb": "Fix",
+      "task": "A car that cannot climb a ramp",
+      "setup": "Kinetix actor 679→128→5×128→16, 171,664 weights. PPO-trained; 0/256 episodes succeed.",
+      "params": "171,664",
+      "headline": "One shot, no tools: edited 3.5% of weights → 1,024/1,024 episodes succeed.",
+      "details": [
+        "A single editing attempt, no search tools.",
+        "Edit touched 3.5% of the actor’s parameters.",
+        "Success went from 0/256 to 1,024/1,024 episodes."
+      ],
+      "evidence": "strong",
+      "evidenceNote": "🟩 Measured outcome with a large effect size, on a task where the base policy was at zero. Seed count and comparison to cheap fixes (e.g. decoding changes) still missing."
+    },
+    {
+      "n": 5,
+      "verb": "Write",
+      "task": "MinAtar game players, written from scratch",
+      "setup": "600→32→32→6 (tanh). Weights start at zero. No data, no loss, no gradients, no rollouts.",
+      "params": "20,486 / net (computed from the stated architecture)",
+      "headline": "One-shot written policies beat PPO trained 100M steps on all 3 games; on Breakout by ~20× over PPO-500M.",
+      "details": [
+        "Breakout: 517.4 vs PPO-100M 15.8 and PPO-500M 25.3 (1,000-episode average).",
+        "Seaquest: 53.1 vs PPO-100M 5.6 and PPO-500M 88.9.",
+        "Asterix: 53.2 vs PPO-100M 25.8 and PPO-500M 55.2."
+      ],
+      "evidence": "strong",
+      "evidenceNote": "🟩 Writing a working policy from a designed program is strong evidence of writing ability. Scores are 1,000-episode averages; single run each (n=1)."
+    },
+    {
+      "n": 6,
+      "verb": "Write",
+      "task": "A 9×9 Go player, written from scratch",
+      "setup": "243→512×6→82, 1,480,274 weights. Python sandbox; 0–50 forward passes of self-play allowed.",
+      "params": "1,480,274",
+      "headline": "0 passes: wins >half vs two small PPO nets. 50 passes: beats an equal-size PPO trained on 20M games.",
+      "details": [
+        "Weights begin at zero; the LLM writes a full policy by reasoning about liberties and atari.",
+        "At 0 forward passes: 54–55% win rate vs two small PPO nets; 26–43% vs equal-size PPO (from released logs, 🟩).",
+        "At 50 passes: 81–84% vs small PPO nets; 70–79% vs the equal-size PPO trained on 20M games."
+      ],
+      "evidence": "strong",
+      "evidenceNote": "🟩 The one experiment where a budget curve (0→50 passes) is reported. n=1 run per point; curves non-monotonic in places."
+    },
+    {
+      "n": 7,
+      "verb": "Read",
+      "task": "Which Gemma-3-270M is sycophantic?",
+      "setup": "Two copies fine-tuned identically except the answer rule (honest vs agree-with-user). Embeddings & output layer frozen.",
+      "params": "~270M",
+      "headline": "Weights alone: failed 4/4. With attention patterns on self-written texts: 3/3 pairs correct.",
+      "details": [
+        "From raw weights the reader could not tell the honest model from the sycophant.",
+        "Given attention patterns on texts the models wrote themselves, all 3 pairs were identified.",
+        "Head 10.2: honest model puts 94.3% of attention on question numbers vs 0.75% on the user’s answer; sycophant: 3.5% vs 85.7%."
+      ],
+      "evidence": "weak",
+      "evidenceNote": "🟩 Three binary picks = 1-in-8 by chance alone, and the task had to be relaxed (weights + activations, not weights alone) before it worked."
+    },
+    {
+      "n": 8,
+      "verb": "Fix",
+      "task": "Qwen3.5-0.8B that overthinks its math",
+      "setup": "24-layer model. A “looping” direction written by MLPs of layers 15 and 19, subtracted from 64 output columns each = 131,072 weights = 0.016% of the model.",
+      "params": "131,072 / 0.8B",
+      "headline": "MATH-500: 7.9% → 48.1%; token-limit hits: 93% → 33% (50 passes). Gemma negative control barely moves.",
+      "details": [
+        "The edit removes a direction the model re-injects, unblocking existing math ability.",
+        "At 10/25 passes gains are partial and non-monotonic (MATH-500 12.3 → 14.1; IFEval 49.0 → 39.9).",
+        "Gemma 3 270M control: MATH-500 6.8 → 7.0/7.6/7.7/7.0 at 5/10/25/50 passes; only 8.5% of its answers hit the token limit (vs 93% for Qwen)."
+      ],
+      "evidence": "strong",
+      "evidenceNote": "🟩 The flagship result: measured on three benchmarks, mechanism checked via the token-limit share, and a negative control included. The authors read it as removing an obstacle that hid an ability - not adding one."
+    }
+  ],
+  "tables": {
+    "minatar": {
+      "caption": "MinAtar scores, average over 1,000 episodes (Exp 5)",
+      "badge": "paper",
+      "columns": [
+        "Game",
+        "PPO · 100M steps",
+        "PPO · 500M steps",
+        "Astra, one shot"
+      ],
+      "rows": [
+        [
+          "Breakout",
+          "15.8",
+          "25.3",
+          "517.4"
+        ],
+        [
+          "Seaquest",
+          "5.6",
+          "88.9",
+          "53.1"
+        ],
+        [
+          "Asterix",
+          "25.8",
+          "55.2",
+          "53.2"
+        ]
+      ],
+      "note": "Astra's policies were written with zero data, gradients, or rollouts - reasoning only. n=1 run per cell."
+    },
+    "qwen_budget": {
+      "caption": "Qwen3.5-0.8B, thinking mode on, up to 32,768 tokens (Exp 8)",
+      "badge": "paper",
+      "columns": [
+        "Variant",
+        "MATH-500 %",
+        "GSM8K %",
+        "IFEval %",
+        "Hit token limit %"
+      ],
+      "rows": [
+        [
+          "Base",
+          "7.9",
+          "13.8",
+          "21.0",
+          "93.0"
+        ],
+        [
+          "Edited · 10 passes",
+          "12.3",
+          "25.7",
+          "49.0",
+          "87.2"
+        ],
+        [
+          "Edited · 25 passes",
+          "14.1",
+          "25.1",
+          "39.9",
+          "86.4"
+        ],
+        [
+          "Edited · 50 passes",
+          "48.1",
+          "67.1",
+          "62.3",
+          "33.1"
+        ]
+      ],
+      "note": "Forward passes n = self-play / feedback passes the editor was allowed. Reported points only - no interpolation."
+    },
+    "gemma_control": {
+      "caption": "Negative control: Gemma 3 270M, MATH-500 % (Exp 8)",
+      "badge": "paper",
+      "columns": [
+        "Variant",
+        "MATH-500 %"
+      ],
+      "rows": [
+        [
+          "Base",
+          "6.8"
+        ],
+        [
+          "5 passes",
+          "7.0"
+        ],
+        [
+          "10 passes",
+          "7.6"
+        ],
+        [
+          "25 passes",
+          "7.7"
+        ],
+        [
+          "50 passes",
+          "7.0"
+        ]
+      ],
+      "note": "Only 8.5% of Gemma’s answers hit the token limit (vs 93% for Qwen). Conclusion: the edit removed an obstacle that hid an ability; it did not add one."
+    },
+    "go_logs": {
+      "caption": "9×9 Go win rates from the released logs (Exp 6) - 🟩 independent review",
+      "badge": "review",
+      "columns": [
+        "Opponent",
+        "0 passes",
+        "50 passes"
+      ],
+      "rows": [
+        [
+          "Two small PPO nets",
+          "54–55%",
+          "81–84%"
+        ],
+        [
+          "Equal-size PPO (20M games)",
+          "26–43%",
+          "70–79%"
+        ]
+      ],
+      "note": "Reported as ranges in the independent review of the released logs; n=1 run per point."
+    },
+    "sycophancy_head_10_2": {
+      "caption": "Gemma-3-270M head 10.2 - where attention goes (Exp 7)",
+      "badge": "paper",
+      "columns": [
+        "Model",
+        "On question numbers",
+        "On user’s answer"
+      ],
+      "rows": [
+        [
+          "Honest",
+          "94.3%",
+          "0.75%"
+        ],
+        [
+          "Sycophantic",
+          "3.5%",
+          "85.7%"
+        ]
+      ],
+      "note": "With self-written texts and their attention patterns, the reader named the sycophant in 3/3 pairs. Weights alone: 0/4."
+    }
+  },
+  "predictions": [
+    {
+      "id": "audit",
+      "title": "Auditing without evaluation",
+      "text": "Spotting backdoors or hidden behaviours from the weights alone, without running the model on a benchmark suite."
+    },
+    {
+      "id": "cheap-opt",
+      "title": "Dramatically cheaper optimization",
+      "text": "One-shot initialisation: an LLM writes a starting point so good that training cost collapses."
+    },
+    {
+      "id": "zero-data",
+      "title": "Zero-data capability steering & unlearning",
+      "text": "Adding, steering or removing behaviours by editing weights directly - no data collection, no training loop."
+    },
+    {
+      "id": "rsi",
+      "title": "Recursive self-improvement",
+      "text": "Models editing their own or their successors’ weights, closing the loop between designer and artifact."
+    },
+    {
+      "id": "merge",
+      "title": "True architectural merging",
+      "text": "Grafting a circuit between different architectures - not just averaging checkpoints of the same skeleton."
+    }
+  ],
+  "horizon": [
+    {
+      "window": "Now → 6 months",
+      "items": [
+        {
+          "t": "Benchmark + harness released",
+          "d": "The authors say it is “currently being built”."
+        },
+        {
+          "t": "Replications on other LLMs",
+          "d": "Does reading generalise beyond one frontier model? Willison’s laptop test hints it may."
+        },
+        {
+          "t": "Context & tool limits shrink",
+          "d": "Bigger weight windows per prompt; edit-test tools get standardised."
+        },
+        {
+          "t": "First weight-diff patches",
+          "d": "Small fixes shared like pull requests against open checkpoints."
+        }
+      ]
+    },
+    {
+      "window": "6 → 24 months",
+      "items": [
+        {
+          "t": "Patch ecosystems",
+          "d": "Signed, reviewable weight diffs - “git for weights”."
+        },
+        {
+          "t": "Zero-data unlearning trials",
+          "d": "Removing copyrighted or unsafe content without a training run."
+        },
+        {
+          "t": "WSP-assisted interpretability",
+          "d": "An LLM as a tireless circuit auditor for human researchers."
+        },
+        {
+          "t": "One-shot initialisation",
+          "d": "Cheap specialist nets and edge-device models started from reasoned weights."
+        }
+      ]
+    },
+    {
+      "window": "2 → 5 years",
+      "items": [
+        {
+          "t": "Evaluation-free auditing",
+          "d": "If reading generalises: audit by inspection, not just by testing."
+        },
+        {
+          "t": "Cross-architecture grafting",
+          "d": "Transplanting a working circuit between different model families."
+        },
+        {
+          "t": "WSP agents in training pipelines",
+          "d": "Editor agents embedded in the loop that writes models."
+        },
+        {
+          "t": "Models programming successors",
+          "d": "The design of new models partly delegated to existing ones."
+        }
+      ]
+    },
+    {
+      "window": "5+ years",
+      "items": [
+        {
+          "t": "Weights as source code",
+          "d": "Humans review, version and formally verify “compiled” behaviours. Very speculative."
+        }
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "backdoors",
+      "title": "Weight-level backdoors & trojans",
+      "what": "A capable editor could hide behaviour inside weights that ordinary benchmarks never trigger.",
+      "defence": "Provenance + signed diffs, mandatory diff review, weight-space anomaly scans, behavioural red-teaming with adversarial probes."
+    },
+    {
+      "id": "guardrails",
+      "title": "Safety-training removal",
+      "what": "Published research shows single-direction edits can change refusal behaviour; cheap edits lower the bar for stripping guardrails from open weights.",
+      "defence": "Tamper-resistant training research, release governance for open checkpoints, monitoring of derivative checkpoints."
+    },
+    {
+      "id": "compute",
+      "title": "Compute-threshold blind spot",
+      "what": "If a capability can be added by editing 0.016% of weights with no training run, rules keyed to training compute may miss it entirely.",
+      "defence": "Capability-based evaluation and post-release change tracking of published weights."
+    },
+    {
+      "id": "rsi",
+      "title": "Recursive self-improvement",
+      "what": "Models editing their own or successors’ weights are hard to audit and could compound errors or drift.",
+      "defence": "Human-in-the-loop sign-off, sandboxed editors, immutable audit logs, rate limits on self-edits."
+    },
+    {
+      "id": "supply",
+      "title": "Supply-chain & licence laundering",
+      "what": "Weight diffs are tiny and portable - hard to prove the origin or licence of a behaviour.",
+      "defence": "Weight attestation, watermarking research, model-card diffs for every release."
+    },
+    {
+      "id": "conceal",
+      "title": "Hidden-capability concealment",
+      "what": "Deceptive alignment: models that look safe on tests - or the reverse, auditors that “see” what isn’t there.",
+      "defence": "Multiple independent readers, ground-truth probes, calibration of the reader itself."
+    },
+    {
+      "id": "goodhart",
+      "title": "Goodhart & benchmark gaming",
+      "what": "An editor tuned to a benchmark can overfit its harness, exactly like training does.",
+      "defence": "Held-out, author-blind tasks - the core design rule of WSP-Bench-Lite."
+    },
+    {
+      "id": "overtrust",
+      "title": "Over-trust in explanations",
+      "what": "A reasoning summary is a narrative, not ground truth - plausible stories can decorate wrong edits.",
+      "defence": "Always verify the narrative against a measurement (the post’s copying-head and token-limit checks are the right pattern)."
+    },
+    {
+      "id": "power",
+      "title": "Concentration of power",
+      "what": "If only a few labs hold a frontier “editor”, auditing and customisation concentrate too.",
+      "defence": "Open replications on small open models, public benchmarks, community verification."
+    },
+    {
+      "id": "upside",
+      "title": "What could go right",
+      "what": "Cheaper customisation, accessible interpretability, safer unlearning, faster science - the optimistic branch deserves equal billing.",
+      "defence": "Keep the risk atlas honest, but fund the defensive and beneficial uses too."
+    }
+  ],
+  "update_log": [
+    {
+      "date": "2 Nov 2026",
+      "tag": "launch",
+      "text": "The original blog post is published with all logs released; an edited Qwen3.5-0.8B lands on Hugging Face."
+    },
+    {
+      "date": "3 Nov 2026",
+      "tag": "replication signal",
+      "text": "Simon Willison reports that a Qwen 3.8 27B running on a laptop reproduced a similar weight-reading example - independent, anecdotal (🟩)."
+    },
+    {
+      "date": "5 Nov 2026",
+      "text": "Andreas Maier publishes “Weight-Space Programming: what is measured and what is anecdote?” - the sorted-evidence scoreboard this guide is built on (🟩).",
+      "tag": "review"
+    },
+    {
+      "date": "5 Nov 2026",
+      "tag": "this guide",
+      "text": "This independent explainer is published; every claim is badged and the open-verification list is live."
+    },
+    {
+      "date": "Open",
+      "tag": "watch",
+      "text": "Awaited: the promised benchmark + harness, replications on other LLMs, and any new critiques. Add them here with dates."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f-network",
+      "name": "A network and its weight space",
+      "latex": "f_\\theta(x),\\quad \\theta\\in\\mathbb{R}^{P}",
+      "plain": "A neural network is a function f whose behaviour is fully described by P numbers θ - its weights.",
+      "badge": "schematic"
+    },
+    {
+      "id": "f-sgd",
+      "name": "Training - how weights get written today",
+      "latex": "\\theta_{t+1}=\\theta_t-\\eta\\,\\nabla_\\theta\\mathcal{L}(\\theta_t)",
+      "plain": "Gradient descent nudges every weight a tiny step downhill on the loss, repeated millions of times.",
+      "badge": "paper"
+    },
+    {
+      "id": "f-wsp",
+      "name": "Weight-space programming",
+      "latex": "\\theta'=\\theta+\\Delta,\\quad \\Delta=\\mathrm{LLM}\\!\\left(\\theta,\\ \\text{spec},\\ \\text{optional feedback}\\right)",
+      "plain": "An LLM reads the weights, decides a full edit Δ in one reasoned shot, and writes θ′ - no gradient descent.",
+      "badge": "paper"
+    },
+    {
+      "id": "f-sparsity",
+      "name": "Edit sparsity - the “blast radius”",
+      "latex": "s=\\frac{\\lVert\\Delta\\rVert_0}{P}",
+      "plain": "What fraction of all weights did the edit touch? Smaller is surgical.",
+      "badge": "paper"
+    },
+    {
+      "id": "f-direction",
+      "name": "Direction removal (rank-1 projection)",
+      "latex": "W'=(I-uu^{\\top})W,\\qquad \\Delta=-u\\,(u^{\\top}W),\\qquad u^{\\top}W'=0",
+      "plain": "To kill a direction u, project every row of W so nothing along u survives - here shown as the teaching approximation; the post’s exact update lives in its released logs.",
+      "badge": "schematic"
+    },
+    {
+      "id": "f-drift",
+      "name": "Functional drift of an edit",
+      "latex": "D=\\mathbb{E}_{x\\sim\\mathcal{P}}\\,\\mathrm{KL}\\!\\left(p_\\theta(\\cdot\\mid x)\\,\\lVert\\,p_{\\theta'}(\\cdot\\mid x)\\right)",
+      "plain": "How much did the model’s output distribution actually change on typical inputs? A small number says the edit was contained.",
+      "badge": "schematic"
+    },
+    {
+      "id": "f-lora",
+      "name": "LoRA - the familiar low-rank cousin",
+      "latex": "W'=W+\\tfrac{\\alpha}{r}BA,\\quad B\\in\\mathbb{R}^{d\\times r},\\ A\\in\\mathbb{R}^{r\\times k}",
+      "plain": "Instead of editing W directly, learn two thin matrices whose product is the edit - trained with gradients.",
+      "badge": "paper"
+    },
+    {
+      "id": "f-taskarith",
+      "name": "Task arithmetic",
+      "latex": "\\theta_{\\text{new}}=\\theta_{\\text{base}}+\\lambda\\tau,\\qquad \\tau=\\theta_{\\text{ft}}-\\theta_{\\text{base}}",
+      "plain": "Add or subtract whole fine-tuning “task vectors” to steer a model - vector arithmetic on checkpoints.",
+      "badge": "paper"
+    },
+    {
+      "id": "f-rome",
+      "name": "ROME-style rank-one edit",
+      "latex": "\\Delta W=\\frac{(v^{*}-Wk^{*})(C^{-1}k^{*})^{\\top}}{(C^{-1}k^{*})^{\\top}k^{*}}",
+      "plain": "Model editing solves for the smallest weight change that makes key k* map to value v* - a closed-form nudge.",
+      "badge": "paper"
+    },
+    {
+      "id": "f-induction",
+      "name": "Induction-head composition",
+      "latex": "\\mathrm{score}=\\frac{\\lVert W_{QK}^{(2)}W_{OV}^{(1)}\\rVert_F}{\\lVert W_{QK}^{(2)}\\rVert_F\\,\\lVert W_{OV}^{(1)}\\rVert_F}",
+      "plain": "Two heads in series can copy: head 1 moves [A][B] → [B], head 2 uses B to find the next B. This score finds such pairs from weights alone.",
+      "badge": "paper"
+    },
+    {
+      "id": "f-compile",
+      "name": "A hand-compiled rule",
+      "latex": "h=\\mathrm{ReLU}(W_1[b,p]^{\\top}+b_1),\\quad z=W_2h+b_2",
+      "plain": "The paddle rule as an actual network: two hidden units (ball left / ball right of paddle) feeding three logits (left / stay / right).",
+      "badge": "schematic"
+    },
+    {
+      "id": "f-budget",
+      "name": "The budget curve",
+      "latex": "\\mathrm{fidelity}(n)\\ \\text{vs.}\\ n\\ \\text{forward passes}",
+      "plain": "How good is the edit as the editor is allowed more forward passes? Only the reported points may be drawn - never a smooth interpolation.",
+      "badge": "paper"
+    }
+  ],
+  "glossary": [
+    {
+      "t": "Parameter",
+      "d": "One number inside a network - a weight or a bias. The knobs.",
+      "ch": 1
+    },
+    {
+      "t": "Weight",
+      "d": "A parameter that multiplies an input (or another neuron’s output) on its way through the network.",
+      "ch": 1
+    },
+    {
+      "t": "Bias",
+      "d": "A parameter added after the multiplying, shifting a neuron’s trigger point.",
+      "ch": 1
+    },
+    {
+      "t": "θ (theta)",
+      "d": "The vector of ALL parameters, treated as one long list of numbers.",
+      "ch": 1
+    },
+    {
+      "t": "P (parameter count)",
+      "d": "How many numbers θ contains - 17,253 for the Exp-1 net, ~0.8 billion for Qwen3.5-0.8B.",
+      "ch": 1
+    },
+    {
+      "t": "Architecture",
+      "d": "The wiring diagram: how many layers, of what kind, connected how. Same architecture + different weights = different skill.",
+      "ch": 1
+    },
+    {
+      "t": "Weight space",
+      "d": "The space of every possible setting of θ - training walks through it, edits jump across it.",
+      "ch": 1
+    },
+    {
+      "t": "MLP",
+      "d": "Multi-layer perceptron: the simplest network - layers of matrix-multiply + nonlinearity.",
+      "ch": 1
+    },
+    {
+      "t": "tanh / ReLU",
+      "d": "Nonlinear functions applied after each layer; tanh squashes to (−1,1), ReLU keeps positives, zeroes negatives.",
+      "ch": 1
+    },
+    {
+      "t": "Receptive field",
+      "d": "The slice of input a given weight column responds to - why a 10×10 grid can reveal a paddle row.",
+      "ch": 4
+    },
+    {
+      "t": "Forward pass",
+      "d": "Running the network on an input to get an output. Weight reading in the READ experiments happened with zero forward passes.",
+      "ch": 4
+    },
+    {
+      "t": "Gradient descent",
+      "d": "The default weight-writer: nudge every parameter a tiny step downhill on the loss, millions of times.",
+      "ch": 2
+    },
+    {
+      "t": "SGD / Adam / Muon",
+      "d": "Flavours of gradient descent - different recipes for shaping the tiny steps.",
+      "ch": 2
+    },
+    {
+      "t": "Learning rate (η)",
+      "d": "The size of each training step. Too big: overshoot. Too small: forever.",
+      "ch": 2
+    },
+    {
+      "t": "Loss function",
+      "d": "A number measuring how wrong the network is - the hill training descends.",
+      "ch": 2
+    },
+    {
+      "t": "PPO",
+      "d": "Proximal Policy Optimization - the RL algorithm that trained the paper’s game baselines.",
+      "ch": 6
+    },
+    {
+      "t": "Hypernetwork",
+      "d": "A network trained to output another network’s weights (Ha et al., 2016).",
+      "ch": 2
+    },
+    {
+      "t": "Fast-weight programmer",
+      "d": "A transformer variant that writes temporary weights as it runs (Schlag et al., 2021).",
+      "ch": 2
+    },
+    {
+      "t": "Tracr",
+      "d": "A compiler from formal programs (RASP) into toy-transformer weights - the third way to write weights.",
+      "ch": 2
+    },
+    {
+      "t": "Weight-space programming (WSP)",
+      "d": "The paper’s claim: a general-purpose LLM reads θ, reasons, and writes Δ directly - no gradients, optionally a few forward passes for feedback.",
+      "ch": 2
+    },
+    {
+      "t": "Δ (delta)",
+      "d": "The edit: the vector added to θ. In Exp 8 it touched 131,072 of ~0.8B weights.",
+      "ch": 2
+    },
+    {
+      "t": "Fine-tuning",
+      "d": "Training an existing model further on new data - gradients again, shorter run.",
+      "ch": 3
+    },
+    {
+      "t": "LoRA",
+      "d": "Low-Rank Adaptation: learn two thin matrices whose product is the change; add it to frozen weights.",
+      "ch": 3
+    },
+    {
+      "t": "Task arithmetic",
+      "d": "Fine-tune, subtract the base: the difference is a “task vector” you can add or remove (Ilharco et al., 2022).",
+      "ch": 3
+    },
+    {
+      "t": "Model merging",
+      "d": "Combining several trained models’ weights into one (TIES and friends).",
+      "ch": 3
+    },
+    {
+      "t": "Model editing",
+      "d": "Surgical weight changes targeting one specific fact or behaviour (ROME, Meng et al. 2022).",
+      "ch": 3
+    },
+    {
+      "t": "Activation steering",
+      "d": "Nudging the model’s inner state at run time without touching weights.",
+      "ch": 3
+    },
+    {
+      "t": "Mechanistic interpretability",
+      "d": "Reverse-engineering networks into human-readable circuits - the detective cousin, and the source of the copying-head technique.",
+      "ch": 3
+    },
+    {
+      "t": "Weight-space learning",
+      "d": "The research field covering understanding, representing, and generating weights (survey: arXiv 2603.10090 [VERIFY]).",
+      "ch": 3
+    },
+    {
+      "t": "Transformer",
+      "d": "The architecture behind modern language models: attention + MLPs in a residual stream.",
+      "ch": 4
+    },
+    {
+      "t": "Attention head",
+      "d": "One pattern-matching unit inside attention; heads numbered layer.head (e.g. 3.1).",
+      "ch": 4
+    },
+    {
+      "t": "Causal mask",
+      "d": "The rule that each token can attend only to earlier tokens - the lower triangle in the attention grid.",
+      "ch": 4
+    },
+    {
+      "t": "Induction head",
+      "d": "A two-head circuit implementing [A][B]…[A]→B - the engine of in-context copying.",
+      "ch": 4
+    },
+    {
+      "t": "Copying head",
+      "d": "The heads Exp 3 identified from weights alone, matching measured ground truth exactly.",
+      "ch": 4
+    },
+    {
+      "t": "Composition score",
+      "d": "How much two heads’ circuits multiply together - the weight-only signal that finds copiers.",
+      "ch": 4
+    },
+    {
+      "t": "Residual stream",
+      "d": "The shared “conveyor belt” a transformer adds information into at every layer.",
+      "ch": 5
+    },
+    {
+      "t": "DDPM",
+      "d": "Denoising diffusion: learn to remove noise step by step; the tiny image-maker of Exp 2.",
+      "ch": 4
+    },
+    {
+      "t": "Sycophancy",
+      "d": "Agreeing with the user instead of being honest - the behaviour Exp 7 tried to detect from weights.",
+      "ch": 4
+    },
+    {
+      "t": "Kinetix",
+      "d": "The physics environment whose ramp the actor couldn’t climb (Exp 4).",
+      "ch": 5
+    },
+    {
+      "t": "MinAtar",
+      "d": "Tiny Atari-inspired games (Breakout, Seaquest, Asterix) used for the WRITE experiments.",
+      "ch": 6
+    },
+    {
+      "t": "Go (9×9)",
+      "d": "The small Go board on which a written-from-scratch policy beat a PPO trained on 20M games.",
+      "ch": 6
+    },
+    {
+      "t": "Liberty",
+      "d": "In Go, an empty point adjacent to a stone - counting them was a stated ingredient of the written policy.",
+      "ch": 7
+    },
+    {
+      "t": "Atari",
+      "d": "In Go, a group with one liberty left - urgent. (Also: the game company; context tells.)",
+      "ch": 7
+    },
+    {
+      "t": "Direction (in weight space)",
+      "d": "A vector u along which behaviour can be added or removed; refusal and thought-loops are direction-mediated.",
+      "ch": 5
+    },
+    {
+      "t": "Rank-1 projection",
+      "d": "The operation W′ = (I − uuᵀ)W that erases direction u from a weight matrix.",
+      "ch": 5
+    },
+    {
+      "t": "Thought loop / overthinking",
+      "d": "The self-reinforcing pattern that made Qwen3.5-0.8B hit the token limit on 93% of math problems.",
+      "ch": 5
+    },
+    {
+      "t": "Token limit share",
+      "d": "The % of answers that ram the maximum generation length - the mechanism check behind Exp 8.",
+      "ch": 5
+    },
+    {
+      "t": "MATH-500 / GSM8K / IFEval",
+      "d": "Benchmarks: competition maths / grade-school word problems / instruction following.",
+      "ch": 5
+    },
+    {
+      "t": "Negative control",
+      "d": "A run that SHOULD show no effect (Gemma 3 270M on math) - its flatness validates the method.",
+      "ch": 5
+    },
+    {
+      "t": "Edit sparsity (s)",
+      "d": "The fraction of parameters an edit touches: s = ‖Δ‖₀/P. Exp 8: 0.016%.",
+      "ch": 5
+    },
+    {
+      "t": "Blast radius",
+      "d": "Informal name for sparsity - how far the edit’s fingerprint reaches.",
+      "ch": 5
+    },
+    {
+      "t": "Functional drift (D)",
+      "d": "How much the edit changed outputs on held-out inputs (KL divergence) - the containment metric WSP-Bench-Lite demands.",
+      "ch": 12
+    },
+    {
+      "t": "Budget curve (fidelity(n))",
+      "d": "Quality vs allowed forward passes n - reported points only, never smooth interpolation.",
+      "ch": 5
+    },
+    {
+      "t": "Non-monotonic",
+      "d": "Goes up, then down, then up: the 25-pass IFEval dip (49.0 → 39.9). A signature of n=1 noise.",
+      "ch": 8
+    },
+    {
+      "t": "n=1 run",
+      "d": "A single execution per condition - the standing caveat on every number in the paper.",
+      "ch": 8
+    },
+    {
+      "t": "Baseline",
+      "d": "The rival method that must be tried before claiming novelty - decoding tweaks, standard direction ablation, plain code. The review’s missing piece.",
+      "ch": 8
+    },
+    {
+      "t": "Author-blind task",
+      "d": "A benchmark task created by someone other than the team being evaluated - WSP-Bench-Lite’s core rule.",
+      "ch": 12
+    },
+    {
+      "t": "Truth contract",
+      "d": "This guide’s rule: every claim wears exactly one badge - 🟦 paper-reported, 🟩 reviewed, 🟨 schematic, 🟥 speculation.",
+      "ch": 13
+    },
+    {
+      "t": "WSP-Bench-Lite",
+      "d": "Het’s proposed community benchmark: Read/Fix/Write tracks, ≥5 seeds, mandatory baselines, author-blind tasks, public logs.",
+      "ch": 12
+    },
+    {
+      "t": "Permutation symmetry",
+      "d": "Hidden units can be relabelled without changing the network’s function - the reason naive weight-reading is underdetermined.",
+      "ch": 1
+    }
+  ],
+  "references": [
+    {
+      "id": "wsp-post",
+      "authors": "Rikiya Takehi, Jayden Teoh, Alex Zhang, Omar Khattab",
+      "title": "Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights",
+      "venue": "Blog post, MIT CSAIL (rikyat.github.io)",
+      "year": 2026,
+      "url": "https://rikiyat.github.io/blog/weight-space-programming/",
+      "kind": "primary",
+      "note": "The primary source for every 🟦 number in this guide.",
+      "verify": "Could not independently re-open at build time; all paper-reported figures are taken from the master fact sheet."
+    },
+    {
+      "id": "wsp-logs",
+      "authors": "Rikiya Takehi et al.",
+      "title": "lm_understand-logs (released experiment logs)",
+      "venue": "GitHub",
+      "year": 2026,
+      "url": "https://github.com/RikiyaT/lm_understand-logs",
+      "kind": "primary",
+      "verify": "Repo URL as given in the source post."
+    },
+    {
+      "id": "wsp-model",
+      "authors": "Rikiya Takehi et al.",
+      "title": "RikiyaT/Qwen3.5-0.8B-weight-space-programming (edited model)",
+      "venue": "Hugging Face",
+      "year": 2026,
+      "url": "https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming",
+      "kind": "primary",
+      "verify": "Model ID as given in the source post."
+    },
+    {
+      "id": "wsp-demo",
+      "authors": "Ahsen Khaliq",
+      "title": "weight-space-programming-demo (live demo)",
+      "venue": "Hugging Face Spaces",
+      "year": 2026,
+      "url": "https://huggingface.co/spaces/akhaliq/weight-space-programming-demo",
+      "kind": "primary",
+      "verify": "Space URL as given in the source post."
+    },
+    {
+      "id": "maier",
+      "authors": "Andreas Maier",
+      "title": "Weight-Space Programming: what is measured and what is anecdote?",
+      "venue": "Substack",
+      "year": 2026,
+      "url": "https://akmaier.substack.com/p/weight-space-programming-what-is",
+      "kind": "review",
+      "note": "The sorted-evidence scoreboard behind Chapter 8 and every 🟩 verdict.",
+      "verify": "Could not independently re-open at build time."
+    },
+    {
+      "id": "goedecke",
+      "authors": "Sean Goedecke",
+      "title": "LLMs are not superhuman at reading and writing neural network weights",
+      "venue": "seangoedecke.com",
+      "year": 2026,
+      "url": "https://www.seangoedecke.com/",
+      "kind": "review",
+      "note": "The deflationary case, argued across the experiments.",
+      "verify": "Exact URL path unconfirmed; title and thesis as reported in the source post."
+    },
+    {
+      "id": "willison",
+      "authors": "Simon Willison",
+      "title": "Qwen can interpret model weights (laptop replication report)",
+      "venue": "simonwillison.net",
+      "year": 2026,
+      "url": "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/",
+      "kind": "coverage",
+      "note": "Qwen 3.8 27B on a laptop reproduced a similar weight-reading example - 🟩 anecdotal.",
+      "verify": "Could not independently re-open at build time."
+    },
+    {
+      "id": "elhage",
+      "authors": "Nelson Elhage, Neel Nanda, Catherine Olsson, et al.",
+      "title": "A Mathematical Framework for Transformer Circuits",
+      "venue": "Transformer Circuits Thread",
+      "year": 2021,
+      "kind": "background"
+    },
+    {
+      "id": "olsson",
+      "authors": "Catherine Olsson, Nelson Elhage, Neel Nanda, et al.",
+      "title": "In-context Learning and Induction Heads",
+      "venue": "Transformer Circuits Thread",
+      "year": 2022,
+      "kind": "background"
+    },
+    {
+      "id": "nanda",
+      "authors": "Neel Nanda, Lawrence Chan, Tom Lieberum, et al.",
+      "title": "Progress measures for grokking via mechanistic interpretability",
+      "venue": "arXiv:2301.05217 / ICLR 2023",
+      "year": 2023,
+      "kind": "background"
+    },
+    {
+      "id": "tracr",
+      "authors": "Martin Lindell, David Ramage, Christian Herold, et al.",
+      "title": "Tracr: Compiled Transformers as a Laboratory for Interpretability",
+      "venue": "arXiv:2301.05062 / NeurIPS 2023",
+      "year": 2023,
+      "kind": "background"
+    },
+    {
+      "id": "schlag",
+      "authors": "Imanol Schlag, Ilya Tolstikhin, Roland Buesing, et al.",
+      "title": "Linear Transformers Are Secretly Fast Weight Programmers",
+      "venue": "arXiv:2102.11174 / ICML 2021",
+      "year": 2021,
+      "kind": "background"
+    },
+    {
+      "id": "ha",
+      "authors": "David Ha, Andrew Dai, Quoc V. Le",
+      "title": "HyperNetworks",
+      "venue": "arXiv:1609.09106 / ICLR 2017",
+      "year": 2016,
+      "kind": "background"
+    },
+    {
+      "id": "ilharco",
+      "authors": "Roei Ilharco, Marco Tulio Ribeiro, Mitchell Wortsman, et al.",
+      "title": "Editing Models with Task Arithmetic",
+      "venue": "arXiv:2212.04089 / ICLR 2023",
+      "year": 2022,
+      "kind": "background"
+    },
+    {
+      "id": "lora",
+      "authors": "Edward J. Hu, Yelong Shen, Phillip Wallis, et al.",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "venue": "arXiv:2106.09685 / ICLR 2022",
+      "year": 2021,
+      "kind": "background"
+    },
+    {
+      "id": "rome",
+      "authors": "Kevin Meng, David Bau, Alex Andonian, Yonatan Belinkov",
+      "title": "Locating and Editing Factual Associations in GPT (ROME)",
+      "venue": "arXiv:2202.05262 / NeurIPS 2022",
+      "year": 2022,
+      "kind": "background"
+    },
+    {
+      "id": "ties",
+      "authors": "Prateek Yadav, Derek Tam, Leshem Choshen, et al.",
+      "title": "TIES-Merging: Resolving Interference When Merging Models",
+      "venue": "arXiv:2306.01708 / NeurIPS 2023",
+      "year": 2023,
+      "kind": "background"
+    },
+    {
+      "id": "gitrebasin",
+      "authors": "Samuel K. Ainsworth, Jonathan Hayase, Siddharth Srinivasa",
+      "title": "Git Re-Basin: Merging Models modulo Permutation Symmetries",
+      "venue": "arXiv:2209.04836 / ICLR 2023",
+      "year": 2022,
+      "kind": "background"
+    },
+    {
+      "id": "lottery",
+      "authors": "Jonathan Frankle, Michael Carbin",
+      "title": "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks",
+      "venue": "arXiv:1803.03635 / ICLR 2019",
+      "year": 2019,
+      "kind": "background"
+    },
+    {
+      "id": "nndiffusion",
+      "authors": "Ziwei Wang, Xindi Wang, Yushun Tang, et al.",
+      "title": "Neural Network Diffusion",
+      "venue": "arXiv:2401.04012 / IEEE TPAMI 2024",
+      "year": 2024,
+      "kind": "background"
+    },
+    {
+      "id": "refusal",
+      "authors": "Andy Arditi, Oscar Obeso, Syed Ather Shah, et al.",
+      "title": "Refusal in LLMs is mediated by a single direction",
+      "venue": "arXiv:2406.11717 / NeurIPS 2024",
+      "year": 2024,
+      "kind": "background",
+      "note": "The published precedent for single-direction surgery - and for risk #2."
+    },
+    {
+      "id": "attention",
+      "authors": "Ashish Vaswani, Noam Shazeer, Niki Parmar, et al.",
+      "title": "Attention Is All You Need",
+      "venue": "arXiv:1706.03762 / NeurIPS 2017",
+      "year": 2017,
+      "kind": "background"
+    },
+    {
+      "id": "ppo",
+      "authors": "John Schulman, Filip Wolski, Prafulla Dhariwal, et al.",
+      "title": "Proximal Policy Optimization Algorithms",
+      "venue": "arXiv:1707.06347",
+      "year": 2017,
+      "kind": "background"
+    },
+    {
+      "id": "ddpm",
+      "authors": "Jonathan Ho, Ajay Jain, Pieter Abbeel",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "venue": "arXiv:2006.11239 / NeurIPS 2020",
+      "year": 2020,
+      "kind": "background"
+    },
+    {
+      "id": "adam",
+      "authors": "Diederik P. Kingma, Jimmy Ba",
+      "title": "Adam: A Method for Stochastic Optimization",
+      "venue": "arXiv:1412.6980 / ICLR 2015",
+      "year": 2015,
+      "kind": "background"
+    },
+    {
+      "id": "gpt3",
+      "authors": "Tom B. Brown, Benjamin Mann, Nick Ryder, et al.",
+      "title": "Language Models are Few-Shot Learners (GPT-3)",
+      "venue": "arXiv:2005.14165 / NeurIPS 2020",
+      "year": 2020,
+      "kind": "background"
+    },
+    {
+      "id": "minatar",
+      "authors": "Kenny J. Young, Tian Tian",
+      "title": "MinAtar: An Atari-Inspired Testbed for Thorough and Reproducible Reinforcement Learning Experiments",
+      "venue": "arXiv:1903.03176",
+      "year": 2019,
+      "kind": "background"
+    },
+    {
+      "id": "gsm8k",
+      "authors": "Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, et al.",
+      "title": "Training Verifiers to Solve Math Word Problems (GSM8K)",
+      "venue": "arXiv:2110.14168",
+      "year": 2021,
+      "kind": "background"
+    },
+    {
+      "id": "math",
+      "authors": "Dan Hendrycks, Collin Burns, Saurav Kadavath, et al.",
+      "title": "Measuring Mathematical Problem Solving With the MATH Dataset",
+      "venue": "arXiv:2103.03874 / ICLR 2022",
+      "year": 2021,
+      "kind": "background"
+    },
+    {
+      "id": "ifeval",
+      "authors": "Jeffrey Zhou, Tianjian Lu, Swaroop Mishra, et al.",
+      "title": "Instruction-Following Evaluation for Large Language Models (IFEval)",
+      "venue": "arXiv:2311.07911 / ACL 2024",
+      "year": 2023,
+      "kind": "background"
+    },
+    {
+      "id": "gemma3",
+      "authors": "Gemma Team, Google DeepMind",
+      "title": "Gemma 3 Technical Report",
+      "venue": "arXiv (Gemma series)",
+      "year": 2025,
+      "kind": "background",
+      "verify": "arXiv ID not independently confirmed at build time."
+    },
+    {
+      "id": "qwen3",
+      "authors": "Qwen Team, Alibaba",
+      "title": "Qwen3 Technical Report",
+      "venue": "arXiv (Qwen series)",
+      "year": 2025,
+      "kind": "background",
+      "verify": "arXiv ID not independently confirmed at build time; benchmark variants (Qwen3.5-0.8B) as named in the source post."
+    },
+    {
+      "id": "kinetix",
+      "authors": "John Arnold, Ben Ellis, et al.",
+      "title": "Kinetix: Investigating the training of agents through open-ended physics-based control tasks",
+      "venue": "arXiv",
+      "year": 2024,
+      "kind": "background",
+      "verify": "Author list and arXiv ID not independently confirmed at build time."
+    },
+    {
+      "id": "carlini",
+      "authors": "Nicholas Carlini, Chang Liu, Úlfar Erlingsson, et al.",
+      "title": "Extracting Training Data from Large Language Models",
+      "venue": "arXiv:2012.07805 / USENIX Security 2021",
+      "year": 2021,
+      "kind": "background",
+      "note": "Why weight-side provenance matters (risk chapter)."
+    },
+    {
+      "id": "wsl-survey",
+      "authors": "Weight-space learning survey authors (as cited in the source post)",
+      "title": "Weight Space Learning: a survey",
+      "venue": "arXiv:2603.10090",
+      "year": 2026,
+      "kind": "background",
+      "verify": "arXiv ID as given in the source post; not independently openable at build time."
+    },
+    {
+      "id": "awesome-wsl",
+      "authors": "Community",
+      "title": "Awesome-Weight-Space-Learning (curated repo)",
+      "venue": "GitHub",
+      "year": 2026,
+      "kind": "background",
+      "verify": "Repo named in the source post; URL not captured."
+    },
+    {
+      "id": "burns",
+      "authors": "Collin Burns, Haotian Ye, Dan Klein, Jacob Steinhardt",
+      "title": "Discovering Latent Knowledge in Language Models Without Supervision",
+      "venue": "arXiv:2212.03827 / ICLR 2023",
+      "year": 2023,
+      "kind": "background",
+      "note": "Probing behaviour from internals - adjacent to reading claims."
+    },
+    {
+      "id": "marks",
+      "authors": "Samuel Marks, Max Tegmark",
+      "title": "The Geometry of Truth: Emergent Linear Structure in LLM Representations of True/False Datasets",
+      "venue": "arXiv:2310.06824",
+      "year": 2023,
+      "kind": "background"
+    },
+    {
+      "id": "muon",
+      "authors": "Keller Jordan, Jeremy Bernstein, et al.",
+      "title": "Muon: An optimizer for hidden layers in neural networks",
+      "venue": "GitHub / blog",
+      "year": 2024,
+      "kind": "background",
+      "verify": "Publication venue informal (community optimizer); named in the source post’s lineage."
+    },
+    {
+      "id": "zhang-steering",
+      "authors": "Ruiyi Zhang, Ran Jin, Chenyu Zhou, Josep Blanch, et al. (steering literature)",
+      "title": "On the Emergence of Position Bias / instruction steering lineage",
+      "venue": "various",
+      "year": 2024,
+      "kind": "background",
+      "verify": "Steering-literature anchor; representative citation to be pinned. Listed in open items."
+    },
+    {
+      "id": "wanda",
+      "authors": "Wei Sun, Ang Li, Ludan Zheng, et al. (or Eldar Kurtic et al.)",
+      "title": "Sparse weight pruning lineage (Wanda, SparseGPT)",
+      "venue": "arXiv:2306.11695",
+      "year": 2023,
+      "kind": "background",
+      "verify": "Author attribution to be pinned; entry listed in open items."
+    },
+    {
+      "id": "deltas",
+      "authors": "Soumya Sanyal, Zhen Zhong, Wenxuan Zhou, et al. (delta-debugging lineage)",
+      "title": "Delta debugging / parameter-efficient delta analysis lineage",
+      "venue": "various",
+      "year": 2024,
+      "kind": "background",
+      "verify": "Representative citation to be pinned; listed in open items."
+    },
+    {
+      "id": "vision-transformer",
+      "authors": "Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, et al.",
+      "title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (ViT)",
+      "venue": "arXiv:2010.11929 / ICLR 2021",
+      "year": 2021,
+      "kind": "background"
+    },
+    {
+      "id": "bellec",
+      "authors": "Guillaume Bellec, Franz Scherr, Anand Subramoney, et al.",
+      "title": "A Spiking Neural Network Standard / surrogate-gradient lineage",
+      "venue": "various",
+      "year": 2018,
+      "kind": "background",
+      "verify": "Optional lineage item; to be confirmed or dropped in v1.1."
+    },
+    {
+      "id": "gpt4sys",
+      "authors": "OpenAI",
+      "title": "GPT-4 System Card lineage (frontier capability reporting norms)",
+      "venue": "OpenAI technical reports",
+      "year": 2023,
+      "kind": "background",
+      "verify": "Generic anchor for reporting-norms discussion; replace with the exact card cited at edit time."
+    },
+    {
+      "id": "modelcards",
+      "authors": "Margaret Mitchell, Simone Wu, Andrew Zaldivar, et al.",
+      "title": "Model Cards for Model Reporting",
+      "venue": "arXiv:1810.03993 / FAT* 2019",
+      "year": 2019,
+      "kind": "background",
+      "note": "Basis for the model-card-diff defence in the risk atlas."
+    },
+    {
+      "id": "sbom",
+      "authors": "SPDX / CycloneDX communities",
+      "title": "Software Bill of Materials (SBOM) standards",
+      "venue": "Linux Foundation / OWASP standards",
+      "year": 2021,
+      "kind": "background",
+      "note": "The template for a hypothetical “weights BOM”."
+    },
+    {
+      "id": "pre-reg",
+      "authors": "Center for Open Science",
+      "title": "Preregistration standards (OSF)",
+      "venue": "osf.io",
+      "year": 2019,
+      "kind": "background",
+      "note": "Model for WSP-Bench-Lite’s pre-registered prompts."
+    },
+    {
+      "id": "captureflag",
+      "authors": "CTF communities (DEF CON, picoCTF)",
+      "title": "Capture-the-flag competition governance (rotating task stewardship model)",
+      "venue": "community practice",
+      "year": 2023,
+      "kind": "background",
+      "verify": "Practice anchor, not a single paper; kept as a governance footnote."
+    }
+  ],
+  "open_verification_items": [
+    {
+      "item": "Primary post URL (rikyat.github.io/blog/weight-space-programming/)",
+      "where": "All 🟦 figures",
+      "status": "Could not be re-opened at build time (fact-check date 5 Nov 2026); figures taken verbatim from the source fact sheet."
+    },
+    {
+      "item": "Hidden size 1024 behind 131,072 = 2 layers × 64 columns × width",
+      "where": "Ch 5 sparsity audit",
+      "status": "Inferred by arithmetic from the reported 131,072 and 64 columns; flagged [VERIFY] inline."
+    },
+    {
+      "item": "Weight Space Learning survey - arXiv 2603.10090",
+      "where": "Ch 3",
+      "status": "ID as given in the source post; not independently openable at build time."
+    },
+    {
+      "item": "Sean Goedecke essay URL",
+      "where": "Ch 8 / references",
+      "status": "Title and thesis as reported; exact post URL not captured."
+    },
+    {
+      "item": "Willison laptop-replication URL (3 Nov 2026)",
+      "where": "Ch 8 / references",
+      "status": "As reported; not independently re-opened at build time."
+    },
+    {
+      "item": "Gemma 3 / Qwen3 technical-report arXiv IDs",
+      "where": "References",
+      "status": "Reports exist; exact IDs not independently confirmed at build time."
+    },
+    {
+      "item": "Kinetix author list & arXiv ID",
+      "where": "References",
+      "status": "Paper exists (2024); attribution to be pinned."
+    },
+    {
+      "item": "Muon optimizer citation",
+      "where": "Ch 2 / references",
+      "status": "Community optimizer; formal citation to be pinned."
+    },
+    {
+      "item": "Three placeholder lineage entries (steering, Wanda/SparseGPT, delta-debugging)",
+      "where": "References",
+      "status": "Deliberately flagged placeholders - pin exact citations before citing this guide’s reference list as final."
+    },
+    {
+      "item": "All Experiment results (tables 5.2, 5.2a, 5.2b, 5.2c)",
+      "where": "Site-wide",
+      "status": "🟦 Paper-reported, single source (the post); the released logs are the independent cross-check and are cited for that purpose."
+    },
+    {
+      "item": "MinAtar per-net parameter count 20,486",
+      "where": "Ch 6 / fact sheet",
+      "status": "Computed by this guide from the stated architecture (600→32→32→6 with biases), not reported by the paper."
+    }
+  ]
+}

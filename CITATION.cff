@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this explainer, please cite it and the original blog post."
+title: "Weight-Space Programming, Explained"
+type: software
+authors:
+  - family-names: Patel
+    given-names: Het
+    alias: Hunterdii
+repository-code: "https://github.com/Hunterdii/weight-space-programming-explained"
+url: "https://hunterdii.github.io/weight-space-programming-explained/"
+license: MIT
+date-released: "2026-11-05"
+version: "0.1.0"
+keywords:
+  - "weight-space programming"
+  - "interpretability"
+  - "model editing"
+  - "LLM"
+references:
+  - type: blog
+    title: "Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights"
+    authors:
+      - family-names: Takehi
+        given-names: Rikiya
+      - family-names: Teoh
+        given-names: Jayden
+      - family-names: Zhang
+        given-names: Alex
+      - family-names: Khattab
+        given-names: Omar
+    year: 2026
+    month: 11
+    url: "https://rikiyat.github.io/blog/weight-space-programming/"
