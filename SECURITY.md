@@ -32,3 +32,4 @@ If you discover a security vulnerability, epistemic integrity breach, or sensiti
    - Specific commit hash and file paths affected.
    - Potential impact and reproduction steps.
 4. You will receive an acknowledgment within 48 hours, followed by a remediation timeline.
+

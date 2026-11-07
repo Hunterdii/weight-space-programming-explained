@@ -38,3 +38,4 @@ body:
       label: Terminal Traceback / Logs
       description: Paste any error messages or tracebacks here.
       render: shell
+

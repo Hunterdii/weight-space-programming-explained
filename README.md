@@ -44,7 +44,7 @@ This repository provides the open research artifacts, mathematical formulations,
 |---|---|---|
 | **Live Explainer** | [Live Site](https://hunterdii.github.io/weight-space-programming-explained/) | 26 static routes, interactive knobs, Truth Filter, audience levels L1–L5 |
 | **Whitepaper PDF** | `paper/weight-space-programming.pdf` | 24-page IEEE-typeset research monograph (671,051 bytes, SHA256: `D47BA732...`) |
-| **LaTeX Sources** | `paper/` | `main.tex`, `references.bib`, 13 vector figures (`fig01` to `fig13`), figure scripts |
+| **LaTeX Sources** | `paper/` | `main.tex`, `references.bib`, 13 vector figures (`fig01` to `fig13`) |
 | **Runnable Labs** | `lab/` | Zero-dependency Python scripts: Lab 1 (Compile), Lab 2 (Surgery), Lab 3 (Blast Radius) |
 | **Benchmark Schema** | `bench/WSP-Bench-Lite.md` | Standardized 3-track community benchmark protocol ($n \ge 5$ seeds, drift bounds) |
 | **Quantitative Facts** | `docs/fact-sheet.md` | Granular metrics, parameters, and paper-reported numbers |
@@ -278,3 +278,4 @@ A machine-readable `CITATION.cff` is co-located in the repository root.
 <div align="center">
   <sub>Weight-Space Programming Showcase • Curated by Het Patel (@Hunterdii) • Built with Epistemic Integrity</sub>
 </div>
+

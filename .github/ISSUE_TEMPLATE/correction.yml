@@ -49,3 +49,4 @@ body:
         - "🟥 SPECULATION (conjecture / extrapolation)"
     validations:
       required: true
+
