@@ -617,7 +617,7 @@ Check out [`CONTRIBUTING.md`](CONTRIBUTING.md) and our [`CODE_OF_CONDUCT.md`](.g
 
 <!-- ## 📖 **Citation & Academic Attribution**
 
-If you utilize this showcase, the runnable labs, the whitepaper pDF, or the WSP-Bench-Lite benchmark in your research, please cite both the primary MIT CSAIL discovery and this showcase:
+If you utilize this showcase, the runnable labs, the whitepaper PDF, or the WSP-Bench-Lite benchmark in your research, please cite both the primary MIT CSAIL discovery and this showcase:
 
 ```bibtex
 @article{takehi2026weightspace,
