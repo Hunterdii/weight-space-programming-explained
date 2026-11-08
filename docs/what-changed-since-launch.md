@@ -10,7 +10,7 @@ This document tracks updates, replication efforts, peer feedback, and specificat
 
 ## 2026-11-05 - Initial Field Guide Launch
 - Released interactive 13-chapter educational guide across 5 audience difficulty levels.
-- Published 24-page IEEE-style research whitepaper and 3 runnable Python reproduction labs.
+- Published IEEE-style research whitepaper and 3 runnable Python reproduction labs.
 - Formulated the 4-badge epistemic Truth Contract and public Honesty Ledger (`research/open-verification-items.md`).
 
 ## 2026-11-03 – 2026-11-05 - Community Audit & Independent Replications

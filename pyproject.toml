@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "weight-space-programming"
+version = "0.1.0"
+description = "Reading, Repairing, and Writing Neural Network Weights via Symbolic LLM Reasoning"
+readme = "README.md"
+authors = [
+  { name = "Het Patel", email = "hunterdii@users.noreply.github.com" }
+]
+license = { text = "MIT" }
+keywords = [
+  "weight-space-programming",
+  "mechanistic-interpretability",
+  "neural-network-surgery",
+  "model-editing",
+  "zero-gradient-learning",
+  "deep-learning",
+  "llm-reasoning"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12"
+]
+requires-python = ">=3.8"
+dependencies = [
+  "numpy>=1.24.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0"
+]
+
+[project.urls]
+"Homepage" = "https://weight-space-atlas.vercel.app/"
+"Repository" = "https://github.com/Hunterdii/weight-space-programming-explained"
+"Documentation" = "https://weight-space-atlas.vercel.app/"
+"Paper" = "https://github.com/Hunterdii/weight-space-programming-explained/blob/main/paper/whitepaper.pdf"
+"Bug Tracker" = "https://github.com/Hunterdii/weight-space-programming-explained/issues"
+

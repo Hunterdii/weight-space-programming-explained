@@ -1,0 +1,66 @@
+name: CI - Verify Labs & Epistemic Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-labs:
+    name: Test Labs on Python ${{ matrix.python-version }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.8", "3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Lab 1 - Compile a Rule
+        run: python lab/01_compile_a_rule.py
+
+      - name: Run Lab 2 - Direction Surgery
+        run: python lab/02_direction_surgery.py
+
+      - name: Run Lab 3 - Blast Radius
+        run: python lab/03_blast_radius.py
+
+      - name: Run Test Suite
+        run: pytest tests/test_labs.py -v
+
+  audit-integrity:
+    name: Audit Epistemic Truth Database
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Fact Sheet JSON
+        run: |
+          python -c "
+          import json
+          with open('research/fact-sheet.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          print('Successfully validated fact-sheet.json')
+          "
+

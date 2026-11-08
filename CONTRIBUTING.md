@@ -50,5 +50,5 @@ Before opening a PR, ensure:
 ---
 
 ## 📜 Code of Conduct
-Please note that all contributors must follow our [Code of Conduct](CODE_OF_CONDUCT.md). Be respectful, collaborative, and scientifically honest.
+Please note that all contributors must follow our [Code of Conduct](.github/CODE_OF_CONDUCT.md). Be respectful, collaborative, and scientifically honest.
 

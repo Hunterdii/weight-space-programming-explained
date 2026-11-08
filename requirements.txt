@@ -1,0 +1,7 @@
+# Weight-Space Programming (WSP)
+# Zero heavy dependencies: pure Python and NumPy only.
+numpy>=1.24.0
+
+# Optional dependencies for running test suite and benchmarking
+pytest>=7.0.0
+

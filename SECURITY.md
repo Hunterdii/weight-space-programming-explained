@@ -6,7 +6,7 @@ The **Weight-Space Programming Showcase** is a scientific research and education
 - Theoretical formulations and mathematical proofs (e.g. rank-1 projection operators).
 - Standalone pedagogical Python demonstration scripts (`lab/`).
 - Benchmark specifications (`bench/WSP-Bench-Lite.md`).
-- A 24-page research whitepaper (`paper/weight-space-programming.pdf`).
+- A research whitepaper (`paper/weight-space-programming.pdf`).
 
 **This repository does NOT host full-scale multi-billion parameter model checkpoints, binary weight files for production deployment, or automated tool-use agents with write access to production model weights.**
 
