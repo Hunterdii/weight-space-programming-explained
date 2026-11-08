@@ -2,7 +2,7 @@
 
 Four tiny, self-contained Python experiments that make the paper's core mechanisms tangible on any machine. Each script is under 20 lines, requires only **NumPy**, and executes in under a second.
 
-All scripts are verified across **Python 3.8 – 3.12** and **NumPy 1.x / 2.x**.
+All scripts are verified across **Python 3.10 – 3.12** and **NumPy 1.x / 2.x**.
 
 ---
 

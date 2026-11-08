@@ -324,7 +324,7 @@ We built and deployed a production-grade, interactive technical companion for th
 
 ## ⚡ **30-Second Quickstart: Run on Any Laptop**
 
-Every foundational mechanic described in the MIT CSAIL research can be verified on your laptop using standard Python (3.8+) and NumPy. **No GPU, no PyTorch, no cloud API keys required.**
+Every foundational mechanic described in the MIT CSAIL research can be verified on your laptop using standard Python (3.10+) and NumPy. **No GPU, no PyTorch, no cloud API keys required.**
 
 ```bash
 # 1. Clone the repository
@@ -428,7 +428,7 @@ $$D = \mathbb{E}_{x \sim \mathcal{P}_{\text{eval}}} \left[ \mathcal{D}_{\mathrm{
 
 ---
 
-## 🧪 **Interactive Runnable Labs (Python 3.8+ / NumPy 2.x)**
+## 🧪 **Interactive Runnable Labs (Python 3.10+ / NumPy 2.x)**
 
 The [`lab/`](lab/) directory provides runnable implementations of each foundational concept:
 
@@ -545,7 +545,7 @@ flowchart LR
 
 | **🌟 Technology** | **💼 Role & Purpose in WSP** |
 |:---|:---|
-| [**Python 3.8+**](https://www.python.org/) | Core language powering all zero-dependency reproduction labs and verification scripts. |
+| [**Python 3.10+**](https://www.python.org/) | Core language powering all zero-dependency reproduction labs and verification scripts. |
 | [**NumPy**](https://numpy.org/) | Linear algebra engine powering the closed-form projection operator $W' = (I - uu^T)W$ and Frobenius induction scoring. |
 | [**LaTeX / KaTeX**](https://katex.org/) | Mathematical typesetting engine rendering formal definitions, drift metrics, and the whitepaper PDF. |
 | [**Next.js / Vercel**](https://vercel.com/) | Cloud platform hosting the live interactive web atlas at [weight-space-atlas.vercel.app](https://weight-space-atlas.vercel.app/). |
