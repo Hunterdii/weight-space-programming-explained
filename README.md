@@ -615,7 +615,7 @@ Check out [`CONTRIBUTING.md`](CONTRIBUTING.md) and our [`CODE_OF_CONDUCT.md`](.g
 
 ---
 
-## 📖 **Citation & Academic Attribution**
+<!-- ## 📖 **Citation & Academic Attribution**
 
 If you utilize this showcase, the runnable labs, the whitepaper pDF, or the WSP-Bench-Lite benchmark in your research, please cite both the primary MIT CSAIL discovery and this showcase:
 
@@ -639,7 +639,7 @@ If you utilize this showcase, the runnable labs, the whitepaper pDF, or the WSP-
 }
 ```
 
-A machine-readable [`CITATION.cff`](CITATION.cff) is also provided in the repository root.
+A machine-readable [`CITATION.cff`](CITATION.cff) is also provided in the repository root. -->
 
 ---
 
