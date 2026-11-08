@@ -1,8 +1,4 @@
 <p align="center">
-  <small>Best viewed in <a href="https://github.com/settings/appearance">Dark Mode</a> (Recommended) 🌙</small>
-</p>
-
-<p align="center">
   <img src="assets/wsp-hero-banner.png" alt="Weight-Space Programming Hero Banner" width="100%" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
 </p>
 
@@ -180,77 +176,73 @@ With **zero gradient calculations**, **zero backpropagation**, and **zero forwar
 
 ```mermaid
 flowchart TD
-    subgraph ERA1["Era 1 (1986–2020): Opaque Continuous Variables"]
-        E1_loss["Loss Function L(θ)"] --> E1_grad["Backpropagation ∇_θ L"]
-        E1_grad --> E1_opt["SGD / Adam Optimizer"]
-        E1_opt --> E1_update["Iterative θ_{t+1}"]
-        E1_desc["• Characteristics: Massive compute, opaque tensors, uninterpretable floats"]
+    subgraph E1["Era 1 (1986–2020): Opaque Continuous Variables"]
+        direction LR
+        A1["Loss Function L(θ)"] --> B1["Backprop ∇_θ L"] --> C1["Iterative SGD / Adam"]
     end
 
-    subgraph ERA2["Era 2 (2021–2023): Subspace Geometry & Linear Arithmetic"]
-        E2_base["Base Weights W_0"] --> E2_lora["Low-Rank Adapters ΔW = B·A (LoRA)"]
-        E2_lora --> E2_arith["Task Vectors (W_A - W_B)"]
-        E2_desc["• Characteristics: Low intrinsic dimensionality, additive parameter merges"]
+    subgraph E2["Era 2 (2021–2023): Subspace Geometry & Linear Arithmetic"]
+        direction LR
+        A2["Base Weights W_0"] --> B2["LoRA Adapters (B·A)"] --> C2["Task Vector Merging"]
     end
 
-    subgraph ERA3["Era 3 (2022–2024): Mechanistic Interpretability & Associative Editing"]
-        E3_trip["Factual Triplet (s, r, o)"] --> E3_trace["Activation Patching / Tracing"]
-        E3_trace --> E3_rome["ROME / MEMIT: W' = W + Λ C⁻¹"]
-        E3_desc["• Characteristics: Rank-1 key-value updates via covariance inversion"]
+    subgraph E3["Era 3 (2022–2024): Mechanistic Interpretability & Editing"]
+        direction LR
+        A3["Factual Triplet (s, r, o)"] --> B3["Activation Patching"] --> C3["ROME / MEMIT Rank-1 Updates"]
     end
 
-    subgraph ERA4["Era 4 (2026+): Native Weight-Space Programming (WSP)"]
-        E4_raw["Raw Floating-Point Weights W"] --> E4_llm["Frontier LLM Symbolic Inspection"]
-        E4_llm --> E4_proj["Closed-Form Surgical Operator W' = (I - uuᵀ)W"]
-        E4_desc["• Characteristics: ZERO gradients, ZERO forward passes, direct symbolic reading & writing"]
+    subgraph E4["Era 4 (2026+): Native Weight-Space Programming (WSP)"]
+        direction LR
+        A4["Raw Parameter Tensors"] --> B4["Frontier LLM Reasoning"] --> C4["Closed-Form Surgery (0 Gradients)"]
     end
 
-    ERA1 ==> ERA2
-    ERA2 ==> ERA3
-    ERA3 ==> ERA4
+    E1 ==>|Geometry Shift| E2
+    E2 ==>|Circuits Shift| E3
+    E3 ==>|Symbolic Shift| E4
 
-    style ERA1 fill:#1a1d24,stroke:#4a5568,stroke-width:1px,color:#e2e8f0
-    style ERA2 fill:#1e2538,stroke:#3b82f6,stroke-width:1px,color:#e2e8f0
-    style ERA3 fill:#22243d,stroke:#8b5cf6,stroke-width:1px,color:#e2e8f0
-    style ERA4 fill:#0f2b2b,stroke:#00f2fe,stroke-width:2px,color:#e2e8f0
+    style E1 fill:#111827,stroke:#4b5563,stroke-width:1px,color:#f3f4f6
+    style E2 fill:#0f172a,stroke:#3b82f6,stroke-width:1px,color:#f8fafc
+    style E3 fill:#1e1b4b,stroke:#8b5cf6,stroke-width:1px,color:#f5f3ff
+    style E4 fill:#062d22,stroke:#10b981,stroke-width:2px,color:#ecfdf5
 ```
 
 ---
 
 ## 📐 **Architectural Blueprints & System Mechanics**
 
+<p align="center">
+  <img src="assets/wsp-architecture-diagram.png" alt="Weight-Space Programming System Architecture" width="100%" style="border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);" />
+</p>
+
 ### 1. The Tri-Verb Operational Pipeline (READ · FIX · WRITE)
 
 ```mermaid
-flowchart LR
-    LLM["Frontier Reasoning Engine<br>(GPT-6 / Qwen / Claude)"]
+flowchart TD
+    LLM["🧠 Frontier Reasoning Engine (LLM)"]
 
-    subgraph READ_PIPE["1. READ PIPELINE (Weight Deconstruction)"]
+    LLM -->|"1. READ VERB"| R_PIPE
+    LLM -->|"2. FIX VERB"| F_PIPE
+    LLM -->|"3. WRITE VERB"| W_PIPE
+
+    subgraph R_PIPE["1. READ: Weight Deconstruction"]
         direction TB
-        R_in["Raw Parameter Tensors<br>(MLP / Attn Blocks)"] --> R_op["Symbolic Table Parsing<br>QK / OV Frobenius Norm"]
-        R_op --> R_out["Identified Policy / Circuit<br>(e.g. Breakout: 99% Conf.)"]
+        R1["Raw Weight Tensors"] --> R2["Frobenius Induction Norms"] --> R3["Identified Policy / Circuit Map"]
     end
 
-    subgraph FIX_PIPE["2. FIX PIPELINE (Attractor Surgery)"]
+    subgraph F_PIPE["2. FIX: Attractor Surgery"]
         direction TB
-        F_in["Degraded Model Checkpoint<br>(e.g. Qwen Overthinking)"] --> F_op["Attractor Subspace ID (u)<br>Rank-1 Surgery: W' = (I - uuᵀ)W"]
-        F_op --> F_out["Excised Runaway Attractor<br>(MATH-500: 7.9% ➔ 48.1%)"]
+        F1["Degraded Checkpoint (Loops)"] --> F2["Rank-1 Projection W'=(I-uuᵀ)W"] --> F3["Excised Runaway Attractor"]
     end
 
-    subgraph WRITE_PIPE["3. WRITE PIPELINE (Symbolic Compilation)"]
+    subgraph W_PIPE["3. WRITE: Symbolic Compilation"]
         direction TB
-        W_in["Functional Specification<br>+ Blank Weight Canvas"] --> W_op["Logic Gate Synthesis<br>Coordinate Alignment"]
-        W_op --> W_out["Synthesized Policy Net<br>(Beats 500M-frame RL)"]
+        W1["Behavioral Logic Spec"] --> W2["Symbolic Logic Synthesis"] --> W3["Zero-Gradient Neural Policy"]
     end
 
-    LLM --> READ_PIPE
-    LLM --> FIX_PIPE
-    LLM --> WRITE_PIPE
-
-    style LLM fill:#2d1b4e,stroke:#a855f7,stroke-width:2px,color:#f3e8ff
-    style READ_PIPE fill:#0c2538,stroke:#38bdf8,stroke-width:1px,color:#f0f9ff
-    style FIX_PIPE fill:#1c1917,stroke:#ef4444,stroke-width:1px,color:#fef2f2
-    style WRITE_PIPE fill:#062d22,stroke:#10b981,stroke-width:1px,color:#ecfdf5
+    style LLM fill:#2e1065,stroke:#a855f7,stroke-width:2px,color:#faf5ff
+    style R_PIPE fill:#082f49,stroke:#0284c7,stroke-width:1px,color:#f0f9ff
+    style F_PIPE fill:#450a0a,stroke:#dc2626,stroke-width:1px,color:#fef2f2
+    style W_PIPE fill:#064e3b,stroke:#059669,stroke-width:1px,color:#ecfdf5
 ```
 
 ### 2. Flagship Experiment 8: The 0.016% Surgical Attractor Excision
@@ -258,50 +250,33 @@ flowchart LR
 How did modifying only **131,072 parameters** out of **800,000,000** rescue Qwen3.5-0.8B from an infinite overthinking loop?
 
 ```mermaid
-flowchart TD
-    subgraph MODEL["Qwen3.5-0.8B Architecture (800M Parameters)"]
-        L0["Layers 01 to 14: Untouched Early Representation Layers"]
-        
-        subgraph L15["Layer 15 (Mid-Deep Reasoning Transition)"]
-            L15_MLP["MLP Block: 64 Columns Selected"]
-            L15_OP["Surgical Projection: ΔW = -u(uᵀ W)"]
-            L15_PARAM["Edited Parameters: 64 × 1024 = 65,536"]
-            L15_MLP --> L15_OP --> L15_PARAM
-        end
+flowchart LR
+    IN["Input Prompt"] --> PRE["Layers 01–14<br>(Untouched)"]
 
-        L16_18["Layers 16 to 18: Untouched Intermediate Residual Stream"]
-
-        subgraph L19["Layer 19 (High-Level Decision Stabilization)"]
-            L19_MLP["MLP Block: 64 Columns Selected"]
-            L19_OP["Surgical Projection: ΔW = -u(uᵀ W)"]
-            L19_PARAM["Edited Parameters: 64 × 1024 = 65,536"]
-            L19_MLP --> L19_OP --> L19_PARAM
-        end
-
-        L20_24["Layers 20 to 24: Untouched Output Projection Layers"]
-
-        L0 --> L15
-        L15 --> L16_18
-        L16_18 --> L19
-        L19 --> L20_24
-    end
-
-    subgraph IMPACT["Empirical Impact (Zero Gradient Steps)"]
+    subgraph SURGERY["Surgical Intervention Zone (0.016% Sparsity Budget)"]
         direction TB
-        STAT1["Total Edited: 131,072 / 800,000,000 = 0.01638% (0.016%)"]
-        STAT2["MATH-500 Accuracy: 7.9% ──────► 48.1% (+40.2%)"]
-        STAT3["GSM8K Accuracy: 13.8% ──────► 67.1% (+53.3%)"]
-        STAT4["Token Limit Timeouts: 93.0% ───► 33.1% (-59.9%)"]
-        STAT1 --- STAT2 --- STAT3 --- STAT4
+        L15["Layer 15 MLP Block<br>64 Columns Edited (65,536 params)"]
+        MID["Layers 16–18<br>(Untouched Residual Stream)"]
+        L19["Layer 19 MLP Block<br>64 Columns Edited (65,536 params)"]
+        
+        L15 --> MID --> L19
     end
 
-    L15_PARAM -.-> IMPACT
-    L19_PARAM -.-> IMPACT
+    PRE --> L15
+    L19 --> POST["Layers 20–24<br>(Untouched)"] --> OUT["Model Output"]
 
-    style MODEL fill:#0b0f19,stroke:#3b82f6,stroke-width:1px,color:#e2e8f0
-    style L15 fill:#1e1b4b,stroke:#6366f1,stroke-width:1px,color:#e0e7ff
-    style L19 fill:#1e1b4b,stroke:#6366f1,stroke-width:1px,color:#e0e7ff
-    style IMPACT fill:#14291f,stroke:#10b981,stroke-width:2px,color:#ecfdf5
+    subgraph RESULTS["Empirical Impact (Qwen3.5-0.8B)"]
+        direction TB
+        RES1["MATH-500: 7.9% ➔ 48.1% (+40.2%)"]
+        RES2["GSM8K: 13.8% ➔ 67.1% (+53.3%)"]
+        RES3["Timeouts: 93% ➔ 33% (-60%)"]
+        RES4["Total Edited: 131,072 / 800M (0.016%)"]
+    end
+
+    OUT -.-> RESULTS
+
+    style SURGERY fill:#18181b,stroke:#ef4444,stroke-width:1px,color:#f4f4f5
+    style RESULTS fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5
 ```
 
 ---
