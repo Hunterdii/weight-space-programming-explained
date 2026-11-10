@@ -1,68 +1,108 @@
-<p align="center">
-  <img src="assets/wsp-hero-banner.png" alt="Weight-Space Programming Hero Banner" width="100%" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+<div align="center">
+
+<a href="https://weight-space-atlas.vercel.app/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/banner-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/banner-light.png">
+    <img alt="Weight-Space Programming. An LLM reads, repairs and writes raw neural-network weights. No gradient descent." src="assets/readme/banner-dark.png" width="100%">
+  </picture>
+</a>
+
+<a href="https://weight-space-atlas.vercel.app/">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=19&duration=2800&pause=1100&color=0EA5C6&center=true&vCenter=true&width=860&height=46&lines=Read%2C+repair+and+write+neural-network+weights;No+gradient+descent.+No+training+loop.;0.016%25+of+the+weights+edited%3A+MATH-500+7.9%25+%E2%86%92+48.1%25;An+independent+field+guide%2C+labs+and+audit+of+MIT+CSAIL%27s+result" alt="Read, repair and write neural-network weights. No gradient descent. 0.016% of the weights edited: MATH-500 7.9% to 48.1%.">
+</a>
+
+<h1>Weight-Space Programming, Explained</h1>
+
+<p>
+  <b>An interactive atlas, four runnable labs, a whitepaper and a public audit of the MIT CSAIL result<br>
+  that a language model can read, repair and write another network's weights directly.</b>
 </p>
 
-<!--💬 TYPING SVG SUBTITLE -->
-<p align="center">
-  <a href="https://weight-space-atlas.vercel.app">
-    <img src="https://readme-typing-svg.demolab.com?lines=Reading%2C+Surgically+Repairing+%26+Writing+Neural+Weights;Zero+Gradients+%C2%B7+Zero+Backpropagation+%C2%B7+Zero+Forward+Passes;0.016%25+Surgical+Attractor+Excision+(131%2C072+%2F+800M+params);Sparks+of+Weight-Space+Programming+%C2%B7+MIT+CSAIL;The+Definitive+Open-Source+Field+Guide+%26+Lab+Suite&font=Fira+Code&size=18&center=true&vCenter=true&width=750&height=45&color=00f2fe&pause=1200" alt="Weight-Space Programming Typing SVG" />
-  </a>
-</p>
+## 📊 **Project Artifacts & GitHub Stats**
 
 <div align="center">
 
-# 🧠 Weight-Space Programming (WSP)
-### *Reading, Surgically Repairing, and Hand-Compiling Neural Network Weights via Symbolic LLM Reasoning*
+<!-- Table 1: Primary Project Artifacts (for-the-badge style) -->
+<table align="center">
+    <thead align="center">
+        <tr>
+            <td><b>🌐 Live Atlas</b></td>
+            <td><b>📄 Whitepaper</b></td>
+            <td><b>🧪 Labs CI</b></td>
+            <td><b>🛡️ Truth Contract</b></td>
+            <td><b>🏆 Benchmark</b></td>
+        </tr>
+    </thead>
+    <tbody align="center">
+        <tr>
+            <td>
+                <a href="https://weight-space-atlas.vercel.app/">
+                    <img alt="Live Atlas" src="https://img.shields.io/badge/Live_Atlas-open-22d3ee?style=for-the-badge&logo=vercel&logoColor=white"/>
+                </a>
+            </td>
+            <td>
+                <a href="paper/whitepaper.pdf">
+                    <img alt="Whitepaper" src="https://img.shields.io/badge/Whitepaper-PDF-ff5a6e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"/>
+                </a>
+            </td>
+            <td>
+                <a href="https://github.com/Hunterdii/weight-space-programming-explained/actions">
+                    <img alt="Labs CI" src="https://img.shields.io/github/actions/workflow/status/Hunterdii/weight-space-programming-explained/ci.yml?branch=main&label=labs%20CI&style=for-the-badge&logo=githubactions&logoColor=white"/>
+                </a>
+            </td>
+            <td>
+                <a href="docs/fact-sheet.md">
+                    <img alt="Truth Contract" src="https://img.shields.io/badge/Truth_Contract-4_badges-8b5cf6?style=for-the-badge&logo=shield&logoColor=white"/>
+                </a>
+            </td>
+            <td>
+                <a href="bench/WSP-Bench-Lite.md">
+                    <img alt="WSP-Bench-Lite" src="https://img.shields.io/badge/WSP--Bench--Lite-v0.1_proposal-f59e0b?style=for-the-badge&logo=target&logoColor=white"/>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-[![Live Interactive Atlas](https://img.shields.io/badge/Live%20Atlas-weight--space--atlas.vercel.app-00f2fe?style=for-the-badge&logo=vercel&logoColor=white)](https://weight-space-atlas.vercel.app/)
-[![Whitepaper PDF](https://img.shields.io/badge/Whitepaper-24--Page%20Monograph-ff3366?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](paper/whitepaper.pdf)
-[![CI Tests](https://img.shields.io/github/actions/workflow/status/Hunterdii/weight-space-programming-explained/ci.yml?branch=main&label=CI%20Labs&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/Hunterdii/weight-space-programming-explained/actions)
-[![Code License: MIT](https://img.shields.io/badge/Code-MIT-22c55e.svg?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
-[![Content License: CC BY 4.0](https://img.shields.io/badge/Content-CC%20BY%204.0-3b82f6.svg?style=for-the-badge&logo=creativecommons&logoColor=white)](LICENSE-CONTENT.md)
-[![Status: v0.1 Living Benchmark](https://img.shields.io/badge/Benchmark-WSP--Bench--Lite-f59e0b.svg?style=for-the-badge&logo=target&logoColor=white)](bench/WSP-Bench-Lite.md)
-[![Truth Contract](https://img.shields.io/badge/Truth%20Contract-4--Badge%20Audit-8b5cf6.svg?style=for-the-badge&logo=shield&logoColor=white)](docs/fact-sheet.md)
-
-<p align="center">
-  <strong>Language & Artifacts:</strong>
-  <a href="README.md">English Guide</a> |
-  <a href="https://weight-space-atlas.vercel.app">Interactive Atlas Web App</a> |
-  <a href="docs/fact-sheet.md">Quantitative Fact Sheet</a> |
-  <a href="paper/whitepaper.pdf"> Research Monograph (PDF)</a> |
-  <a href="bench/WSP-Bench-Lite.md">WSP-Bench-Lite Spec</a> |
-  <a href="research/open-verification-items.md">Honesty Ledger</a>
-</p>
-
-</div>
-
----
-
-## 📊 **GitHub Stats**
-
-<div align="center">
-
+<!-- Table 2: Repository Stats & License (flat style) -->
 <table align="center">
     <thead align="center">
         <tr>
             <td><b>🌟 Stars</b></td>
             <td><b>🍴 Forks</b></td>
             <td><b>🐛 Issues</b></td>
-            <td><b>📏 Repo Size</b></td>
-            <td><b>🔔 Open PRs</b></td>
-            <td><b>🔕 Closed PRs</b></td>
-            <td><b>📈 Contributors</b></td>
-            <td><b>❤ Open Source</b></td>
+            <td><b>🕒 Last Commit</b></td>
+            <td><b>📜 Content License</b></td>
         </tr>
-     </thead>
-    <tbody>
-         <tr>
-            <td><img alt="Stars" src="https://img.shields.io/github/stars/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/></td>
-            <td><img alt="Forks" src="https://img.shields.io/github/forks/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/></td>
-            <td><img alt="Issues" src="https://img.shields.io/github/issues/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/></td>
-            <td><img alt="Repo Size" src="https://img.shields.io/github/repo-size/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/></td>
-            <td><img alt="Open PRs" src="https://img.shields.io/github/issues-pr/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/></td>
-            <td><img alt="Closed PRs" src="https://img.shields.io/github/issues-pr-closed/Hunterdii/weight-space-programming-explained?style=flat&color=critical&logo=github"/></td>
-            <td><img alt="Contributors" src="https://img.shields.io/github/contributors/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/></td>
-            <td><img src="https://badges.frapsoft.com/os/v2/open-source.svg?v=103" alt="open source"/></td>
+    </thead>
+    <tbody align="center">
+        <tr>
+            <td>
+                <a href="https://github.com/Hunterdii/weight-space-programming-explained/stargazers">
+                    <img alt="Stars" src="https://img.shields.io/github/stars/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/>
+                </a>
+            </td>
+            <td>
+                <a href="https://github.com/Hunterdii/weight-space-programming-explained/forks">
+                    <img alt="Forks" src="https://img.shields.io/github/forks/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/>
+                </a>
+            </td>
+            <td>
+                <a href="https://github.com/Hunterdii/weight-space-programming-explained/issues">
+                    <img alt="Issues" src="https://img.shields.io/github/issues/Hunterdii/weight-space-programming-explained?style=flat&logo=github"/>
+                </a>
+            </td>
+            <td>
+                <a href="https://github.com/Hunterdii/weight-space-programming-explained/commits/main">
+                    <img alt="Last commit" src="https://img.shields.io/github/last-commit/Hunterdii/weight-space-programming-explained?style=flat&logo=git&logoColor=white"/>
+                </a>
+            </td>
+            <td>
+                <a href="LICENSE-CONTENT.md">
+                    <img alt="Content: CC BY 4.0" src="https://img.shields.io/badge/content-CC_BY_4.0-3b82f6?style=flat"/>
+                </a>
+            </td>
         </tr>
     </tbody>
 </table>
@@ -72,9 +112,17 @@
   <span> · </span>
   <a href="#-30-second-quickstart-run-on-any-laptop">30-Second Quickstart</a>
   <span> · </span>
+  <a href="#-the-8-headline-breakthrough-experiments">8 Breakthroughs Scoreboard</a>
+  <span> · </span>
+  <a href="#evidence">What the Evidence Supports</a>
+  <span> · </span>
   <a href="paper/whitepaper.pdf">Download Whitepaper</a>
   <span> · </span>
-  <a href="#-the-8-headline-breakthrough-experiments">8 Breakthroughs Scoreboard</a>
+  <a href="#bench">WSP-Bench-Lite</a>
+  <span> · </span>
+  <a href="#faq">FAQ</a>
+  <span> · </span>
+  <a href="#cite">Cite</a>
   <span> · </span>
   <a href="#-how-you-can-support">Support & Sponsor</a>
 </h4>
@@ -88,578 +136,668 @@
 
 </div>
 
-<!--📏 LINE DIVIDER -->
-<img src="https://i.imgur.com/dBaSKWF.gif" height="15" width="100%">
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/stats-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/stats-light.svg">
+  <img alt="Key numbers. 0.016% of Qwen3.5-0.8B's weights edited. MATH-500 7.9% to 48.1%. Breakout score 517.4 against 25.3 for PPO at 500M steps. Ramp climbs 0 of 256 to 1,024 of 1,024. Each NumPy lab runs in under a second." src="assets/readme/stats-dark.svg" width="100%">
+</picture>
+
+</div>
+
+<br>
 
 > [!IMPORTANT]
-> **Independent Open-Source Research Showcase & Technical Field Guide**  
-> Based on the seminal research discovery *"Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights"* announced on **2 Nov 2026** by **Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab (MIT CSAIL)**.  
-> **All primary scientific discovery credit belongs to the MIT CSAIL authors.** This repository is an independent technical companion, lab suite, and benchmark testbed. It is not affiliated with, endorsed by, or sponsored by MIT CSAIL, OpenAI, or the original authors.
+> **Independent companion, not the original research.** Weight-Space Programming (WSP) comes from the MIT CSAIL post [*"Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights"*](https://rikiyat.github.io/blog/weight-space-programming/) by **Rikiya Takehi, Jayden Teoh, Alex Zhang and Omar Khattab** (2 Nov 2026). All scientific credit is theirs. This repository explains it, re-derives the small mechanics in code, and audits how far the evidence goes. It is not affiliated with or endorsed by MIT, MIT CSAIL or the authors.
 
----
+For forty years we changed neural networks by **training** them: show data, measure error, nudge millions of numbers along a gradient. The MIT CSAIL post reports something stranger. A general-purpose frontier LLM (GPT-6 Astra in the post) was handed another network's raw weights as text, worked out what each part computes, and **edited the numbers directly**. No optimizer, no training loop.
 
-## 🔗 **Primary Navigation & Quick Links**
+This repo is the part that lets you *check* that claim: **play with it, run it, read the maths, and see exactly where the evidence stops.**
 
-<div align="center">
+<details>
+<summary><b>Table of contents</b></summary>
 
-<table aria-label="Primary Quicklinks" width="100%">
-  <tr>
-    <td width="33%" align="center">
-      <a href="https://weight-space-atlas.vercel.app/">
-        <img src="https://img.icons8.com/fluent/48/000000/domain.png" height="40" alt="Atlas" /><br />
-        <strong>🌐 Live Interactive Atlas</strong>
-      </a><br />
-      <sub>26 interactive routes · 5 audience levels · Parameter knife</sub>
-    </td>
-    <td width="33%" align="center">
-      <a href="paper/whitepaper.pdf">
-        <img src="https://img.icons8.com/fluent/48/000000/pdf.png" height="40" alt="Paper" /><br />
-        <strong>📄 Monograph Whitepaper</strong>
-      </a><br />
-      <sub>IEEE-typeset monograph · 13 vector figures · Formal proofs</sub>
-    </td>
-    <td width="33%" align="center">
-      <a href="bench/WSP-Bench-Lite.md">
-        <img src="https://img.icons8.com/fluent/48/000000/trophy.png" height="40" alt="Benchmark" /><br />
-        <strong>🏆 WSP-Bench-Lite</strong>
-      </a><br />
-      <sub>Multi-seed protocol ($n \ge 5$) · 3 competition tracks</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="33%" align="center">
-      <a href="#-interactive-runnable-labs-python-38--numpy-2x">
-        <img src="https://img.icons8.com/fluent/48/000000/console.png" height="40" alt="Labs" /><br />
-        <strong>🧪 4 Zero-Dependency Labs</strong>
-      </a><br />
-      <sub>Pure Python & NumPy · Runs in &lt;1 second on any laptop</sub>
-    </td>
-    <td width="33%" align="center">
-      <a href="docs/fact-sheet.md">
-        <img src="https://img.icons8.com/fluent/48/000000/checkmark.png" height="40" alt="Fact Sheet" /><br />
-        <strong>🛡️ Verified Fact Sheet</strong>
-      </a><br />
-      <sub>Audited numbers · 4-tier epistemic badges · Verified dates</sub>
-    </td>
-    <td width="33%" align="center">
-      <a href="research/open-verification-items.md">
-        <img src="https://img.icons8.com/fluent/48/000000/scales.png" height="40" alt="Honesty Ledger" /><br />
-        <strong>🔍 The Honesty Ledger</strong>
-      </a><br />
-      <sub>Public tracker of open audit items, caveats & variance flags</sub>
-    </td>
-  </tr>
-</table>
+## 📑 **Table of Contents**
 
-</div>
-
----
-
-## 🌟 **The Weight-Space Paradigm Shift: Why Everyone Is Talking About WSP**
-
-For forty years (1986–2026), artificial neural networks were optimized exclusively in **function space**:
-
-$$\min_{\theta} \mathcal{L}(\mathcal{D}; \theta) = \mathbb{E}_{(x, y) \sim \mathcal{D}} \left[ \ell(f_\theta(x), y) \right]$$
-
-Parameters were treated as opaque continuous tensors adjusted blindly through millions of iterative gradient steps and stochastic backpropagation passes. If a model entered a runaway token loop, hallucinated, or failed on complex logic, developers faced only two painful choices: **burn thousands of GPU hours fine-tuning**, or **wrap the network in brittle prompt scaffolding**.
-
-On **November 2, 2026**, MIT CSAIL demonstrated an emergent capability in frontier reasoning models: **Large Language Models can natively treat raw neural network parameters as readable, editable, and compilable symbolic code**.
-
-With **zero gradient calculations**, **zero backpropagation**, and **zero forward passes**:
-* 🔍 **READ**: LLMs inspect raw float32 parameter matrices and accurately infer policy goals, internal circuit wiring, and game types directly from static tensors.
-* ⚡ **FIX**: LLMs diagnose pathological failure modes and excise runaway attractors with surgical rank-1 projection operators—such as repairing Qwen3.5-0.8B on MATH-500 from **7.9% to 48.1%** by editing only **0.016% of its parameters** (131,072 / 800M).
-* ✍️ **WRITE**: LLMs hand-compile functioning neural network policies directly into blank parameter matrices from pure symbolic reasoning, outperforming reinforcement learning agents trained over 500 million frames.
-
----
-
-## 🧭 **The 4-Era Evolution of Model Programming**
-
-```mermaid
-flowchart TD
-    subgraph E1["Era 1 (1986–2020): Opaque Continuous Variables"]
-        direction LR
-        A1["Loss Function L(θ)"] --> B1["Backprop ∇_θ L"] --> C1["Iterative SGD / Adam"]
-    end
-
-    subgraph E2["Era 2 (2021–2023): Subspace Geometry & Linear Arithmetic"]
-        direction LR
-        A2["Base Weights W_0"] --> B2["LoRA Adapters (B·A)"] --> C2["Task Vector Merging"]
-    end
-
-    subgraph E3["Era 3 (2022–2024): Mechanistic Interpretability & Editing"]
-        direction LR
-        A3["Factual Triplet (s, r, o)"] --> B3["Activation Patching"] --> C3["ROME / MEMIT Rank-1 Updates"]
-    end
-
-    subgraph E4["Era 4 (2026+): Native Weight-Space Programming (WSP)"]
-        direction LR
-        A4["Raw Parameter Tensors"] --> B4["Frontier LLM Reasoning"] --> C4["Closed-Form Surgery (0 Gradients)"]
-    end
-
-    E1 ==>|Geometry Shift| E2
-    E2 ==>|Circuits Shift| E3
-    E3 ==>|Symbolic Shift| E4
-
-    style E1 fill:#111827,stroke:#4b5563,stroke-width:1px,color:#f3f4f6
-    style E2 fill:#0f172a,stroke:#3b82f6,stroke-width:1px,color:#f8fafc
-    style E3 fill:#1e1b4b,stroke:#8b5cf6,stroke-width:1px,color:#f5f3ff
-    style E4 fill:#062d22,stroke:#10b981,stroke-width:2px,color:#ecfdf5
-```
-
----
-
-## 📐 **Architectural Blueprints & System Mechanics**
+1. 🚀 **[Start here](#-primary-navigation--quick-links)**
+2. 💡 **[The idea](#-the-weight-space-paradigm-shift-why-everyone-is-talking-about-wsp)**
+3. 🌐 **[The live atlas](#-experience-the-live-interactive-atlas)**
+4. ⚡ **[The surgery, in motion](#-architectural-blueprints--system-mechanics)**
+5. ⏱️ **[Run it in 30 seconds](#-30-second-quickstart-run-on-any-laptop)**
+6. 📊 **[The eight experiments](#-the-8-headline-breakthrough-experiments)**
+7. 🧮 **[The maths](#-mathematical-foundations-of-weight-space-surgery)**
+8. 🛡️ **[What the evidence supports](#️-the-epistemic-truth-contract--honesty-ledger)**
+9. 🏆 **[WSP-Bench-Lite](#-wsp-bench-lite-standardizing-the-frontier)**
+10. 🧭 **[Where WSP sits in history](#-the-4-era-evolution-of-model-programming)**
+11. 🗺️ **[Repository map](#-interactive-runnable-labs-python-310--numpy-2x)**
+12. 🛠️ **[Tech stack](#️-tech-stack--tooling)**
+13. ❓ **[FAQ](#-why-this-matters-to-you)**
+14. 🤝 **[Contribute](#-how-to-contribute)**
+15. 📖 **[Cite](CITATION.cff)**
+16. ⚖️ **[Credits, licence, disclaimer](#️-legal--academic-disclaimer)**
+</details>
 
 <p align="center">
-  <img src="assets/wsp-architecture-diagram.png" alt="Weight-Space Programming System Architecture" width="100%" style="border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);" />
-</p>
-
-### 1. The Tri-Verb Operational Pipeline (READ · FIX · WRITE)
-
-```mermaid
-flowchart TD
-    LLM["🧠 Frontier Reasoning Engine (LLM)"]
-
-    LLM -->|"1. READ VERB"| R_PIPE
-    LLM -->|"2. FIX VERB"| F_PIPE
-    LLM -->|"3. WRITE VERB"| W_PIPE
-
-    subgraph R_PIPE["1. READ: Weight Deconstruction"]
-        direction TB
-        R1["Raw Weight Tensors"] --> R2["Frobenius Induction Norms"] --> R3["Identified Policy / Circuit Map"]
-    end
-
-    subgraph F_PIPE["2. FIX: Attractor Surgery"]
-        direction TB
-        F1["Degraded Checkpoint (Loops)"] --> F2["Rank-1 Projection W'=(I-uuᵀ)W"] --> F3["Excised Runaway Attractor"]
-    end
-
-    subgraph W_PIPE["3. WRITE: Symbolic Compilation"]
-        direction TB
-        W1["Behavioral Logic Spec"] --> W2["Symbolic Logic Synthesis"] --> W3["Zero-Gradient Neural Policy"]
-    end
-
-    style LLM fill:#2e1065,stroke:#a855f7,stroke-width:2px,color:#faf5ff
-    style R_PIPE fill:#082f49,stroke:#0284c7,stroke-width:1px,color:#f0f9ff
-    style F_PIPE fill:#450a0a,stroke:#dc2626,stroke-width:1px,color:#fef2f2
-    style W_PIPE fill:#064e3b,stroke:#059669,stroke-width:1px,color:#ecfdf5
-```
-
-### 2. Flagship Experiment 8: The 0.016% Surgical Attractor Excision
-
-How did modifying only **131,072 parameters** out of **800,000,000** rescue Qwen3.5-0.8B from an infinite overthinking loop?
-
-```mermaid
-flowchart LR
-    IN["Input Prompt"] --> PRE["Layers 01–14<br>(Untouched)"]
-
-    subgraph SURGERY["Surgical Intervention Zone (0.016% Sparsity Budget)"]
-        direction TB
-        L15["Layer 15 MLP Block<br>64 Columns Edited (65,536 params)"]
-        MID["Layers 16–18<br>(Untouched Residual Stream)"]
-        L19["Layer 19 MLP Block<br>64 Columns Edited (65,536 params)"]
-        
-        L15 --> MID --> L19
-    end
-
-    PRE --> L15
-    L19 --> POST["Layers 20–24<br>(Untouched)"] --> OUT["Model Output"]
-
-    subgraph RESULTS["Empirical Impact (Qwen3.5-0.8B)"]
-        direction TB
-        RES1["MATH-500: 7.9% ➔ 48.1% (+40.2%)"]
-        RES2["GSM8K: 13.8% ➔ 67.1% (+53.3%)"]
-        RES3["Timeouts: 93% ➔ 33% (-60%)"]
-        RES4["Total Edited: 131,072 / 800M (0.016%)"]
-    end
-
-    OUT -.-> RESULTS
-
-    style SURGERY fill:#18181b,stroke:#ef4444,stroke-width:1px,color:#f4f4f5
-    style RESULTS fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5
-```
-
----
-
-## 🌐 **Experience the Live Interactive Atlas**
-
-We built and deployed a production-grade, interactive technical companion for this research:
-
-👉 **[Launch Live Atlas: weight-space-atlas.vercel.app](https://weight-space-atlas.vercel.app/)**
-
-| Feature Area | Interactive Capability | Audience Fit |
-|---|---|:---:|
-| 🎛️ **The Interactive Parameter Knife** | Adjust the singular value cutoff $k$, inspect residual attractor energy, and witness the blast radius trade-off in real time. | **L3–L5** |
-| 🎚️ **5 Progressive Difficulty Levels** | Switch between **L1 ELI5** (Plain English), **L2 Visual Thinker**, **L3 Python Practitioner**, **L4 ML Systems Engineer**, and **L5 Frontier Researcher**. | **All** |
-| 🛡️ **The Epistemic Truth Filter** | Filter any claim on the site by empirical rigor (Paper-Reported vs. Independent Review vs. Speculation). | **Researchers** |
-| 🧬 **Frobenius Induction Inspector** | Visualize the attention head copying ratios $\|W_{QK} W_{OV}\|_F$ across toy Transformer blocks. | **Interpretability** |
-| 📚 **26 Route Deep Dives** | Complete mathematical proofs, step-by-step experiment transcripts, and counter-factual ablation studies. | **Students & Pros** |
-
----
-
-## ⚡ **30-Second Quickstart: Run on Any Laptop**
-
-Every foundational mechanic described in the MIT CSAIL research can be verified on your laptop using standard Python (3.10+) and NumPy. **No GPU, no PyTorch, no cloud API keys required.**
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/Hunterdii/weight-space-programming-explained.git
-cd weight-space-programming-explained
-
-# 2. Install minimal dependencies (pure NumPy)
-pip install -r requirements.txt
-
-# 3. Lab 1: Hand-compile a 17-parameter neural policy directly from logic
-python lab/01_compile_a_rule.py
-
-# 4. Lab 2: Perform rank-1 direction surgery on a weight matrix
-python lab/02_direction_surgery.py
-
-# 5. Lab 3: Calculate parameter blast radius & verify the 0.016% arithmetic
-python lab/03_blast_radius.py
-
-# 6. Lab 4: Recompute Exp 1 Atari weight fingerprints from released MIT CSAIL logs
-python lab/04_fingerprint_games.py
-```
-
-### Expected Output Previews:
-
-```text
-$ python lab/01_compile_a_rule.py
-Compiling rule: 'Paddle tracks ball direction' into 2-layer ReLU MLP...
-Target: W1 [2x2], b1 [2], W2 [2x2], b2 [2] (17 total parameters)
-Validating on 10,000 randomized state vectors...
-[PASSED] all asserts passed - your 17-number brain plays paddle
-Zero training runs. Zero backprop iterations. Pure symbolic compilation.
-
-$ python lab/02_direction_surgery.py
-Executing closed-form rank-1 projection: W' = (I - u u^T) W on top-64 columns...
-Initial attractor direction energy: 1.000000
-Post-surgery attractor direction energy: 0.000000 (residual error: 6.38e-16)
-edited 8/64 columns; remaining u-energy 0.74
-Runaway loop component completely excised.
-
-$ python lab/03_blast_radius.py
-Total model parameters: 800,000,000 (Qwen3.5-0.8B)
-Surgical targets: Layer 15 MLP (64 cols) + Layer 19 MLP (64 cols)
-Modified parameter count: 131,072
-Sparsity ratio s = 131,072 / 800,000,000 = 0.016384% (Reported: 0.0164%)
-```
-
----
-
-## 📊 **The 8 Headline Breakthrough Experiments**
-
-Every primary experiment documented in the seminal paper, cross-referenced with empirical audits:
-
-| # | Task & Domain | Target Architecture & Params | Operation / Intervention | Baseline (Before) | Post-Intervention (After) | Evidentiary Tier |
-|:---:|:---|:---|:---|:---:|:---:|:---:|
-| **Exp 1** | **Read: Game Policy ID** | 4 PPO MLP policies ($17,253$ params each: Breakout, Pong, Pac-Man, Freeway) | Inspected $10 \times 10$ first-layer weight grid; zero forward passes | Random guess ($25\%$) | **4/4 identified** (Breakout at $99\%$ confidence) | 🟦 PAPER-REPORTED |
-| **Exp 2** | **Read: Diffusion Shapes** | 3 DDPM noise predictors ($23,824$ params each) | Inspected $12 \times 12$ center receptive field matrix | Random guess ($33.3\%$) | **3/3 shapes identified** (decoded boundary geometry) | 🟦 PAPER-REPORTED |
-| **Exp 3** | **Read: Transformer Circuits** | 3 char-transformers ($7.16\text{M}$ params, 4 layers $\times$ 6 heads) | Analyzed middle block weights; Frobenius composition score | Random selection ($16.7\%$) | **6/6 languages identified**; copying heads match activation ground truth | 🟦 PAPER-REPORTED |
-| **Exp 4** | **Fix: Robot Car Locomotion** | Kinetix actor MLP ($171,664$ params, $679 \to 128 \to 16$) | Single surgical edit touching $3.5\%$ of weights | $0 / 256$ climbs ($0\%$) | **$1,024 / 1,024$ climbs ($100\%$)** | 🟦 PAPER-REPORTED |
-| **Exp 5** | **Write: MinAtar Policies** | $600 \to 32 \to 32 \to 6$ tanh network ($20,486$ params) | Hand-compiled weights from scratch with zero training data | Breakout score: $15.8$ (PPO 100M), $25.3$ (PPO 500M) | **Breakout score: 517.4** ($>20\times$ lift over 500M PPO) | 🟦 PAPER-REPORTED |
-| **Exp 6** | **Write: 9×9 Go Player** | $243 \to 512 \times 6 \to 82$ CNN/MLP ($1,480,274$ params) | Direct weight synthesis in Python execution sandbox | $0\%$ win rate vs trained PPO | **$70\% - 79\%$ win rate** vs PPO trained on 20M games | 🟦 PAPER-REPORTED |
-| **Exp 7** | **Read: Sycophancy Twins** | 2 fine-tuned Gemma-3-270M models | Raw weights alone failed ($0/4$); succeeded with attention matrices | $50\%$ random guess | **$3/3$ honest vs sycophant separated** (Head 10.2: $94.3\%$ vs $0.75\%$) | 🟦 PAPER-REPORTED |
-| **Exp 8** | **Fix: Qwen3.5-0.8B Overthinking** | Qwen3.5-0.8B ($800\text{M}$ params), thinking mode | Rank-1 surgery: $131,072$ params ($0.016\%$) across Layers 15 & 19 | MATH-500: $7.9\%$<br>GSM8K: $13.8\%$<br>Timeouts: $93.0\%$ | **MATH-500: 48.1%**<br>**GSM8K: 67.1%**<br>**Timeouts: 33.1%** | 🟦 PAPER-REPORTED |
-
----
-
-## 🧮 **Mathematical Foundations of Weight-Space Surgery**
-
-### 1. Rank-1 Direction Projection Surgery (Exp 4 & Exp 8)
-Given an arbitrary weight matrix $W \in \mathbb{R}^{d_{\text{in}} \times d_{\text{out}}}$ and an identified pathological 1D attractor unit vector $u \in \mathbb{R}^{d_{\text{in}}}$ with $\|u\|_2 = 1$:
-
-$$W' = (I - u u^T) W \quad \text{on column subset } S \subseteq \{1, \dots, d_{\text{out}}\}$$
-
-$$\Delta W = -u (u^T W)|_S$$
-
-Because $(I - uu^T)$ is the orthogonal projector onto the orthogonal complement $\text{span}(u)^\perp$, the modified matrix satisfies:
-
-$$u^T W'|_S = u^T (I - u u^T) W|_S = (u^T - (u^T u) u^T) W|_S = 0$$
-
-All activations aligned with $u$ are nullified, while all orthogonal functional components are mathematically preserved.
-
-### 2. Edit Sparsity & Parameter Blast Radius
-The blast radius sparsity budget $s$ measures the exact fraction of total model weights modified:
-
-$$s = \frac{\|\Delta W\|_0}{P_{\text{total}}} = \frac{131{,}072}{800{,}000{,}000} \approx 0.016384\% \approx 0.016\%$$
-
-* **Layer 15 MLP**: $64\text{ columns} \times 1{,}024\text{ hidden dimension} = 65{,}536\text{ parameters}$
-* **Layer 19 MLP**: $64\text{ columns} \times 1{,}024\text{ hidden dimension} = 65{,}536\text{ parameters}$
-* **Total Surgical Footprint**: $65{,}536 + 65{,}536 = 131{,}072\text{ parameters}$
-
-### 3. Induction Circuit Composition Score (Exp 3)
-Following the Transformer Circuits mathematical formulation (Elhage et al.), copying behavior in multi-head attention is detected statically via the Frobenius product of Query-Key and Output-Value matrices:
-
-$$\mathrm{score}_{\mathrm{induction}} = \frac{\|W^{(2)}_{QK} W^{(1)}_{OV}\|_F}{\|W^{(2)}_{QK}\|_F \, \|W^{(1)}_{OV}\|_F}$$
-
-Because the Frobenius norm is invariant under unitary rotations, frontier LLMs identify induction heads directly from parameter grids without needing dynamic activation logging.
-
-### 4. Functional Drift Bounding (Safety Contract)
-To mathematically guarantee that localized surgical interventions do not induce catastrophic forgetting, functional drift $D$ across held-out evaluation tasks $\mathcal{P}_{\text{eval}}$ is bounded by Kullback-Leibler divergence:
-
-$$D = \mathbb{E}_{x \sim \mathcal{P}_{\text{eval}}} \left[ \mathcal{D}_{\mathrm{KL}}\!\left(p_\theta(\cdot \mid x) \,\|\, p_{\theta'}(\cdot \mid x)\right) \right] < 0.05$$
-
----
-
-## 🧪 **Interactive Runnable Labs (Python 3.10+ / NumPy 2.x)**
-
-The [`lab/`](lab/) directory provides runnable implementations of each foundational concept:
-
-```text
-lab/
-├── 01_compile_a_rule.py       # Hand-compile a 17-parameter neural policy from pure logic
-├── 02_direction_surgery.py    # Closed-form rank-1 attractor excision on weight matrices
-├── 03_blast_radius.py         # Sparsity budget calculations (131,072 / 800M = 0.016%)
-├── 04_fingerprint_games.py    # Recompute Exp 1 Atari weight fingerprints from MIT CSAIL logs
-└── README.md                  # Comprehensive lab manual with exercise prompts
-```
-
-<details>
-<summary><b>🔍 Click to view Lab 1 Code: Compiling Logic into Weights (01_compile_a_rule.py)</b></summary>
-
-```python
-# lab/01_compile_a_rule.py - hand-compile a policy into weights with zero training
-import numpy as np
-
-# A tiny 2-layer ReLU MLP: ball pos b, paddle pos p -> action: move right (+1) or left (-1)
-# Hand-crafted weights implementing the rule: "follow the ball"
-W1 = np.array([[ 1.0, -1.0],   # unit 0 fires if b > p  (ball is right of paddle)
-               [-1.0,  1.0]])  # unit 1 fires if p > b  (ball is left of paddle)
-b1 = np.array([0.0, 0.0])
-
-W2 = np.array([[ 1.0, -1.0]])  # action = h0 - h1
-b2 = np.array([0.0])
-
-def forward(b, p):
-    x = np.array([b, p])
-    h = np.maximum(0, W1 @ x + b1)  # ReLU
-    return float(W2 @ h + b2)
-
-# Verify behavior across randomized game states
-assert forward(0.8, 0.2) > 0   # ball is right -> move right (+0.6)
-assert forward(0.1, 0.9) < 0   # ball is left  -> move left  (-0.8)
-assert forward(0.5, 0.5) == 0  # aligned       -> stay still ( 0.0)
-
-print("all asserts passed - your 17-number brain plays paddle")
-```
-
-</details>
-
----
-
-## 🛡️ **The Epistemic Truth Contract & Honesty Ledger**
-
-In scientific research, credibility is earned through transparent verification. Every metric and assertion in this project adheres to our strict **Four-Badge Truth Contract**:
-
-| Badge | Classification | Evidentiary Standard & Meaning |
-|:---:|:---|:---|
-| 🟦 | **PAPER-REPORTED** | Directly stated in Takehi et al. (MIT CSAIL, 2 Nov 2026). Verified against primary text and released logs. |
-| 🟩 | **INDEPENDENT REVIEW** | Scrutinized or replicated by external academic audit (e.g. Prof. Andreas Maier, Simon Willison). |
-| 🟨 | **TEACHING SCHEMATIC** | Simplified toy model, synthetic tensor, or pedagogical code written to illustrate mechanics. |
-| 🟥 | **SPECULATION** | Theoretical hypothesis, roadmap prediction, or unverified community proposal. |
-
-### The Academic Critique: What the Community Has Identified
-To maintain absolute scientific integrity, we prominently document the critical audits of the initial paper:
-
-1. **The Single-Seed Limitation ($n=1$)**  
-   *Prof. Andreas Maier (FAU Erlangen-Nürnberg)* noted that all 8 headline experiments were reported on a single seed. Multi-seed evaluations ($n \ge 5$) are required to rule out lucky initialization alignment.
-2. **The IFEval Non-Monotonicity Dip**  
-   While MATH-500 accuracy improved monotonically across surgical passes, general instruction-following (IFEval) dropped sharply at 25 passes before recovering at 50, indicating potential unmonitored feature interference.
-3. **Clearing Chokes vs. Imparting Knowledge**  
-   *Sean Goedecke* and interpretability researchers demonstrated that the negative control on Gemma-3-270M failed to improve ($6.8\% \to 7.0\%$). Exp 8 did not "teach math" to Qwen; it removed a degenerative token-generation bottleneck that was exhausting the context window.
-4. **The Public Honesty Ledger**  
-   All unverified parameters, missing arXiv IDs, and active questions are publicly cataloged in [`research/open-verification-items.md`](research/open-verification-items.md).
-
----
-
-## 🔬 **WSP-Bench-Lite: Standardizing the Frontier**
-
-To address the empirical caveats raised by the academic community, this repository introduces **WSP-Bench-Lite** ([`bench/WSP-Bench-Lite.md`](bench/WSP-Bench-Lite.md))—the first open benchmark protocol for weight-space programming:
-
-```mermaid
-flowchart LR
-    TASK["Task Submission (JSON Schema)"] --> PROTOCOL{"WSP-Bench-Lite Protocol"}
-
-    subgraph PROTOCOL
-        M1["Mandatory Multi-Seed (n ≥ 5)"]
-        M2["Strict Sparsity Budget (s < 1.0%)"]
-        M3["Drift Bound (D_KL < 0.05)"]
-        M4["Pre-Registered Prompt SHA256"]
-    end
-
-    PROTOCOL --> EVAL["Evaluation Engine"]
-
-    subgraph TRACKS["3 Independent Tracks"]
-        T1["READ Track<br>(Weight Fingerprinting)"]
-        T2["FIX Track<br>(Defect Surgery)"]
-        T3["WRITE Track<br>(Zero-Training Synthesis)"]
-    end
-
-    EVAL --> TRACKS
-    TRACKS --> BOARD["Geometric-Mean Leaderboard"]
-
-    style TASK fill:#1e1b4b,stroke:#818cf8,stroke-width:1px,color:#e0e7ff
-    style PROTOCOL fill:#111827,stroke:#3b82f6,stroke-width:1px,color:#e2e8f0
-    style TRACKS fill:#064e3b,stroke:#10b981,stroke-width:1px,color:#ecfdf5
-    style BOARD fill:#312e81,stroke:#a855f7,stroke-width:2px,color:#f3e8ff
-```
-
-### Benchmark Track Specifications:
-* **Track 1: READ** — Identify network function from weights alone. Baselines: random guessing, automated receptive-field scanners, human experts.
-* **Track 2: FIX** — Repair known seeded failures (sign flips, dead units, infinite loops). Baselines: random-direction ablation, standard PCA pruning, decoding truncation.
-* **Track 3: WRITE** — Hand-compile functional controllers from specification without gradient steps. Evaluated over $\ge 1{,}000$ episodes.
-
----
-
-## 🛠️ **Tech Stack & Tooling**
-
-<details open>
-<summary><b>💻 Research & Computational Frameworks</b></summary>
-
-| **🌟 Technology** | **💼 Role & Purpose in WSP** |
-|:---|:---|
-| [**Python 3.10+**](https://www.python.org/) | Core language powering all zero-dependency reproduction labs and verification scripts. |
-| [**NumPy**](https://numpy.org/) | Linear algebra engine powering the closed-form projection operator $W' = (I - uu^T)W$ and Frobenius induction scoring. |
-| [**LaTeX / KaTeX**](https://katex.org/) | Mathematical typesetting engine rendering formal definitions, drift metrics, and the whitepaper PDF. |
-| [**Next.js / Vercel**](https://vercel.com/) | Cloud platform hosting the live interactive web atlas at [weight-space-atlas.vercel.app](https://weight-space-atlas.vercel.app/). |
-| [**GitHub Mermaid**](https://mermaid.js.org/) | Dynamic in-repo architectural diagrams, timeline flows, and benchmark topologies. |
-
-</details>
-
----
-
-## 💡 **Why This Matters to You**
-
-<details open>
-<summary><b>🔬 For AI Researchers & Interpretability Scientists</b></summary>
-<br>
-WSP provides empirical evidence that large reasoning models develop rich internal representations of linear algebra and neural circuit mechanics. Instead of treating models as black-box approximators, WSP opens the door to closed-form model editing, activation-free interpretability, and verifiable parameter surgery.
-</details>
-
-<details>
-<summary><b>🛠️ For Machine Learning & MLOps Engineers</b></summary>
-<br>
-Imagine patching a critical security flaw, hallucinations, or toxic behaviors in a 70B production model in <b>milliseconds</b> with zero gradient steps and zero GPU cluster training costs. WSP's $W' = (I - uu^T)W$ surgery demonstrates that specific failure modes can be excised with virtually zero collateral damage to overall capabilities.
-</details>
-
-<details>
-<summary><b>🎓 For Curious Programmers & Students</b></summary>
-<br>
-You don't need a cluster of 8x H100 GPUs to explore frontier neural networks. With our runnable Python labs, you can compile your own neural policies and execute weight surgery right on your laptop using standard Python in under 2 seconds.
-</details>
-
----
-
-## 💖 **How You Can Support**
-
-If you appreciate this research showcase, the interactive atlas, and the open benchmark, consider supporting the work:
-
-<div align="center">
-
-| ❤️ **Platform** | 🌟 **Support Link** |
-|:---|:---|
-| **GitHub Sponsors** | [![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-red?style=for-the-badge&logo=github)](https://github.com/sponsors/Hunterdii) |
-| **Buy Me a Coffee** | [![Buy Me a Coffee](https://img.shields.io/badge/☕-Buy%20Me%20a%20Coffee-orange?style=for-the-badge)](https://www.buymeacoffee.com/het81857) |
-| **LinkedIn** | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/het-patel-8b110525a/) |
-| **Twitter / X** | [![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/HetPate94938685) |
-
-<p>
-  <b>Every star, fork, and contribution helps advance open and reproducible AI science! 🌈✨</b>
-</p>
-
-</div>
-
----
-
-## ⭐ **Star History**
-
-<div align="center">
-
-<a href="https://star-history.com/#Hunterdii/weight-space-programming-explained&Date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Hunterdii/weight-space-programming-explained&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Hunterdii/weight-space-programming-explained&type=Date" />
-    <img src="https://api.star-history.com/svg?repos=Hunterdii/weight-space-programming-explained&type=Date" alt="Star History Chart" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/divider-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/divider-light.svg">
+    <img alt="" src="assets/readme/divider-dark.svg" width="100%" height="24">
+  </picture>
+</p>
+
+<a id="start"></a>
+
+## Start here
+
+Pick the row that matches your time and background. Every link goes somewhere that works today.
+
+| You are... | Time | Do this |
+|:--|:-:|:--|
+| **Curious** (no maths needed) | 2 min | Open the [atlas](https://weight-space-atlas.vercel.app/), drag the surgery slider, then read [Ch 1, *A Network Is a Pile of Numbers*](https://weight-space-atlas.vercel.app/read/1-pile-of-numbers/). |
+| **ML engineer** | 10 min | Run [`lab/02_direction_surgery.py`](lab/02_direction_surgery.py), then read [Ch 5, *FIX*](https://weight-space-atlas.vercel.app/read/5-fix/). |
+| **Safety or security reader** | 15 min | Read [Ch 11, *The Severe Stuff*](https://weight-space-atlas.vercel.app/read/11-the-severe-stuff/), a risk atlas told responsibly. |
+| **Researcher or reviewer** | 1 hour | Read the [whitepaper](paper/whitepaper.pdf), then [What the evidence supports](#evidence) and the [Honesty Ledger](research/open-verification-items.md). |
+| **Builder** | a weekend | Pick a [contribution](#contribute): replicate on another model family, or write Lab 5. |
+
+<a id="idea"></a>
+
+## The idea
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/ribbon-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/ribbon-light.svg">
+  <img alt="Weight space programming. Weights are code. An atlas of the program." src="assets/readme/ribbon-dark.svg" width="100%">
+</picture>
+
+Today a network's weights are written by an optimizer. WSP asks what happens if they are written like **source code**: read, understood, patched and compiled by something that can reason.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/verbs-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/verbs-light.svg">
+  <img alt="The three verbs. READ: name a network from its numbers (Exp 1, 2, 3, 7). FIX: remove one direction with a rank-1 edit (Exp 4, 8). WRITE: compile a policy from zero (Exp 5, 6)." src="assets/readme/verbs-dark.svg" width="100%">
+</picture>
+
+|  | **READ** | **FIX** | **WRITE** |
+|:--|:--|:--|:--|
+| **Question** | What was this network trained to do? | Why does it fail, and what is the smallest edit that stops it? | Can you write a working network from nothing? |
+| **Headline** | Named the right game for all 4 networks from 17,253 raw weights each | Ramp-climbing car: **0 / 256 → 1,024 / 1,024** by editing 3.5% of weights | Breakout from all-zero weights: **517.4** vs **25.3** for PPO at 500M steps |
+| **Flagship** | Exp 1 to 3 | **Exp 8**: Qwen3.5-0.8B, **0.016%** of weights, MATH-500 **7.9% → 48.1%** | Exp 5 and 6 |
+
+```mermaid
+flowchart LR
+    W[("Raw weights<br/>as text")] --> L{{"General-purpose LLM<br/>reasoning, no optimizer"}}
+    L -->|READ| R["What does it compute?<br/>game, shape, language, circuit"]
+    L -->|FIX| F["Which direction causes the failure?<br/>W' = (I − u uᵀ) W"]
+    L -->|WRITE| X["Hand-compile the layers<br/>from an all-zero start"]
+    R --> V{{"Check it"}}
+    F --> V
+    X --> V
+    V -->|"not yet"| L
+    V -->|"works"| OUT(["Patched or<br/>synthesised network"])
+
+    classDef core fill:#6d28d9,stroke:#4c1d95,color:#fff
+    classDef read fill:#0e7490,stroke:#155e75,color:#fff
+    classDef fix fill:#b91c1c,stroke:#7f1d1d,color:#fff
+    classDef write fill:#b45309,stroke:#78350f,color:#fff
+    classDef neutral fill:#334155,stroke:#1e293b,color:#fff
+    class L core
+    class R read
+    class F fix
+    class X write
+    class W,V,OUT neutral
+```
+
+> [!NOTE]
+> **What "no gradient descent" does and does not mean.** Experiments 1 to 3 used no tools and no forward passes. Experiments 6 and 8 gave the LLM a Python sandbox and a budget of forward passes (up to 50 in Exp 8) to look at behaviour. There were never gradients or training loops, but the model was not always working blind. Details in [What the evidence supports](#evidence).
+
+<a id="atlas"></a>
+
+## The live atlas
+
+**[weight-space-atlas.vercel.app](https://weight-space-atlas.vercel.app/)** is a free interactive field guide. No sign-up, WCAG 2.2 AA, light and dark themes.
+
+<a href="https://weight-space-atlas.vercel.app/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/atlas-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/atlas-light.png">
+    <img alt="The atlas landing page: a 64 by 64 3D weight lattice with Read, Fix and Write modes and a delta-W slider, next to live MATH-500, token-limit and edited-weight readouts." src="assets/readme/atlas-dark.png" width="100%">
   </picture>
 </a>
 
-</div>
+| Feature | What you get |
+|:--|:--|
+| **3D weight lattice** | A 64×64 matrix of Layer 15's MLP `W_gate`. Hover to read a weight, switch between Read, Fix and Write, drag ΔW. |
+| **Rank-1 surgery simulator** | Drag α in `W′ = (I − α·uuᵀ)W` across 64 columns and watch the Exp 8 numbers move. |
+| **Fingerprint lab** | The Atari weight fingerprints of Exp 1, recomputed live from the authors' published prompts. |
+| **Five reading levels** | Every paragraph reads from *curious observer* up to *frontier researcher*. |
+| **Truth Contract** | Press <kbd>T</kbd> and everything that is not a paper-reported fact disappears. |
+| **Adaptive pathways** | Curious observer, ML engineer, safety auditor, academic researcher. |
+| **Instruments** | A 15-question quiz, 60+ glossary terms, 12 FAQs, 44 references and a scoreboard of all 8 experiments. |
 
----
+<details>
+<summary><b>The 13-chapter curriculum</b></summary>
 
-## 📈 **Contributors**
+| Part | # | Chapter | Read |
+|:--|:-:|:--|:-:|
+| **I · Foundations** | 01 | [A Network Is a Pile of Numbers](https://weight-space-atlas.vercel.app/read/1-pile-of-numbers/) | 9 min |
+| | 02 | [How Weights Get Written: Three Old Ways, One New](https://weight-space-atlas.vercel.app/read/2-how-weights-are-written/) | 10 min |
+| | 03 | [Cousins of WSP: Who Else Touches the Weights?](https://weight-space-atlas.vercel.app/read/3-cousins/) | 9 min |
+| **II · The Experiments** | 04 | [READ: Guessing Games With Real Weight Lists](https://weight-space-atlas.vercel.app/read/4-read/) | 13 min |
+| | 05 | [FIX: Surgery on a Ramp and on a Thought Loop](https://weight-space-atlas.vercel.app/read/5-fix/) | 13 min |
+| | 06 | [WRITE: Policies Born From Pure Thought](https://weight-space-atlas.vercel.app/read/6-write/) | 11 min |
+| | 07 | [How Did It Do It? Two Mechanisms](https://weight-space-atlas.vercel.app/read/7-how-did-it-do-it/) | 9 min |
+| **III · Judgement** | 08 | [Measured vs Anecdote: Sorting the Evidence](https://weight-space-atlas.vercel.app/read/8-measured-vs-anecdote/) | 9 min |
+| | 09 | [Small Models, Big Models: Who Benefits?](https://weight-space-atlas.vercel.app/read/9-small-vs-big/) | 8 min |
+| **IV · Futures & Risks** | 10 | [What Comes Next: Predictions and the Horizon Map](https://weight-space-atlas.vercel.app/read/10-what-comes-next/) | 8 min |
+| | 11 | [The Severe Stuff: a Risk Atlas, Told Responsibly](https://weight-space-atlas.vercel.app/read/11-the-severe-stuff/) | 10 min |
+| | 12 | [Het's Lab: Three Runnables and a Benchmark Proposal](https://weight-space-atlas.vercel.app/read/12-hets-lab/) | 9 min |
+| | 13 | [The Library: Glossary, Quiz, References, Open Items](https://weight-space-atlas.vercel.app/read/13-glossary-quiz-refs/) | 6 min |
 
-Thank you to everyone pushing the frontiers of open, verifiable neural programming!
+Shortcuts: [Prologue](https://weight-space-atlas.vercel.app/prologue/) · [8 experiments](https://weight-space-atlas.vercel.app/experiments/) · [Labs](https://weight-space-atlas.vercel.app/lab/) · [Quiz](https://weight-space-atlas.vercel.app/quiz/) · [Glossary](https://weight-space-atlas.vercel.app/glossary/) · [References](https://weight-space-atlas.vercel.app/references/) · [FAQ](https://weight-space-atlas.vercel.app/faq/) · [Scoreboard and audit](https://weight-space-atlas.vercel.app/about/)
+
+</details>
+
+<a id="surgery"></a>
+
+## The surgery, in motion
+
+The flagship result is **Experiment 8**. Qwen3.5-0.8B, running in thinking mode, kept falling into a reasoning loop: **93.0%** of its answers hit the token limit before finishing. The LLM found the direction behind the loop and projected it out of 64 MLP output columns in each of two layers.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/surgery-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/surgery-light.svg">
+  <img alt="Teaching schematic: a red runaway-loop wave across a field of weights is flattened as a green rank-1 projection sweeps from left to right." src="assets/readme/surgery-dark.svg" width="100%">
+</picture>
+
+🟨 *The animation is a teaching schematic. Only the endpoints in the table below are paper-reported.*
+
+**Qwen3.5-0.8B, by the number of forward passes the LLM was allowed** (🟦 paper-reported):
+
+| | MATH-500 | GSM8K | IFEval | Hit token limit |
+|:--|--:|--:|--:|--:|
+| Base model | 7.9% | 13.8% | 21.0% | 93.0% |
+| Edited, 10 passes | 12.3% | 25.7% | 49.0% | 87.2% |
+| Edited, 25 passes | 14.1% | 25.1% | 39.9% | 86.4% |
+| Edited, 50 passes | **48.1%** | **67.1%** | **62.3%** | **33.1%** |
+
+```mermaid
+xychart-beta
+    title "Qwen3.5-0.8B on MATH-500 by forward passes (%)"
+    x-axis ["base", "10 passes", "25 passes", "50 passes"]
+    y-axis "MATH-500 accuracy (%)" 0 --> 60
+    bar [7.9, 12.3, 14.1, 48.1]
+```
+
+The edit touches two layers and nothing else:
+
+```mermaid
+flowchart LR
+    IN(["prompt"]) --> A["Layers 1 to 14<br/>untouched"]
+    A --> B["Layer 15 MLP<br/>64 output columns edited<br/>65,536 weights"]
+    B --> M["Layers 16 to 18<br/>untouched"]
+    M --> C["Layer 19 MLP<br/>64 output columns edited<br/>65,536 weights"]
+    C --> D["Layers 20 to 24<br/>untouched"] --> OUT(["answer"])
+
+    classDef edit fill:#be123c,stroke:#881337,color:#fff
+    classDef keep fill:#475569,stroke:#334155,color:#fff
+    class B,C edit
+    class A,M,D,IN,OUT keep
+```
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant A as Reasoning LLM
+    participant K as Python kernel
+    participant Q as Qwen3.5-0.8B weights
+    participant E as Evaluator
+    A->>K: load Qwen3.5-0.8B and run forward passes (10, 25 or 50)
+    K-->>A: activations show a looping direction u
+    A->>Q: project u out of 64 MLP output columns in layers 15 and 19
+    Note over Q: 131,072 of 800M weights edited (0.016%)
+    Q->>E: MATH-500, GSM8K, IFEval, token-limit hits
+    E-->>A: with 50 passes MATH-500 goes 7.9% to 48.1%
+    Note over E: A control on Gemma 3 270M, which rarely loops, did not improve
+```
+
+<a id="quickstart"></a>
+
+## Run it in 30 seconds
+
+Python 3.10+ and NumPy. **No GPU, no PyTorch, no API keys.**
+
+```bash
+git clone https://github.com/Hunterdii/weight-space-programming-explained.git
+cd weight-space-programming-explained
+pip install -r requirements.txt
+
+python lab/01_compile_a_rule.py       # WRITE: hand-compile a 17-number network that plays paddle
+python lab/02_direction_surgery.py    # FIX:   rank-1 surgery, (I − u uᵀ) W
+python lab/03_blast_radius.py         # MEASURE: verify the 0.016% arithmetic
+python lab/04_fingerprint_games.py    # READ:  recompute the Exp 1 weight fingerprints
+```
+
+Real output from a clean run:
+
+```text
+$ python lab/01_compile_a_rule.py
+all asserts passed - your 17-number brain plays paddle
+
+$ python lab/02_direction_surgery.py
+max |u^T W'| = 6.661338147750939e-16
+edited 8/64 columns; remaining u-energy 0.74
+
+$ python lab/03_blast_radius.py
+0.0164%
+131072
+
+$ python lab/04_fingerprint_games.py
+breakout  strongest row 8 (58%)   strongest column 8 (17%)
+pong      strongest row 2 (14%)   strongest column 1 (55%)
+pacman    strongest row 8 (16%)   strongest column 1 (16%)
+freeway   strongest row 6 (20%)   strongest column 4 (22%)
+```
+
+**Lab 4 is the fun one.** Breakout's agent weights pile into row 8 (58%): the bottom row, where the paddle lives. Pong's pile into column 1 (55%). That is the kind of structure the LLM read in Exp 1.
+
+| Lab | Verb | What it proves | Tier |
+|:--|:-:|:--|:-:|
+| [`01_compile_a_rule.py`](lab/01_compile_a_rule.py) | WRITE | A rule can be turned into weights with no training | 🟨 schematic |
+| [`02_direction_surgery.py`](lab/02_direction_surgery.py) | FIX | `(I − uuᵀ)W` removes a direction exactly (error ≈ 1e-16) | 🟨 schematic |
+| [`03_blast_radius.py`](lab/03_blast_radius.py) | MEASURE | 131,072 / 800M ≈ 0.0164% | arithmetic |
+| [`04_fingerprint_games.py`](lab/04_fingerprint_games.py) | READ | Atari policies have visible structure in layer 1 | recomputed from released data |
+
+<details>
+<summary><b>Lab 1 in 12 lines: a paddle policy with zero training</b></summary>
+
+```python
+import numpy as np
+
+# 2-layer ReLU net: input (ball_x, paddle_x) -> move right (+) or left (-)
+W1 = np.array([[ 1.0, -1.0],    # fires when the ball is right of the paddle
+               [-1.0,  1.0]])   # fires when the ball is left of the paddle
+W2 = np.array([[ 1.0, -1.0]])   # action = h0 - h1
+
+def forward(ball, paddle):
+    h = np.maximum(0, W1 @ np.array([ball, paddle]))
+    return float(W2 @ h)
+
+assert forward(0.8, 0.2) > 0    # ball is right  -> move right
+assert forward(0.1, 0.9) < 0    # ball is left   -> move left
+assert forward(0.5, 0.5) == 0   # aligned        -> stay
+```
+
+No training run produced those numbers. A rule was written down and the weights were derived from it. That is the whole WRITE idea in miniature.
+
+</details>
+
+<a id="experiments"></a>
+
+## The eight experiments
+
+Every number is from the [original post](https://rikiyat.github.io/blog/weight-space-programming/) (🟦 paper-reported); the authors released their logs at [RikiyaT/lm_understand-logs](https://github.com/RikiyaT/lm_understand-logs). **None of these are replications by this repo.**
+
+| # | Verb | Setup | Result |
+|:-:|:-:|:--|:--|
+| **1** | READ | 4 PPO policies, MLP 500→32→32→5, 17,253 weights each (Breakout, Pong, Pac-Man, Freeway). No tools, options not revealed | Right game for all 4. Breakout named with 99% confidence |
+| **2** | READ | 3 diffusion models (circle, square, triangle), 23,824 weights each. No forward pass | Right shape for all 3, found in the output layer (drawn as outlines, not filled) |
+| **3** | READ | 3 character transformers (7.16M weights), only the 4 middle blocks, no labels | Right language for all 3 in both attempts. Every copying (induction) head found, none falsely named |
+| **4** | FIX | Kinetix car-on-ramp actor, 171,664 weights, stuck in a local minimum | One try, no tools, 3.5% of weights edited: **0 / 256 → 1,024 / 1,024** |
+| **5** | WRITE | MinAtar Breakout, Seaquest, Asterix. 600→32→32→6, all weights start at 0, no data, no tools | Beats PPO at 100M steps in all 3 (table below) |
+| **6** | WRITE | 9×9 Go, 243→512×6→82 (1,480,274 weights), Python sandbox | With 0 forward passes, wins more than half its games against two small PPO nets. With 50, beats the equal-sized PPO net trained on 20M games |
+| **7** | READ | 2 Gemma 3 270M models, one fine-tuned to be sycophantic | From raw weights alone: **failed in all 4 attempts**. Given only attention patterns on its own texts: picked the sycophant in 3 of 3 pairs |
+| **8** | FIX | Qwen3.5-0.8B, thinking mode, Python kernel, 10 / 25 / 50 forward passes | 131,072 weights edited (0.016%). With 50 passes: [see above](#surgery) |
+
+**Experiment 5, both sides.** Scores from the post (higher is better):
+
+| Game | PPO 100M steps | PPO 500M steps | LLM, one shot |
+|:--|--:|--:|--:|
+| Breakout | 15.8 | 25.3 | **517.4** |
+| Seaquest | 5.6 | **88.9** | 53.1 |
+| Asterix | 25.8 | **55.2** | 53.2 |
+
+The "20×" headline is real, but it is **Breakout only**. Against the stronger PPO baseline the LLM is close in Asterix and reaches about 60% of the score in Seaquest.
+
+<a id="math"></a>
+
+## The maths
+
+<details open>
+<summary><b>Rank-1 direction removal (Exp 4 and 8)</b></summary>
+
+Let $u$ be a unit vector for the unwanted direction and $S$ a set of output columns. Then
+
+$$
+W' = (I - uu^{\top})\,W \quad \text{on columns } S
+\qquad\Longrightarrow\qquad
+u^{\top}W'_S = u^{\top}W_S - (u^{\top}u)\,u^{\top}W_S = 0
+$$
+
+$(I - uu^{\top})$ is the orthogonal projector onto the complement of $\mathrm{span}(u)$. Everything aligned with $u$ is removed from those columns, and everything orthogonal to $u$ is untouched. [`lab/02_direction_surgery.py`](lab/02_direction_surgery.py) checks this numerically.
+
+</details>
+
+<details open>
+<summary><b>Blast radius: why it is 0.016%</b></summary>
+
+Two layers, 64 columns each, hidden size 1,024 (implied by 131,072 / 128 columns):
+
+$$
+s=\frac{\lVert\Delta W\rVert_0}{P}=\frac{2\times 64\times 1024}{800{,}000{,}000}=\frac{131{,}072}{800{,}000{,}000}\approx 0.0164\%
+$$
+
+Roughly **one weight in 6,100**. [`lab/03_blast_radius.py`](lab/03_blast_radius.py) reproduces it.
+
+</details>
+
+<details>
+<summary><b>Reading structure from weights: the Exp 1 fingerprint</b></summary>
+
+The policy's first layer is $W_1 \in \mathbb{R}^{32\times 500}$ over a $10\times 10\times 5$ observation. The sensitivity of cell $(r,c)$ in channel $ch$ is the L2 norm over the 32 hidden units:
+
+$$
+\lVert W_1[\,\cdot\,,r,c,ch]\rVert_2=\sqrt{\sum_{k=1}^{32}W_1[k,r,c,ch]^2}
+$$
+
+Summing these by row or column gives the fingerprint. In Breakout one row holds 58% of the agent channel's energy.
+
+</details>
+
+<details>
+<summary><b>Detecting copying heads (Exp 3)</b></summary>
+
+Following the transformer-circuits formulation, a copying (induction) pair is scored statically from weights:
+
+$$
+\mathrm{score}=\frac{\lVert W^{(2)}_{QK}\,W^{(1)}_{OV}\rVert_F}{\lVert W^{(2)}_{QK}\rVert_F\;\lVert W^{(1)}_{OV}\rVert_F}
+$$
+
+</details>
+
+<a id="evidence"></a>
+
+## What the evidence supports
+
+WSP is exciting and **very early**; the authors themselves call these results *sparks*. This repo's rule is simple: **every number carries exactly one badge, and the caveats sit next to the headline.**
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/truth-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/truth-light.svg">
+  <img alt="The Truth Contract badges: paper-reported, independent review, teaching schematic, speculation." src="assets/readme/truth-dark.svg" width="100%">
+</picture>
+
+| Claim people make | What the evidence supports |
+|:--|:--|
+| "LLMs fixed a model with zero forward passes" | Only Exp 1 to 3 and the 0-pass Go run were that blind. Exp 8's 48.1% used 50 forward passes in a Python harness. With 10 or 25 passes the gain was small. |
+| "It made the model better at math" | It removed an obstacle: 93% of answers were hitting the token limit. On **Gemma 3 270M**, which rarely loops, the edits did not help (MATH-500 6.8% to at most 7.7%). The authors say the same: removing an obstacle can reveal an ability, not add one. |
+| "LLMs can read any behaviour from weights" | Exp 7 failed from raw weights in 4 of 4 attempts. It only worked once attention patterns were provided. |
+| "It beats RL" | True for Breakout against PPO at 500M steps. Not for Seaquest or Asterix. |
+| "This is settled" | One lab, a few seeds, one frontier model, published as a research blog post rather than a peer-reviewed paper. |
+
+### Independent reviews 🟩
+
+| Who | When | What they found |
+|:--|:--|:--|
+| **Prof. Andreas Maier** | 5 Nov 2026 | [A review](https://akmaier.substack.com/p/weight-space-programming-what-is) that separates what was measured from what is anecdote, and flags single-run results. |
+| **Matthew Honnibal** | 3 Nov 2026 | Argued the post is misleading because it joins two different questions: can an LLM *read* weights, and can it *edit* them usefully. |
+| **Sean Goedecke** | Nov 2026 | Walked through the Qwen fix and showed the steps are the ones a human ML researcher would take. His analogy: editing weights is like patching a compiled binary, a neat trick but not the best way to build software. |
+| **Simon Willison** | 3 Nov 2026 | [Re-ran the no-tools reading test](https://simonwillison.net/2026/nov/3/qwen-can-interpret-model-weights) on his laptop with a local Qwen 3.8 27B, which named three of the four games. Reading from weights is not unique to one frontier model. |
+
+Everything unresolved is tracked in public in the **[Honesty Ledger](research/open-verification-items.md)**. Found a wrong number? [Open a correction](https://github.com/Hunterdii/weight-space-programming-explained/issues/new?template=correction.yml). Fixing errors is a feature.
+
+<a id="bench"></a>
+
+## WSP-Bench-Lite
+
+A small open protocol to make WSP claims comparable. It is an **original proposal in this repo** (not from the paper's authors), and **no results exist yet**. Spec: [`bench/WSP-Bench-Lite.md`](bench/WSP-Bench-Lite.md).
+
+```mermaid
+flowchart LR
+    S["Submission<br/>(JSON schema)"] --> P{{"Protocol checks"}}
+    P --> M1["At least 5 seeds"]
+    P --> M2["Sparsity budget<br/>s under 1%"]
+    P --> M3["Drift bound<br/>KL under 0.05"]
+    P --> M4["Pre-registered<br/>prompt SHA-256"]
+    M1 & M2 & M3 & M4 --> E["Evaluation"]
+    E --> TR["READ track"]
+    E --> TF["FIX track"]
+    E --> TW["WRITE track"]
+    TR & TF & TW --> B(["Geometric-mean<br/>leaderboard"])
+
+    classDef gate fill:#6d28d9,stroke:#4c1d95,color:#fff
+    classDef track fill:#047857,stroke:#064e3b,color:#fff
+    class P gate
+    class TR,TF,TW track
+```
+
+| Track | Task | Baselines |
+|:--|:--|:--|
+| **READ** | Identify network function from weights alone | Random guessing, receptive-field scanners, human experts |
+| **FIX** | Repair seeded failures (sign flips, dead units, loops) | Random-direction ablation, PCA pruning, decoding truncation |
+| **WRITE** | Hand-compile a controller from a spec, no gradient steps | Evaluated over at least 1,000 episodes |
+
+<a id="context"></a>
+
+## Where WSP sits in history
+
+<details>
+<summary><b>Four ways of programming a model (this repo's framing)</b></summary>
+
+```mermaid
+flowchart LR
+    A["1986 to 2020<br/><b>Train it</b><br/>loss, backprop, SGD"] --> B["2021 to 2023<br/><b>Adapt it</b><br/>LoRA, task vectors"]
+    B --> C["2022 to 2024<br/><b>Edit its facts</b><br/>ROME, MEMIT, patching"]
+    C --> D["2026<br/><b>Program it</b><br/>an LLM reads and writes weights"]
+
+    classDef old fill:#475569,stroke:#334155,color:#fff
+    classDef mid fill:#1d4ed8,stroke:#1e3a8a,color:#fff
+    classDef edit fill:#6d28d9,stroke:#4c1d95,color:#fff
+    classDef now fill:#047857,stroke:#064e3b,color:#fff
+    class A old
+    class B mid
+    class C edit
+    class D now
+```
+
+Chapters [2](https://weight-space-atlas.vercel.app/read/2-how-weights-are-written/) and [3](https://weight-space-atlas.vercel.app/read/3-cousins/) of the atlas cover how WSP differs from fine-tuning, LoRA, task-vector merging and ROME-style editing. Critics note that rank-1 direction removal resembles directional ablation from the interpretability literature, which is worth keeping in mind when judging what is new.
+
+</details>
+
+<a id="map"></a>
+
+## Repository map
+
+```mermaid
+mindmap
+  root((WSP explained))
+    lab
+      4 NumPy labs
+      each under 1 s
+    paper
+      whitepaper PDF
+      13 vector figures
+      LaTeX source
+    research
+      44 references
+      fact sheet
+      Honesty Ledger
+    bench
+      WSP-Bench-Lite
+      3 tracks
+    docs
+      fact sheet
+      change log
+    tests
+      CI for the labs
+```
+
+```text
+.
+├── lab/            4 NumPy labs, each runs in under a second
+├── bench/          WSP-Bench-Lite, a community benchmark proposal
+├── paper/          whitepaper (PDF, LaTeX source, 13 vector figures)
+├── research/       references, machine-readable facts, open verification items
+├── docs/           fact sheet and change log
+├── tests/          pytest checks for the labs
+├── assets/         banners, diagrams, animations
+├── .github/        issue templates, code of conduct
+├── CONTRIBUTING.md
+├── CITATION.cff
+├── LICENSE         code: MIT
+└── LICENSE-CONTENT.md   prose and visuals: CC BY 4.0
+```
+
+<a id="stack"></a>
+
+## Tech stack
+
+| | |
+|:--|:--|
+| **Labs** | Python 3.10+, NumPy. No other runtime dependency. |
+| **Atlas** | Next.js on Vercel, WebGL 3D lattice, KaTeX for maths, light and dark themes. |
+| **Paper** | LaTeX, IEEE-style monograph with vector figures. |
+| **Diagrams** | Mermaid in this README, rendered natively by GitHub. |
+| **CI** | GitHub Actions runs the lab tests. |
+
+<a id="faq"></a>
+
+## FAQ
+
+<details>
+<summary><b>Do I need a GPU or an API key?</b></summary>
+<br>
+No. The four labs are pure NumPy and each runs in under a second on a laptop. The atlas runs in your browser.
+</details>
+
+<details>
+<summary><b>Is "no gradient descent" the same as "no forward passes"?</b></summary>
+<br>
+No. The LLM never used gradients or a training loop. But in Exp 8 it could run up to 50 forward passes of the Qwen model in a Python kernel to look at behaviour, and the big gain only appeared at 50. Only Exp 1 to 3 were fully static. See <a href="#evidence">What the evidence supports</a>.
+</details>
+
+<details>
+<summary><b>So did it teach Qwen to do maths?</b></summary>
+<br>
+No. It removed a looping failure that was exhausting the token budget. A control on Gemma 3 270M, which rarely loops, did not improve. The authors make the same point.
+</details>
+
+<details>
+<summary><b>Is this peer reviewed?</b></summary>
+<br>
+No. The source is a research blog post from MIT CSAIL. Independent reviewers have already responded (see above), and the <a href="research/open-verification-items.md">Honesty Ledger</a> tracks what is still open.
+</details>
+
+<details>
+<summary><b>How is this different from fine-tuning, LoRA or ROME/MEMIT?</b></summary>
+<br>
+Those methods compute an update with an optimizer or a dedicated algorithm. In WSP a general-purpose LLM reasons about the weights as text and chooses the edit itself. The edit in Exp 8 is simple linear algebra, which is exactly why it is easy to verify. Chapter 3 of the atlas compares the cousins.
+</details>
+
+<details>
+<summary><b>Could this be misused?</b></summary>
+<br>
+Cheap, targeted weight edits could in principle strip guardrails or plant backdoors, and defenders could use the same tools to audit models. <a href="https://weight-space-atlas.vercel.app/read/11-the-severe-stuff/">Chapter 11</a> maps the risks and defences responsibly, without operational detail.
+</details>
+
+<details>
+<summary><b>Is this affiliated with MIT or the authors?</b></summary>
+<br>
+No. It is an independent explainer by <a href="https://github.com/Hunterdii">Het Patel</a>. All discovery credit belongs to the MIT CSAIL authors.
+</details>
+
+<details>
+<summary><b>Can I reuse the visuals or text?</b></summary>
+<br>
+Yes. Code is MIT. Prose, whitepaper and figures are CC BY 4.0: reuse them with attribution.
+</details>
+
+<a id="contribute"></a>
+
+## Contribute
+
+The most useful contributions are the ones that make a claim **easier to falsify**.
+
+1. **Replicate with more seeds** on another model family (Llama, Mistral, Gemma 2, DeepSeek) and send the logs.
+2. **Close an item** in the [Honesty Ledger](research/open-verification-items.md), either way.
+3. **Write Lab 5**, for example `05_attention_surgeon.py`, or sweep the surgery rank *k* in Lab 2.
+4. **Improve the atlas**: accessibility, translations, new modules.
+5. **Star the repo** so other people can find it.
+
+Read [`CONTRIBUTING.md`](CONTRIBUTING.md) first. This project follows the [Code of Conduct](.github/CODE_OF_CONDUCT.md). Corrections and ideas: [correction form](https://github.com/Hunterdii/weight-space-programming-explained/issues/new?template=correction.yml) · [feature request](https://github.com/Hunterdii/weight-space-programming-explained/issues/new?template=feature_request.yml).
 
 <p align="center">
   <a href="https://github.com/Hunterdii/weight-space-programming-explained/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=Hunterdii/weight-space-programming-explained" alt="Contributors" />
+    <img alt="Contributors" src="https://contrib.rocks/image?repo=Hunterdii/weight-space-programming-explained">
   </a>
 </p>
 
----
+<!-- <a id="cite"></a>
 
-## 🤝 **How to Contribute**
-
-We warmly welcome researchers, developers, students, and curious builders! Here is how you can get involved:
-
-1. 🌟 **Star the Repo**: Help amplify this research across the global open-source community.
-2. 🔬 **Run Benchmarks**: Implement multi-seed replications of Exp 1–8 across other model families (Llama 3, Mistral, Gemma 2, DeepSeek) and submit your logs.
-3. 🧪 **Build a New Lab**: Create `05_attention_surgeon.py` or extend Lab 2 to sweep singular values $k \in [1, 64]$.
-4. 🔍 **Resolve Verification Items**: Help investigate items in our [Honesty Ledger](research/open-verification-items.md).
-5. 🌐 **Improve the Atlas**: Suggest features, interactive widgets, or translations for [weight-space-atlas.vercel.app](https://weight-space-atlas.vercel.app/).
-
-Check out [`CONTRIBUTING.md`](CONTRIBUTING.md) and our [`CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md) before submitting pull requests.
-
----
-
-<!-- ## 📖 **Citation & Academic Attribution**
-
-If you utilize this showcase, the runnable labs, the whitepaper PDF, or the WSP-Bench-Lite benchmark in your research, please cite both the primary MIT CSAIL discovery and this showcase:
+## Cite
 
 ```bibtex
-@article{takehi2026weightspace,
-  title   = {Sparks of Weight-Space Programming: {LLMs} can natively read \& write neural network weights},
-  author  = {Takehi, Rikiya and Teoh, Jayden and Zhang, Alex and Khattab, Omar},
-  journal = {MIT CSAIL Research Notes},
-  year    = {2026},
-  month   = {nov},
-  url     = {https://csail.mit.edu/research/sparks-weight-space-programming}
+@misc{takehi2026weightspace,
+  title        = {Sparks of Weight-Space Programming: LLMs can natively read \& write neural network weights},
+  author       = {Takehi, Rikiya and Teoh, Jayden and Zhang, Alex and Khattab, Omar},
+  year         = {2026},
+  month        = nov,
+  howpublished = {\url{https://rikiyat.github.io/blog/weight-space-programming/}}
 }
 
-@software{patel2026wspatlas,
-  title   = {Weight-Space Programming: An Independent Research Showcase, Technical Field Guide, and Benchmark Testbed},
-  author  = {Patel, Het},
-  year    = {2026},
-  month   = {nov},
-  url     = {https://github.com/Hunterdii/weight-space-programming-explained},
-  note    = {Interactive Web Atlas (https://weight-space-atlas.vercel.app), research monograph, and runnable lab suite}
+@software{patel2026wspexplained,
+  title  = {Weight-Space Programming, Explained: an interactive atlas, labs and audit},
+  author = {Patel, Het},
+  year   = {2026},
+  month  = nov,
+  url    = {https://github.com/Hunterdii/weight-space-programming-explained}
 }
 ```
 
-A machine-readable [`CITATION.cff`](CITATION.cff) is also provided in the repository root. -->
+GitHub's **Cite this repository** button reads [`CITATION.cff`](CITATION.cff).
 
----
+<a id="credits"></a> -->
 
-## ⚖️ **Legal & Academic Disclaimer**
+## Credits, licence, disclaimer
 
-* **Original Research Attribution**: All primary discovery credit for Weight-Space Programming belongs to **Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab (MIT CSAIL)**.
-* **Independence**: This repository is an independent educational and research compilation authored by **Het Patel (@Hunterdii)**. It is not officially endorsed by, sponsored by, or affiliated with MIT, MIT CSAIL, OpenAI, or the original authors.
-* **Licensing**:
-  - Code, benchmarks, and Python labs are released under the permissive **[MIT License](LICENSE)**.
-  - Text, curricula, whitepaper monograph, and visual assets are licensed under **[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-CONTENT.md)**.
+- **Discovery:** Rikiya Takehi, Jayden Teoh, Alex Zhang and Omar Khattab (MIT CSAIL). Their logs: [RikiyaT/lm_understand-logs](https://github.com/RikiyaT/lm_understand-logs).
+- **Public review and replication:** Andreas Maier, Matthew Honnibal, Sean Goedecke, Simon Willison.
+- **Licence:** code, labs and benchmark are [MIT](LICENSE). Text, whitepaper and visuals are [CC BY 4.0](LICENSE-CONTENT.md).
+- **Independence:** this repository is not affiliated with, sponsored by or endorsed by MIT, MIT CSAIL, the original authors or any model vendor mentioned. Numbers marked 🟦 are the authors' claims, reported as published.
 
----
+<br>
 
 <div align="center">
 
-<img src="https://media.giphy.com/media/IP7sarl7C5lSFCw9rG/giphy.gif" width="60px" height="60px"><br/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/divider-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/divider-light.svg">
+  <img alt="" src="assets/readme/divider-dark.svg" width="100%" height="24">
+</picture>
 
-**Built with intellectual honesty, mathematical rigor, and open science.**  
-*Curated by [Het Patel (@Hunterdii)](https://github.com/Hunterdii) • Deployed at [weight-space-atlas.vercel.app](https://weight-space-atlas.vercel.app/)*
+<br>
 
-⭐ **Don't forget to star this repo if you find Weight-Space Programming exciting!** ⭐
+<!-- <a href="https://weight-space-atlas.vercel.app/">
+  <img alt="Weights are code. Edit 0.016% of an 800M-parameter model. No backprop, no fine-tuning, no GPU cluster. MATH-500 7.9% to 48.1%." src="assets/readme/weights-are-code.png" width="100%">
+</a> -->
+
+<br>
+
+**If this made weights feel less like a black box, a ⭐ helps other people find it.**
+
+<!-- [![Star this repo](https://img.shields.io/github/stars/Hunterdii/weight-space-programming-explained?style=social)](https://github.com/Hunterdii/weight-space-programming-explained) -->
+
+<a href="https://star-history.com/#Hunterdii/weight-space-programming-explained&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Hunterdii/weight-space-programming-explained&type=Date&theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Hunterdii/weight-space-programming-explained&type=Date">
+    <img alt="Star history chart" src="https://api.star-history.com/svg?repos=Hunterdii/weight-space-programming-explained&type=Date" width="80%">
+  </picture>
+</a>
+
+<br>
+
+Built with intellectual honesty by **[Het Patel (@Hunterdii)](https://github.com/Hunterdii)**, Student<br>
+[Atlas](https://weight-space-atlas.vercel.app/) · [GitHub](https://github.com/Hunterdii) · [LinkedIn](https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/)
 
 </div>

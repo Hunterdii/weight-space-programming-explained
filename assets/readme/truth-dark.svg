@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="150" viewBox="0 0 1280 150" role="img" aria-label="The four provenance badges: paper-reported, independent review, teaching schematic, speculation"><g transform="translate(0.0 0)"><rect width="308.0" height="150" rx="18" fill="#111722" stroke="#3b82f6" stroke-opacity=".75" stroke-width="1.6"/>
+<circle cx="38" cy="52" r="11" fill="#3b82f6"/>
+<text x="62" y="59" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="22" fill="#eaf0f8">Paper-reported</text>
+<text x="28" y="104" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15.5" fill="#9fb0c6">Stated in the original post</text></g><g transform="translate(324.0 0)"><rect width="308.0" height="150" rx="18" fill="#111722" stroke="#22c55e" stroke-opacity=".75" stroke-width="1.6"/>
+<circle cx="38" cy="52" r="11" fill="#22c55e"/>
+<text x="62" y="59" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="22" fill="#eaf0f8">Independent review</text>
+<text x="28" y="104" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15.5" fill="#9fb0c6">Checked by someone outside the authors</text></g><g transform="translate(648.0 0)"><rect width="308.0" height="150" rx="18" fill="#111722" stroke="#f59e0b" stroke-opacity=".75" stroke-width="1.6"/>
+<circle cx="38" cy="52" r="11" fill="#f59e0b"/>
+<text x="62" y="59" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="22" fill="#eaf0f8">Teaching schematic</text>
+<text x="28" y="104" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15.5" fill="#9fb0c6">Made-up toy data, to build intuition</text></g><g transform="translate(972.0 0)"><rect width="308.0" height="150" rx="18" fill="#111722" stroke="#ef4444" stroke-opacity=".75" stroke-width="1.6"/>
+<circle cx="38" cy="52" r="11" fill="#ef4444"/>
+<text x="62" y="59" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="22" fill="#eaf0f8">Speculation</text>
+<text x="28" y="104" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15.5" fill="#9fb0c6">A prediction, not yet tested</text></g></svg>
