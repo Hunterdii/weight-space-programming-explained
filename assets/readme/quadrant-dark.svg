@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="960" height="600" rx="16" fill="#090d16" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="38" text-anchor="middle" fill="#f8fafc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700">
+    The 8 WSP Experiments: Execution Access vs. Parameter Scale
+  </text>
+  <text x="480" y="60" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">
+    🟦 Paper-reported taxonomy · Color-coded by verb: 🔍 READ (Cyan) · 🩺 FIX (Crimson) · ✍️ WRITE (Amber)
+  </text>
+
+  <!-- Plot Area: x=110..890 (width 780), y=85..505 (height 420), midpoint=(500, 295) -->
+  <!-- Q2: Top-Left (Static Transformer Inspection) -->
+  <rect x="110" y="85" width="390" height="210" rx="6" fill="#0f172a" fill-opacity="0.7" stroke="#1e293b" stroke-width="1"/>
+  <text x="128" y="112" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="700" opacity="0.85">
+    QUADRANT II · Static Transformer Inspection
+  </text>
+  <text x="128" y="130" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">
+    No sandbox · No forward passes · Million-parameter scale
+  </text>
+
+  <!-- Q1: Top-Right (Interactive Frontier Surgery) -->
+  <rect x="500" y="85" width="390" height="210" rx="6" fill="#1e1b4b" fill-opacity="0.45" stroke="#1e293b" stroke-width="1"/>
+  <text x="872" y="112" text-anchor="end" fill="#f87171" font-family="system-ui, sans-serif" font-size="13" font-weight="700" opacity="0.9">
+    QUADRANT I · Interactive Frontier Surgery
+  </text>
+  <text x="872" y="130" text-anchor="end" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="11">
+    Python harness + up to 50 forward passes · 270M–800M LLMs
+  </text>
+
+  <!-- Q3: Bottom-Left (Static Toy Decompilation & Synthesis) -->
+  <rect x="110" y="295" width="390" height="210" rx="6" fill="#0f172a" fill-opacity="0.45" stroke="#1e293b" stroke-width="1"/>
+  <text x="128" y="472" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="13" font-weight="700">
+    QUADRANT III · Static Toy Decompilation &amp; Synthesis
+  </text>
+  <text x="128" y="490" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">
+    Pure text weights · Zero forward passes · 17K–172K MLPs
+  </text>
+
+  <!-- Q4: Bottom-Right (Sandbox Policy Compilation) -->
+  <rect x="500" y="295" width="390" height="210" rx="6" fill="#0f172a" fill-opacity="0.7" stroke="#1e293b" stroke-width="1"/>
+  <text x="872" y="472" text-anchor="end" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="13" font-weight="700" opacity="0.9">
+    QUADRANT IV · Sandbox Policy Compilation
+  </text>
+  <text x="872" y="490" text-anchor="end" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">
+    Code synthesis + forward verification · 1.48M Go policy
+  </text>
+
+  <!-- Subtle Grid Lines -->
+  <line x1="305" y1="85" x2="305" y2="505" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1"/>
+  <line x1="695" y1="85" x2="695" y2="505" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1"/>
+  <line x1="110" y1="190" x2="890" y2="190" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1"/>
+  <line x1="110" y1="400" x2="890" y2="400" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1"/>
+
+  <!-- Main Quadrant Dividers -->
+  <line x1="500" y1="85" x2="500" y2="505" stroke="#475569" stroke-width="2"/>
+  <line x1="110" y1="295" x2="890" y2="295" stroke="#475569" stroke-width="2"/>
+
+  <!-- Data Points -->
+  <!-- Exp 1: [0.12, 0.15] -> x=204, y=442 -->
+  <circle cx="204" cy="442" r="9" fill="#0ea5e9" stroke="#e0f2fe" stroke-width="2"/>
+  <text x="220" y="446" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">
+    Exp 1: Atari READ (17K · 4/4 games)
+  </text>
+
+  <!-- Exp 2: [0.15, 0.22] -> x=227, y=412 -->
+  <circle cx="227" cy="412" r="9" fill="#0ea5e9" stroke="#e0f2fe" stroke-width="2"/>
+  <text x="243" y="416" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">
+    Exp 2: Diffusion READ (24K · 3/3 shapes)
+  </text>
+
+  <!-- Exp 5: [0.10, 0.28] -> x=188, y=382 -->
+  <circle cx="188" cy="382" r="9" fill="#f59e0b" stroke="#fef3c7" stroke-width="2"/>
+  <text x="204" y="386" fill="#fde68a" font-family="system-ui, sans-serif" font-size="12" font-weight="600">
+    Exp 5: MinAtar WRITE (20K · Breakout 517.4)
+  </text>
+
+  <!-- Exp 4: [0.22, 0.38] -> x=282, y=340 -->
+  <circle cx="282" cy="340" r="9" fill="#ef4444" stroke="#fee2e2" stroke-width="2"/>
+  <text x="298" y="344" fill="#fecaca" font-family="system-ui, sans-serif" font-size="12" font-weight="600">
+    Exp 4: Ramp Car FIX (172K · 1,024/1,024)
+  </text>
+
+  <!-- Exp 3: [0.18, 0.65] -> x=250, y=222 -->
+  <circle cx="250" cy="222" r="9" fill="#0ea5e9" stroke="#e0f2fe" stroke-width="2"/>
+  <text x="266" y="226" fill="#bae6fd" font-family="system-ui, sans-serif" font-size="12" font-weight="600">
+    Exp 3: Char-Transformer READ (7.16M · Copying heads)
+  </text>
+
+  <!-- Exp 6: [0.72, 0.55] -> x=672, y=325 (placed in Q4/boundary for 1.48M Go Policy) -->
+  <circle cx="672" cy="332" r="10" fill="#f59e0b" stroke="#fef3c7" stroke-width="2"/>
+  <text x="656" y="356" text-anchor="middle" fill="#fde68a" font-family="system-ui, sans-serif" font-size="12" font-weight="700">
+    Exp 6: 9×9 Go WRITE (1.48M · 0–50 passes)
+  </text>
+
+  <!-- Exp 7: [0.65, 0.80] -> x=617, y=169 -->
+  <circle cx="617" cy="182" r="9" fill="#0ea5e9" stroke="#e0f2fe" stroke-width="2"/>
+  <text x="633" y="186" fill="#bae6fd" font-family="system-ui, sans-serif" font-size="12" font-weight="600">
+    Exp 7: Gemma Sycophancy READ (270M · Attn patterns)
+  </text>
+
+  <!-- Exp 8: [0.88, 0.92] -> x=796, y=118 (Flagship) -->
+  <circle cx="785" cy="142" r="16" fill="#ef4444" fill-opacity="0.28"/>
+  <circle cx="785" cy="142" r="10.5" fill="#ef4444" stroke="#ffffff" stroke-width="2.5"/>
+  <text x="765" y="146" text-anchor="end" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="800">
+    ★ Exp 8: Qwen3.5 Loop FIX (800M · 0.016% edited)
+  </text>
+
+  <!-- X-Axis Label -->
+  <text x="500" y="545" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700">
+    EXECUTION ACCESS: Zero Forward Passes (Pure Static) ───► Sandbox + Forward Passes (Up to 50)
+  </text>
+
+  <!-- Y-Axis Label (Rotated) -->
+  <text x="48" y="295" text-anchor="middle" transform="rotate(-90 48 295)" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="13.5" font-weight="700">
+    MODEL SCALE: Toy MLP (17K–172K) ───► Transformer Scale (7M–800M)
+  </text>
+</svg>

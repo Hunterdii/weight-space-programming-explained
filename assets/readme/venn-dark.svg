@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="52%" r="55%">
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#090d16" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="soft-glow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="620" rx="16" fill="url(#bg-glow)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="480" y="42" text-anchor="middle" fill="#f8fafc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" letter-spacing="0.4">
+    The Weight-Space Programming Triad (READ ∩ FIX ∩ WRITE)
+  </text>
+  <text x="480" y="66" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12.5">
+    How mechanistic decompilation, rank-1 surgical projection, and zero-init compilation converge
+  </text>
+
+  <!-- Three Venn Circles -->
+  <!-- READ Circle (Top Left) -->
+  <circle cx="370" cy="275" r="175" fill="#0e7490" fill-opacity="0.34" stroke="#38bdf8" stroke-width="2.5"/>
+  <!-- FIX Circle (Top Right) -->
+  <circle cx="590" cy="275" r="175" fill="#b91c1c" fill-opacity="0.34" stroke="#f87171" stroke-width="2.5"/>
+  <!-- WRITE Circle (Bottom Center) -->
+  <circle cx="480" cy="425" r="175" fill="#b45309" fill-opacity="0.34" stroke="#fbbf24" stroke-width="2.5"/>
+
+  <!-- Center Core Highlight -->
+  <circle cx="480" cy="328" r="56" fill="#6d28d9" fill-opacity="0.78" stroke="#c084fc" stroke-width="2" filter="url(#soft-glow)"/>
+
+  <!-- READ Exclusive Zone -->
+  <text x="275" y="195" text-anchor="middle" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700">
+    🔍 READ (Decompile)
+  </text>
+  <text x="275" y="214" text-anchor="middle" fill="#bae6fd" font-family="ui-monospace, monospace" font-size="11.5" font-weight="600">
+    Exp 1, 2, 3, 7
+  </text>
+  <text x="275" y="238" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12">
+    • Receptive-field &amp; Frobenius norms
+  </text>
+  <text x="275" y="256" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12">
+    • Induction-head &amp; circuit detection
+  </text>
+  <text x="275" y="274" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    • 4/4 Atari games · 3/3 Diffusion shapes
+  </text>
+
+  <!-- FIX Exclusive Zone -->
+  <text x="685" y="195" text-anchor="middle" fill="#f87171" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700">
+    🩺 FIX (Surgical Patch)
+  </text>
+  <text x="685" y="214" text-anchor="middle" fill="#fecaca" font-family="ui-monospace, monospace" font-size="11.5" font-weight="600">
+    Exp 4, 8
+  </text>
+  <text x="685" y="238" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12">
+    • Rank-1 projection W' = (I − uuᵀ)W
+  </text>
+  <text x="685" y="256" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12">
+    • 0.016% sparsity loop excision
+  </text>
+  <text x="685" y="274" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">
+    • MATH-500: 7.9% → 48.1% (Qwen 0.8B)
+  </text>
+
+  <!-- WRITE Exclusive Zone -->
+  <text x="480" y="498" text-anchor="middle" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700">
+    ✍️ WRITE (Compile) • Exp 5, 6
+  </text>
+  <text x="480" y="520" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12">
+    • Zero-init hand-compiled policies (No optimizer, no training data)
+  </text>
+  <text x="480" y="538" text-anchor="middle" fill="#fde68a" font-family="ui-monospace, monospace" font-size="11.5">
+    • Breakout 517.4 (vs 25.3 PPO) · 9×9 Go beats 20M-game PPO net
+  </text>
+
+  <!-- Pairwise Intersection: READ ∩ FIX -->
+  <rect x="405" y="196" width="150" height="48" rx="8" fill="#0f172a" fill-opacity="0.82" stroke="#64748b" stroke-width="1"/>
+  <text x="480" y="216" text-anchor="middle" fill="#f1f5f9" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700">
+    Mechanistic Diagnosis
+  </text>
+  <text x="480" y="233" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="10.5">
+    Locate buggy subspace u
+  </text>
+
+  <!-- Pairwise Intersection: READ ∩ WRITE -->
+  <rect x="278" y="355" width="156" height="48" rx="8" fill="#0f172a" fill-opacity="0.82" stroke="#64748b" stroke-width="1"/>
+  <text x="356" y="375" text-anchor="middle" fill="#f1f5f9" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700">
+    Symbolic ↔ Weight Map
+  </text>
+  <text x="356" y="392" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="10.5">
+    Bi-directional code fluency
+  </text>
+
+  <!-- Pairwise Intersection: FIX ∩ WRITE -->
+  <rect x="526" y="355" width="156" height="48" rx="8" fill="#0f172a" fill-opacity="0.82" stroke="#64748b" stroke-width="1"/>
+  <text x="604" y="375" text-anchor="middle" fill="#f1f5f9" font-family="system-ui, sans-serif" font-size="11.5" font-weight="700">
+    Targeted Synthesis
+  </text>
+  <text x="604" y="392" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="10.5">
+    Constructive rank-k grafting
+  </text>
+
+  <!-- Triple Intersection: READ ∩ FIX ∩ WRITE -->
+  <text x="480" y="322" text-anchor="middle" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="13.5" font-weight="800">
+    ⚡ Native WSP
+  </text>
+  <text x="480" y="340" text-anchor="middle" fill="#f3e8ff" font-family="ui-monospace, monospace" font-size="10" font-weight="600">
+    Zero-Gradient
+  </text>
+  <text x="480" y="353" text-anchor="middle" fill="#f3e8ff" font-family="ui-monospace, monospace" font-size="10" font-weight="600">
+    Programming
+  </text>
+</svg>
