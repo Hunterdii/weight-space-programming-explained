@@ -209,8 +209,7 @@
 13. [🗺️ Repository Map](#️-repository-map)
 14. [❓ FAQ](#-faq)
 15. [🤝 Contribute](#-contribute)
-16. [📖 Cite](#-cite)
-17. [⚖️ Legal & Academic Disclaimer](#️-legal--academic-disclaimer)
+16. [⚖️ Legal & Academic Disclaimer](#️-legal--academic-disclaimer)
 
 </details>
 
@@ -232,6 +231,8 @@ The MIT CSAIL post reports something stranger. A general-purpose frontier LLM (*
 </a>
 
 </div>
+
+<br><br>
 
 |  | **🔍 READ** | **🩺 FIX** | **✍️ WRITE** |
 |:--|:--|:--|:--|
@@ -765,15 +766,13 @@ $$s = \frac{\lVert\Delta W\rVert_0}{P} = \frac{2 \times 64 \times 1024}{800{,}00
 
 Roughly **one weight in 6,100**. The post reports 131,072 weights in 64 columns × 2 layers; the hidden size of 1,024 is inferred from that arithmetic and tracked as ledger item 2 in the [Honesty Ledger](research/open-verification-items.md).
 
-<details>
-<summary><b>3. A static composition score for copying heads (illustrative, Exp 3 flavour)</b></summary>
-<br>
+### 3. A static composition score for copying heads (Exp 3 flavour)
 
 Following the transformer-circuits literature (Elhage et al.), copying behaviour can be probed from weights alone by how strongly one head's query-key map composes with another's output-value map:
 
-$$\mathrm{score} = \frac{\lVert W^{(2)}_{QK}\, W^{(1)}_{OV} \rVert_F}{\lVert W^{(2)}_{QK} \rVert_F \,\lVert W^{(1)}_{OV} \rVert_F}$$
+$$\mathrm{score} = \frac{\lVert W_{QK}^{(2)} W_{OV}^{(1)} \rVert_F}{\lVert W_{QK}^{(2)} \rVert_F \lVert W_{OV}^{(1)} \rVert_F}$$
 
-🟨 This is a teaching formula showing the *kind* of quantity that is readable from weights. The post reports Exp 3 in terms of the copying heads the LLM named, not a claim that it computed this score.
+🟨 This is a teaching formula showing the kind of quantity that is readable from weights. The post reports Exp 3 in terms of the copying heads the LLM named, not a claim that it computed this score.
 
 </details>
 
@@ -1068,7 +1067,7 @@ Read [`CONTRIBUTING.md`](CONTRIBUTING.md) first, and please follow the [Code of 
   </a>
 </p>
 
-<a id="cite"></a>
+<!-- <a id="cite"></a>
 
 ## 📖 Cite
 
@@ -1092,7 +1091,7 @@ Cite the original discovery first, then this explainer if you used the labs, whi
 }
 ```
 
-GitHub's **Cite this repository** button reads [`CITATION.cff`](CITATION.cff).
+GitHub's **Cite this repository** button reads [`CITATION.cff`](CITATION.cff). -->
 
 ## ⚖️ Legal & academic disclaimer
 
@@ -1102,7 +1101,7 @@ GitHub's **Cite this repository** button reads [`CITATION.cff`](CITATION.cff).
 
 <br>
 
-<div align="center">
+<!-- <div align="center">
 
 <a href="https://weight-space-atlas.vercel.app/">
   <picture>
@@ -1110,9 +1109,9 @@ GitHub's **Cite this repository** button reads [`CITATION.cff`](CITATION.cff).
     <source media="(prefers-color-scheme: light)" srcset="assets/readme/ribbon-light.svg">
     <img alt="Weight Space Programming. Weights are code: an atlas of the program. Manifolds, projections, inspectors. weight-space-atlas.vercel.app" src="assets/readme/ribbon-dark.svg" width="100%">
   </picture>
-</a>
+</a> -->
 
-<br><br>
+<!-- <br><br> -->
 
 <a href="https://weight-space-atlas.vercel.app/lab/">
   <img alt="Weights are code. Edit 0.016% of an 800M-parameter model. No backprop. No fine-tuning. No GPU cluster. READ, FIX, WRITE. MATH-500 7.9% to 48.1%, 131,072 params." src="assets/readme/weights-are-code.png" width="100%">
