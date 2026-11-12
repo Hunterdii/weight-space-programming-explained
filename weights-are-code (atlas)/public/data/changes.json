@@ -1,0 +1,75 @@
+{
+  "title": "The Weight Atlas: Inside Weight-Space Programming - Living Change Log",
+  "feed_url": "https://weight-space-atlas.vercel.app/data/changes.json",
+  "site_url": "https://weight-space-atlas.vercel.app",
+  "description": "Chronological tracking of empirical replications, community critiques, and monograph updates for Weight-Space Programming.",
+  "author": "Het Patel (Hunterdii)",
+  "last_updated": "2026-11-08T06:00:00Z",
+  "entries": [
+    {
+      "id": "2026-11-08-atlas-site-launch",
+      "date": "2026-11-08",
+      "title": "Interactive Atlas Edition Launch & In-Browser Fingerprint Lab",
+      "badge": "review",
+      "summary": "Shipped the complete web platform with live in-browser Exp. 1 Atari weight fingerprinting, Prologue, 4 standalone Python labs, and interactive WSP-Bench-Lite scorecard.",
+      "url": "https://weight-space-atlas.vercel.app/prologue"
+    },
+    {
+      "id": "2026-11-07-atlas-edition-pdf",
+      "date": "2026-11-07",
+      "title": "The Weight Atlas Edition Whitepaper (45 Pages)",
+      "badge": "review",
+      "summary": "Expanded scholarly whitepaper to 45 pages with 40+ original schematics, recomputed Exp. 1 agent weights, 54 verified citations with back-links, and full mathematical derivations.",
+      "url": "https://weight-space-atlas.vercel.app/whitepaper.pdf"
+    },
+    {
+      "id": "2026-11-05-maier-review",
+      "date": "2026-11-05",
+      "title": "Andreas Maier: What is Measured and What is Anecdote",
+      "badge": "review",
+      "summary": "Independent academic audit catalogued claims into empirical evidence tiers: 3 Strong, 3 Moderate, 2 Weak. Highlighted missing direction-ablation baselines and n=1 seed limitations.",
+      "url": "https://weight-space-atlas.vercel.app/about"
+    },
+    {
+      "id": "2026-11-03-goedecke-essay",
+      "date": "2026-11-03",
+      "title": "Sean Goedecke: Deflationary Analysis on Weight Reading",
+      "badge": "review",
+      "summary": "Argued that reading weights is analogous to emitting raw assembly: an impressive spatial reasoning trick, but standard gradient training remains the primary tool for updating weights.",
+      "url": "https://www.seangoedecke.com/"
+    },
+    {
+      "id": "2026-11-03-honnibal-reading",
+      "date": "2026-11-03",
+      "title": "Matthew Honnibal: Structural Separation of Methods",
+      "badge": "review",
+      "summary": "Clarified that only Exps 1, 2, and 4 read raw floats directly; all language model experiments employ Python code interpreters.",
+      "url": "https://github.com/Hunterdii/weight-space-programming-explained"
+    },
+    {
+      "id": "2026-11-03-willison-replication",
+      "date": "2026-11-03",
+      "title": "Simon Willison: Laptop Replication of Exp. 1",
+      "badge": "review",
+      "summary": "Reproduced Exp. 1 weight reading on an offline laptop running Qwen 2.5 7B. Identified Breakout at 88% confidence in 52 minutes.",
+      "url": "https://simonwillison.net/"
+    },
+    {
+      "id": "2026-11-02-khaliq-demo",
+      "date": "2026-11-02",
+      "title": "Ahsen Khaliq Re-Evaluates Qwen Checkpoint",
+      "badge": "paper",
+      "summary": "Verified MATH-500 jump from 7.9% to 48.1% using the published Hugging Face checkpoint (RikiyaT/Qwen3.5-0.8B-weight-space-programming).",
+      "url": "https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming"
+    },
+    {
+      "id": "2026-11-02-csail-primary-post",
+      "date": "2026-11-02",
+      "title": "MIT CSAIL Publishes 'Sparks of Weight-Space Programming'",
+      "badge": "paper",
+      "summary": "Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab report that LLMs can natively read, fix, and write neural network weights without gradient descent.",
+      "url": "https://rikiyat.github.io/blog/weight-space-programming/"
+    }
+  ]
+}
+

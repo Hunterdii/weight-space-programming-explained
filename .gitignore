@@ -26,6 +26,13 @@ desktop.ini
 *.swo
 *~
 
+# Node.js & Web Site
+node_modules/
+.next/
+out/
+.turbo/
+.cache/
+
 # Logs & Runtime Dumps
 *.log
 npm-debug.log*

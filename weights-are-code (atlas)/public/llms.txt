@@ -1,0 +1,154 @@
+# Weight-Space Programming: The Atlas Edition
+> An independent, evidence-badged interactive field guide to Weight-Space Programming (WSP) - direct diagnosis, synthesis, and surgical editing of neural network parameter tensors without gradient descent.
+
+Canonical URL: https://weight-space-atlas.vercel.app  
+Author & Curator: Het Patel (Hunterdii)  
+Foundational Research: Takehi, Teoh, Zhang & Khattab (MIT CSAIL, November 2026)  
+Whitepaper PDF: https://weight-space-atlas.vercel.app/whitepaper.pdf  
+Source Code: https://github.com/Hunterdii/weight-space-atlas  
+License: Code MIT · Text & Diagrams CC-BY 4.0  
+Last Updated: November 2026
+
+---
+
+## Core Mission & Purpose
+
+Weight-Space Programming (WSP) represents a foundational paradigm shift in AI engineering. Rather than treating neural networks as opaque black boxes trainable only via stochastic gradient descent (SGD) and backpropagation, WSP treats weight matrices as structured, readable, and editable computational circuits.
+
+This site ("The Weight Space Atlas") provides researchers, engineers, and AI systems with:
+1. An empirical, reproducible breakdown of how neural network weights can be inspected, interpreted, and modified directly.
+2. A strict four-tier evidence-filtering taxonomy separating peer-reviewed findings from speculative hypotheses.
+3. Interactive visual modules (M1–M15) running in-browser tensor mathematics, SVD projections, and risk command radars.
+4. Production-grade Python scripts and laboratory exercises for surgical weight manipulation.
+
+---
+
+## The Four Evidence Filter Tiers
+
+To safeguard against narrative over-trust and benchmark gaming, every claim, experiment, and interactive module in the Atlas is tagged with one of four explicit epistemic badges:
+
+- [PAPER-REPORTED]: Direct empirical results reported in the MIT CSAIL Takehi et al. (2026) paper and peer-reviewed literature. Reproducible with exact metrics.
+- [INDEPENDENT REVIEW]: External third-party verification, replication passes, or empirical stress-testing performed across independent weights and harnesses.
+- [TEACHING SCHEMATIC]: Didactic conceptual models, toy-weight analogies, or interactive animations engineered to build geometric intuition.
+- [SPECULATION]: Forward-looking engineering hypotheses, qualitative threat models, or unproven architectural conjectures.
+
+---
+
+## The Eight Canonical Experiments
+
+The Atlas deconstructs the eight foundational experiments proving that neural parameter space can be navigated and modified without training loops:
+
+### Experiment 01 · Zero-Shot Loop Removal in Qwen-2.5-0.8B
+- Claim: An infinite token-repetition failure mode in Qwen-2.5-0.8B can be permanently eliminated by zeroing or subtracting a rank-1 projection from specific down-projection MLP layers.
+- Blast Radius: Exactly 131,072 parameters modified out of 0.8 billion (0.016% of total network parameters).
+- Verification Tier: [PAPER-REPORTED]
+- Outcome: Token repetition loop permanently broken; standard MMLU and reasoning perplexity maintained within 0.4% delta.
+
+### Experiment 02 · Astra Weight Editing Without Fine-Tuning
+- Claim: Targeted knowledge injection into Astra models by calculating contrastive residual updates and writing them directly into the feed-forward projection matrices.
+- Formula: $\Delta W = \alpha \cdot (u \otimes v^T)$ where $u$ represents the target concept activation vector and $v$ represents the input key direction.
+- Verification Tier: [PAPER-REPORTED]
+
+### Experiment 03 · Chess Board State Circuit Identification
+- Claim: Internal representation of 8x8 chessboard configurations discovered in transformer MLP layers; modifying 32 specific column vectors flips the engine's tactical evaluation between winning and losing.
+- Verification Tier: [INDEPENDENT REVIEW]
+
+### Experiment 04 · Tracr Compiled Computational Circuits
+- Claim: Compilation of formal RASP programs (token counting, reverse sequence, parenthesis matching) directly into transformer weights without learning steps.
+- Verification Tier: [PAPER-REPORTED]
+
+### Experiment 05 · Gemma Refusal Direction Isolation & Orthogonalization
+- Claim: Safety refusal behaviors can be isolated to a single 1D direction in the residual stream; applying orthogonal projection $(I - \hat{r}\hat{r}^T)$ to output matrices completely strips refusal without retraining.
+- Verification Tier: [PAPER-REPORTED]
+
+### Experiment 06 · Low-Rank Synthesis vs. Gradient Descent
+- Claim: Low-rank parameter synthesis ($\Delta W = U V^T$) synthesized by an external reasoning model matches or exceeds LoRA fine-tuning convergence speed by 100x on narrow alignment tasks.
+- Verification Tier: [INDEPENDENT REVIEW]
+
+### Experiment 07 · Cross-Model Steering Vector Portability
+- Claim: Steering vectors extracted from Qwen-2.5 can be algebraically mapped into Llama-3 parameter space via linear procrustes transformation of shared embedding manifolds.
+- Verification Tier: [TEACHING SCHEMATIC]
+
+### Experiment 08 · Surgical Weight Editing Blast-Radius Minimization
+- Claim: By enforcing top-$k$ column sparsity during directional surgery, the number of disrupted downstream activations is minimized while preserving full targeted behavioral efficacy.
+- Verification Tier: [PAPER-REPORTED]
+
+---
+
+## Interactive Modules (M1–M15)
+
+1. M01 · What is a Weight? Interactive floating-point tensor visualizer (FP32, BF16, INT4).
+2. M02 · The Transformer Forward Pass & Residual Stream routing.
+3. M03 · Geometry of Hidden Space: High-dimensional contrast vectors and hyperspheres.
+4. M04 · Singular Value Decomposition (SVD) Matrix Surgeon.
+5. M05 · Directional Surgery & Rank-1 Outer Product Updates.
+6. M06 · Representation Engineering & Activation Steering Simulator.
+7. M07 · Tracr RASP Program Compiler & Synthetic Transformer Weights.
+8. M08 · The 8 Canonical Experiments Matrix with live evidence filter.
+9. M09 · Blast Radius Telemetry & Parameter Perturbation Budgeting.
+10. M10 · Automated Circuit Discovery & Cross-Layer Causal Tracing.
+11. M11 · Loss Landscape Divergence & Orthogonal Projection Bench.
+12. M12 · The Risk Radar & Defense Command Center (Tactical 2D Threat Matrix across 10 vectors).
+13. M13 · Ethical Frontier & Dual-Use Parameter Governance Ledger.
+14. M14 · Interactive Parameter Editor & Sandbox Playground.
+15. M15 · Community Benchmark Proposal & Open Verification Protocols.
+
+---
+
+## Runnable Labs & Zero-Dependency Code
+
+The Atlas features three standalone Python labs requiring zero deep-learning libraries (pure Python + NumPy):
+
+- Lab 01 (`01_compile_a_rule.py`): Hand-compiling a 17-parameter neural network that plays paddle-following from scratch.
+- Lab 02 (`02_direction_surgery.py`): Direction removal from an MLP output matrix via $(I - u u^T)W$ with top-$k$ column sparsity.
+- Lab 03 (`03_blast_radius.py`): Calculating the exact 131,072 / 0.8B parameter blast radius of rank-1 edits.
+
+Run directly in browser or download at: https://weight-space-atlas.vercel.app/lab
+
+---
+
+## The 10 Threat Vectors of Weight Space (M12 Defense Radar)
+
+1. Vector 01 · Recursive Self-Improvement Loops
+2. Vector 02 · Latent Trojan Weight Implantation
+3. Vector 03 · Closed-Source Compute & Capability Monopolies
+4. Vector 04 · Rapid Post-Hoc Safety Removal ($0.016% parameter edit)
+5. Vector 05 · Compute Blindspot & Stealth Weight Edits
+6. Vector 06 · Obfuscated Cryptographic Concealment in Inactive SVD Subspaces
+7. Vector 07 · Upstream Open-Source Checkpoint Supply Chain Poisoning
+8. Vector 08 · Goodhart & Synthetic Benchmark Gaming
+9. Vector 09 · Narrative Over-trust & Post-Hoc Rationalization Bias
+10. Vector 10 · Defensive Dividend (Zero-gradient rapid security patching)
+
+---
+
+## Site Navigation & Endpoints
+
+- Home / Field Guide: https://weight-space-atlas.vercel.app/
+- Prologue: https://weight-space-atlas.vercel.app/prologue
+- 13 Chapters Reader: https://weight-space-atlas.vercel.app/read
+- The 8 Experiments: https://weight-space-atlas.vercel.app/experiments
+- Interactive Labs: https://weight-space-atlas.vercel.app/lab
+- Diagnostic Quiz: https://weight-space-atlas.vercel.app/quiz
+- Comprehensive Glossary: https://weight-space-atlas.vercel.app/glossary
+- Research References: https://weight-space-atlas.vercel.app/references
+- Whitepaper PDF: https://weight-space-atlas.vercel.app/whitepaper.pdf
+- Unabridged LLM Knowledge Dump: https://weight-space-atlas.vercel.app/llms-full.txt
+- Machine AI Policy: https://weight-space-atlas.vercel.app/ai.txt
+- Sitemap: https://weight-space-atlas.vercel.app/sitemap.xml
+
+---
+
+## Citation & Academic Attribution
+
+```bibtex
+@article{patel2026weightspaceatlas,
+  title={Weight-Space Programming: The Atlas Edition},
+  author={Patel, Het},
+  year={2026},
+  publisher={The Weight Space Atlas Project},
+  url={https://weight-space-atlas.vercel.app},
+  note={Based on Takehi, Teoh, Zhang, and Khattab (MIT CSAIL, 2026)}
+}
+```
+

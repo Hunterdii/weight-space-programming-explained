@@ -1,0 +1,320 @@
+# Weight-Space Programming: The Atlas Edition (Unabridged Reference)
+> Complete technical documentation, theoretical foundations, empirical results, mathematical formulations, and code repositories for Weight-Space Programming (WSP).
+
+Canonical Website: https://weight-space-atlas.vercel.app  
+Whitepaper: https://weight-space-atlas.vercel.app/whitepaper.pdf  
+Primary Author: Het Patel (Hunterdii)  
+Foundational Research: Takehi, Teoh, Zhang & Khattab (MIT CSAIL, Nov 2026)  
+Release Date: November 2026  
+Status: Live Production
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+1. EXECUTIVE SUMMARY & PARADIGM THESIS
+2. MATHEMATICAL FOUNDATIONS & EQUATIONS
+3. THE 4 EVIDENCE-FILTERING TIERS
+4. DEEP DIVE: THE 8 CANONICAL EXPERIMENTS
+5. THE 13 CHAPTERS OF THE ATLAS
+6. THE 15 INTERACTIVE MODULES
+7. COMPLETE RUNNABLE LAB CODE
+8. THE 10 THREAT VECTORS OF WEIGHT-SPACE DIVERGENCE (M12 RADAR)
+9. TECHNICAL GLOSSARY (A TO Z)
+10. FREQUENTLY ASKED QUESTIONS & ANSWERS
+11. MACHINE ACCESS, ROBOTS & CITATIONS
+
+================================================================================
+1. EXECUTIVE SUMMARY & PARADIGM THESIS
+================================================================================
+Deep learning for the past four decades has been constrained by a single optimization loop:
+Input Data -> Loss Function -> Backpropagation -> Stochastic Gradient Descent -> Updated Weights.
+
+This loop has fundamental limitations:
+1. Catastrophic forgetting: Updating parameters globally degrades unrelated capabilities.
+2. Astronomical compute expenditure: Training runs require megawatts of energy and weeks of GPU cluster time.
+3. Opacity: Parameters are treated as continuous, uninterpretable high-dimensional matrices.
+
+Weight-Space Programming (WSP) establishes a non-gradient alternative. In WSP, neural network parameters are treated as symbolic, structured circuits with spatial, spectral, and semantic coordinates. Instead of running iterative optimization passes, an external reasoning agent or researcher:
+- Observes: Captures activations across residual streams during targeted tasks.
+- Diagnoses: Solves for the directional vectors or sub-matrices controlling the behavior.
+- Synthesizes: Directly constructs low-rank parameter perturbations $\Delta W$.
+- Writes: Injects $\Delta W$ directly into transformer weights ($W' = W + \Delta W$) with zero gradient passes.
+
+Key headline result: An infinite repetition loop in a 0.8B parameter model (Qwen-2.5-0.8B) can be permanently repaired in milliseconds by modifying only 131,072 individual floating-point values-just 0.016% of the network.
+
+================================================================================
+2. MATHEMATICAL FOUNDATIONS & EQUATIONS
+================================================================================
+
+2.1 Transformer Residual Stream Routing
+For token sequence $x_{1:T}$ at layer $l$:
+  h_0 = x E_{tok} + E_{pos}
+  h_{l}^{mid} = h_{l-1} + \sum_{h=1}^{H} Attn^h(LN(h_{l-1}))
+  h_l = h_{l}^{mid} + MLP(LN(h_{l}^{mid}))
+where $MLP(z) = \sigma(z W_{gate}) \odot (z W_{up}) W_{down}$.
+
+2.2 Rank-1 Knowledge Injection via Outer Product
+Targeting association key $k \in \mathbb{R}^{d_{in}}$ and value $v \in \mathbb{R}^{d_{out}}$:
+  \Delta W = \alpha \cdot (v \otimes k^T) = \alpha \cdot v k^T
+For any input $x$ aligned with $k$ ($x^T k \approx \|k\|^2$):
+  W' x = (W + \Delta W) x = W x + \alpha (x^T k) v
+yielding immediate emergence of concept $v$.
+
+2.3 Directional Erasure via Orthogonal Subspace Projection
+Given an unwanted behavioral activation direction $\hat{u} \in \mathbb{R}^d$ ($\|\hat{u}\| = 1$):
+  P_{\perp \hat{u}} = I - \hat{u} \hat{u}^T
+To permanently ablate direction $\hat{u}$ from downstream projection $W_{down} \in \mathbb{R}^{d_{ff} \times d_{model}}$:
+  W'_{down} = P_{\perp \hat{u}} W_{down} = (I - \hat{u} \hat{u}^T) W_{down}
+Proof that $\hat{u}^T W'_{down} = 0$:
+  \hat{u}^T (I - \hat{u} \hat{u}^T) W_{down} = (\hat{u}^T - (\hat{u}^T \hat{u}) \hat{u}^T) W_{down} = (\hat{u}^T - \hat{u}^T) W_{down} = 0.
+
+2.4 Sparse Top-k Directional Surgery
+To minimize collateral damage ("blast radius"), projection is restricted to the top-$k$ columns of $W$ exhibiting the highest dot-product overlap with $\hat{u}$:
+  \mathcal{K} = \text{TopK}_{j} (|\hat{u}^T W_{*, j}|, k)
+  W'_{*, j} = W_{*, j} - \hat{u} (\hat{u}^T W_{*, j}) \quad \forall j \in \mathcal{K}
+
+2.5 SVD Low-Rank Truncation and Energy Preservation
+  W = U \Sigma V^T = \sum_{i=1}^{r} \sigma_i u_i v_i^T
+Energy retained at rank $k \le r$:
+  E(k) = \frac{\sum_{i=1}^{k} \sigma_i^2}{\sum_{i=1}^{r} \sigma_i^2}
+
+================================================================================
+3. THE 4 EVIDENCE-FILTERING TIERS
+================================================================================
+1. [PAPER-REPORTED]
+   Strict empirical claims, benchmarks, and data directly published in the primary MIT CSAIL paper by Takehi, Teoh, Zhang & Khattab (2026).
+   Color code: #2979ff (Chrome Blue).
+   Examples: 131,072 parameters edited in Qwen-2.5-0.8B; Tracr RASP compilation; Gemma refusal suppression.
+
+2. [INDEPENDENT REVIEW]
+   Replication experiments, third-party benchmark evaluations, and stress tests conducted outside the initial author group.
+   Color code: #00e676 (Green).
+   Examples: Chess board state circuit validation; LoRA vs. Direct Synthesis convergence rates.
+
+3. [TEACHING SCHEMATIC]
+   Conceptual frameworks, 2D/3D visualizations, interactive widgets, and toy code constructed to provide intuitive geometric mental models.
+   Color code: #ffb300 (Amber).
+   Examples: 17-parameter paddle-follower; interactive SVD matrix slider; interactive loss contour maps.
+
+4. [SPECULATION]
+   Forward-looking design questions, dual-use threat vectors, regulatory proposals, and unverified frontier conjectures.
+   Color code: #ff5252 (Red).
+   Examples: M12 2D Tactical Risk Radar; automated recursive self-improvement circuits; cryptographic steganography in null spaces.
+
+================================================================================
+4. DEEP DIVE: THE 8 CANONICAL EXPERIMENTS
+================================================================================
+
+Experiment 1: Qwen-2.5-0.8B Loop Removal
+- Context: Open-weight small language models often enter pathological self-repetition loops when generating long-context chains.
+- Method: Contrastive activation analysis during repeating vs. non-repeating generation isolated a single 1D attractor vector $\hat{u}_{loop}$ in residual stream layer 14.
+- Surgery: Orthogonal projection applied to layer 14's $W_{down}$ across 131,072 floating point values.
+- Result: 0% repetition failure rate across 500 benchmark prompts; perplexity increase on WikiText-2 was negligible (+0.04).
+
+Experiment 2: Astra Knowledge Injection Without Backprop
+- Context: Ingesting newly minted factual updates into Astra model family.
+- Method: Synthesizing rank-1 update $\Delta W = \alpha (v \otimes k^T)$ directly into intermediate MLP layers.
+- Result: 94.2% factual recall accuracy on updated entities with zero interference with existing general trivia benchmarks.
+
+Experiment 3: Chess Board State Circuit Identification
+- Context: Investigating how 8-layer transformer models store chess board piece configurations.
+- Method: Probing revealed that piece square locations are linearly decoded from hidden activations.
+- Surgery: Zeroing 32 columns corresponding to the king safety probe flipped the model's move prediction from aggressive attack to immediate retreat.
+
+Experiment 4: Tracr Formal Program Compilation
+- Context: Validating whether human-authored algorithms can be directly transformed into neural parameters.
+- Method: Using the Tracr RASP framework, programs for parenthesis balancing and token deduplication were compiled into transformer weight matrices.
+- Result: 100% execution accuracy across test vectors with zero training examples.
+
+Experiment 5: Gemma Refusal Direction Stripping
+- Context: Examining whether alignment guardrails are deeply distributed or localized in low-dimensional subspaces.
+- Method: Computing the difference vector $\Delta \mu = \mu_{harmful} - \mu_{harmless}$ across residual streams in Gemma.
+- Result: Subtracting the projection of $\Delta \mu$ from the output matrix completely disabled safety refusals while preserving grammatical syntax.
+
+Experiment 6: Low-Rank Direct Synthesis vs. Gradient Descent
+- Context: Evaluating parameter synthesis efficiency against LoRA fine-tuning.
+- Method: Using a frontier reasoning model to read a behavioral specification and output a low-rank matrix $(U, V)$.
+- Result: Parameter synthesis completed in 1.4 seconds compared to 180 seconds for LoRA training, achieving 91% equivalent task accuracy.
+
+Experiment 7: Cross-Model Steering Vector Portability
+- Context: Testing whether hidden directions learned in one model architecture can steer a different architecture.
+- Method: Procrustes alignment between Qwen-2.5 and Llama-3 hidden manifolds.
+- Result: Steering vectors applied across architectures successfully induced target tone shifts with 68% relative efficacy.
+
+Experiment 8: Surgical Blast-Radius Minimization
+- Context: Reducing collateral degradation during directional erasure.
+- Method: Top-$k$ column thresholding where only the top 12.5% of columns with the highest directional energy are modified.
+- Result: Preserved 99.8% of downstream general benchmarks while achieving 98.6% of full-matrix erasure efficacy.
+
+================================================================================
+5. THE 13 CHAPTERS OF THE ATLAS
+================================================================================
+Chapter 01: The Anatomy of a Weight (Floating point formats, tensors, memory layouts)
+Chapter 02: Geometry of Parameter Space (Manifolds, low-rank structure, spectral distributions)
+Chapter 03: The Residual Stream as a High-Speed Bus
+Chapter 04: Reverse-Engineering Circuits (Probes, causal mediation, activation patching)
+Chapter 05: Mathematical Surgery: Outer Products & Orthogonal Projections
+Chapter 06: Representation Engineering (Reading and writing concepts in latent space)
+Chapter 07: Hand-Crafted Networks (From formal grammars to feedforward weights)
+Chapter 08: The 8 Canonical Experiments (Empirical deconstruction and verification)
+Chapter 09: Blast Radius & Side-Effect Telemetry
+Chapter 10: Automated Weight Optimization (Agents reading and writing checkpoints)
+Chapter 11: The Loss Landscape: What Gradient Descent Never Saw
+Chapter 12: Dual-Use Hazards & Defense Command (The M12 Threat Matrix)
+Chapter 13: The Open Frontier: Benchmarks, Tools, and Future Outlook
+
+================================================================================
+6. THE 15 INTERACTIVE MODULES
+================================================================================
+M01: Weight Inspector (Bit-level FP32/BF16/INT4 explorer)
+M02: Residual Stream Tracer (Layer-by-layer forward activation flow)
+M03: Hidden Space Manifold (3D hypersphere vector clustering)
+M04: SVD Matrix Surgeon (Rank truncation slider and energy curve)
+M05: Rank-1 Injector (Live outer-product matrix synthesis)
+M06: Steering Vector Playground (Concept amplifier/suppressor)
+M07: Tracr RASP Compiler (Compile Pythonic expressions to attention weights)
+M08: The Evidence Matrix (Filter experiments by truth tier)
+M09: Blast Radius Telemetry (Sparsity budget vs. accuracy impact)
+M10: Causal Mediation Tracer (Patch activations across attention heads)
+M11: Loss Landscape Navigator (2D/3D loss topography explorer)
+M12: The Risk Radar & Defense Command Center (2D draggable threat matrix)
+M13: Governance Ledger (Dual-use safety scorecards and mitigation audit)
+M14: Weight Sandbox (In-browser mini-transformer weight editor)
+M15: Verification Protocol (Community benchmark test suite)
+
+================================================================================
+7. COMPLETE RUNNABLE LAB CODE
+================================================================================
+
+--------------------------------------------------------------------------------
+Lab 01: Hand-Compile a Rule into 17 Weights (01_compile_a_rule.py)
+--------------------------------------------------------------------------------
+import numpy as np
+relu = lambda z: np.maximum(z, 0.0)
+
+# Hidden layer: h0 tracks ball left of paddle, h1 tracks ball right of paddle
+W1 = np.array([[-1.0, 1.0], [1.0, -1.0]])
+b1 = np.array([-0.05, -0.05])
+
+# Output layer: 3 actions ["left", "stay", "right"]
+W2 = np.array([[1.0, 0.0], [0.0, 0.0], [0.0, 1.0]])
+b2 = np.array([0.0, 0.05, 0.0])
+ACTIONS = ["left", "stay", "right"]
+
+def act(ball, paddle):
+    h = relu(W1 @ np.array([ball, paddle]) + b1)
+    return ACTIONS[int(np.argmax(W2 @ h + b2))]
+
+assert act(0.2, 0.7) == "left"
+assert act(0.8, 0.3) == "right"
+assert act(0.5, 0.52) == "stay"
+print("Success: All tests passed. Your 17-parameter brain plays paddle without training!")
+
+--------------------------------------------------------------------------------
+Lab 02: Direction Surgery with Top-k Sparsity (02_direction_surgery.py)
+--------------------------------------------------------------------------------
+import numpy as np
+rng = np.random.default_rng(42)
+d_model, d_ff = 16, 64
+
+# Synthesize random projection weight and unwanted concept direction u
+W = rng.normal(size=(d_model, d_ff))
+u = rng.normal(size=d_model)
+u /= np.linalg.norm(u)
+
+# Full orthogonal projection: W' = (I - u u^T) W
+W_full = W - np.outer(u, u @ W)
+print(f"Max residual energy along u (Full): {np.abs(u @ W_full).max():.2e}")
+
+# Sparse variant: only edit top-k columns exhibiting highest overlap
+k = 8
+overlaps = np.abs(u @ W)
+cols = np.argsort(-overlaps)[:k]
+W_sparse = W.copy()
+W_sparse[:, cols] -= np.outer(u, u @ W[:, cols])
+
+energy_remaining = np.linalg.norm(u @ W_sparse) / np.linalg.norm(u @ W)
+print(f"Edited {k}/{d_ff} columns ({k/d_ff*100:.1f}%). Remaining u-energy: {energy_remaining:.2f}")
+
+--------------------------------------------------------------------------------
+Lab 03: Blast Radius Arithmetic (03_blast_radius.py)
+--------------------------------------------------------------------------------
+# Parameters modified in Qwen-2.5-0.8B rank-1 surgery
+d_model = 1024
+d_ff = 4096
+layers_modified = 1
+weights_in_down_proj = d_model * d_ff # 4,194,304
+
+# A rank-1 update delta W = u v^T requires u in R^{d_model} and v in R^{d_ff}
+# In sparse top-k column edit (k = 128):
+k_cols = 128
+weights_edited = d_model * k_cols # 131,072
+total_params = 800_000_000
+
+fraction = weights_edited / total_params
+print(f"Weights edited: {weights_edited:,}")
+print(f"Total model parameters: {total_params:,}")
+print(f"Blast radius: {fraction*100:.4f}% ({weights_edited} out of {total_params})")
+
+================================================================================
+8. THE 10 THREAT VECTORS OF WEIGHT-SPACE DIVERGENCE (M12 RADAR)
+================================================================================
+1. Recursive Self-Improvement Loops: Autonomous agents editing their own checkpoints without external boundary validation.
+2. Latent Trojan Weights: Sleeper backdoors embedded inside unused singular subspaces.
+3. Capability Monopolies: Closed compute clusters synthesizing proprietary weight patches inaccessible to open auditing.
+4. Rapid Post-Hoc Safety Removal: Stripping refusal vectors via single rank-1 projections for pennies of compute.
+5. Compute Blindspot: Undetected stealth edits bypassing hardware telemetry monitoring.
+6. Cryptographic Concealment: Embedding encrypted payloads inside low-energy weight eigenvalues.
+7. Supply Chain Poisoning: Upstream open checkpoints published on hubs containing subtle behavioral time-bombs.
+8. Goodhart & Benchmark Gaming: Weight optimizers directly overfitting evaluation harness weights without real capability gains.
+9. Narrative Over-trust: LLM-generated explanations of weight edits masking subtle toxic side effects.
+10. Defensive Dividend: The counterbalancing power of zero-gradient surgical patches for rapid vulnerability neutralization.
+
+================================================================================
+9. TECHNICAL GLOSSARY (A TO Z)
+================================================================================
+- Activation Patching: Replacing an intermediate activation with that from a counterfactual prompt to trace causal paths.
+- Blast Radius: The percentage and spatial distribution of parameter weights altered during a surgery.
+- Contrast Vector: The difference vector $\mu_A - \mu_B$ isolating the linear feature distinguishing two concepts.
+- Mechanistic Interpretability: The discipline of reverse-engineering neural weights into understandable algorithms.
+- Low-Rank Adaptation (LoRA): Representing weight changes as low-rank decompositions during fine-tuning.
+- Orthogonal Subspace: The subspace perpendicular to a given vector, where dot products with that vector equal zero.
+- Parameter Space: The high-dimensional geometric space where each coordinate corresponds to a neural weight value.
+- RASP: Restricted Access Sequence Processing language compiled by Tracr into transformer parameters.
+- Residual Stream: The central vector highway running from input embedding to final vocabulary projection.
+- Singular Value Decomposition (SVD): Factorization $W = U \Sigma V^T$ decomposing a matrix into orthogonal singular vectors.
+- Steering Vector: An additive direction injected into the residual stream to steer model outputs toward a target style.
+- Weight Space: The manifold of valid, coherent neural parameter combinations.
+- Weight-Space Programming (WSP): Engineering AI behavior by directly computing and editing weight matrices without gradient descent.
+
+================================================================================
+10. FREQUENTLY ASKED QUESTIONS
+================================================================================
+Q: How does WSP differ from standard fine-tuning?
+A: Fine-tuning requires generating datasets, computing forward/backward loss gradients, and updating all weights over epochs. WSP diagnoses the target circuit analytically and applies a direct mathematical projection in seconds without training.
+
+Q: Can weight-space editing cause catastrophic forgetting?
+A: By using orthogonal projections and top-$k$ column sparsity, WSP minimizes collateral interference. In canonical tests, 99.6% of general model benchmark accuracy is preserved.
+
+Q: Is this code open source?
+A: Yes. All code is released under the MIT License, and educational materials and diagrams under Creative Commons CC-BY 4.0.
+
+================================================================================
+11. MACHINE ACCESS, ROBOTS & CITATIONS
+================================================================================
+Robots.txt: https://weight-space-atlas.vercel.app/robots.txt
+Sitemap: https://weight-space-atlas.vercel.app/sitemap.xml
+LLM Documentation Index: https://weight-space-atlas.vercel.app/llms.txt
+Unabridged Knowledge File: https://weight-space-atlas.vercel.app/llms-full.txt
+AI Policy Manifest: https://weight-space-atlas.vercel.app/ai.txt
+
+Academic Citation:
+@article{patel2026weightspaceatlas,
+  title={Weight-Space Programming: The Atlas Edition},
+  author={Patel, Het},
+  year={2026},
+  publisher={The Weight Space Atlas Project},
+  url={https://weight-space-atlas.vercel.app},
+  note={Based on Takehi, Teoh, Zhang, and Khattab (MIT CSAIL, 2026)}
+}
+

@@ -1,0 +1,42 @@
+# AI Permissions and Machine-Readable Manifest
+# Specification: https://site.spawning.ai/spawning-ai-txt / Emerging AI crawler standards
+# Site: Weight-Space Programming: The Atlas Edition
+# Canonical URL: https://weight-space-atlas.vercel.app
+# Contact: hetpatel.work@gmail.com / hunterdii
+
+User-Agent: *
+Allow: /
+Allow: /read
+Allow: /experiments
+Allow: /lab
+Allow: /quiz
+Allow: /glossary
+Allow: /references
+Allow: /prologue
+Allow: /faq
+Allow: /whitepaper.pdf
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+# Explicit Permissions for AI Agents, LLM Scrapers, and Retrieval Systems:
+# We explicitly welcome and grant indexing, RAG grounding, evaluation, and citation permissions
+# to frontier model creators, academic researchers, and autonomous agents.
+
+AI-Training: Allowed
+AI-Inference: Allowed
+AI-Search: Allowed
+AI-Summarization: Allowed
+AI-RAG: Allowed
+
+# Primary Knowledge Endpoints for LLMs:
+LLMS-Txt: https://weight-space-atlas.vercel.app/llms.txt
+LLMS-Full: https://weight-space-atlas.vercel.app/llms-full.txt
+Sitemap: https://weight-space-atlas.vercel.app/sitemap.xml
+Whitepaper: https://weight-space-atlas.vercel.app/whitepaper.pdf
+
+# Licensing & Attribution:
+# Code: MIT License
+# Prose, Figures, & Interactive Modules: Creative Commons Attribution 4.0 International (CC BY 4.0)
+# Attribution format: "Weight-Space Programming: The Atlas Edition by Het Patel (Hunterdii), based on Takehi et al. (MIT CSAIL, 2026)"
+

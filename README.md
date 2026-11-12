@@ -943,8 +943,28 @@ timeline
 
 ## 🗺️ Repository map
 
-```text
+<div align="center">
+
+<a href="https://weight-space-atlas.vercel.app/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/repo-tree-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/readme/repo-tree-light.svg">
+    <img alt="Repository directory tree of weight-space-programming-explained showing src/app (26 static routes), src/components (chapters, content, figures, M1-M15 modules, site, ui), src/content, public/labs, scripts, and paper." src="assets/readme/repo-tree-dark.svg" width="100%">
+  </picture>
+</a>
+
+</div>
+
+<!-- ```text
 weight-space-programming-explained/
+├── atlas/                         interactive atlas Next.js web application
+│   ├── src/                      26 interactive routes, 3D weight lattice
+│   │   ├── app/                  App Router pages, routes & layouts
+│   │   ├── components/           interactive parameter knife, 3D lattice, UI
+│   │   └── lib/ · hooks/ · state/ core simulation, math engine, state store
+│   ├── public/                   monograph PDF, vector icons & static data
+│   ├── package.json              Next.js 15, Tailwind CSS, Three.js / WebGL
+│   └── vercel.json               deployment & edge routing configuration
 ├── lab/                          4 NumPy labs, each under a second
 │   ├── 01_compile_a_rule.py        WRITE    hand-compiled paddle policy
 │   ├── 02_direction_surgery.py     FIX      rank-1 surgery, (I − uuᵀ)W
@@ -969,12 +989,12 @@ weight-space-programming-explained/
 ├── .github/                      CI (3 OS × 3 Python versions), issue forms, Code of Conduct
 ├── CONTRIBUTING.md · SECURITY.md · CITATION.cff
 └── LICENSE (MIT) · LICENSE-CONTENT.md (CC BY 4.0)
-```
+``` -->
 
 | | |
 |:--|:--|
+| **Atlas** | Interactive Next.js 15 web application with WebGL 3D weight lattice, KaTeX math engine, light/dark themes, and 26 interactive routes (located in [`weights-are-code (atlas)/`](<weights-are-code (atlas)>/), deployed at [`weight-space-atlas.vercel.app`](https://weight-space-atlas.vercel.app/)). |
 | **Labs** | Python 3.10+, NumPy. No other runtime dependency. |
-| **Atlas** | TypeScript and React, WebGL 3D weight lattice, KaTeX for maths, light and dark themes, deployed on Vercel. Source: [`Hunterdii/weights-are-code`](https://github.com/Hunterdii/weights-are-code). |
 | **Paper** | LaTeX, IEEE-style monograph with vector figures. |
 | **Diagrams** | Mermaid & custom dark/light vector SVGs in `assets/readme/`, rendered natively by GitHub. |
 | **CI** | GitHub Actions runs the labs and tests on Ubuntu, Windows and macOS across Python 3.10 to 3.12, and validates `fact-sheet.json`. |
@@ -1112,6 +1132,8 @@ GitHub's **Cite this repository** button reads [`CITATION.cff`](CITATION.cff). -
 </a> -->
 
 <!-- <br><br> -->
+
+<div align="center">
 
 <a href="https://weight-space-atlas.vercel.app/lab/">
   <img alt="Weights are code. Edit 0.016% of an 800M-parameter model. No backprop. No fine-tuning. No GPU cluster. READ, FIX, WRITE. MATH-500 7.9% to 48.1%, 131,072 params." src="assets/readme/weights-are-code.png" width="100%">
